@@ -1,0 +1,281 @@
+
+.section-subjet-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 80%;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
+  align-items: self-start;
+  top: 70px;
+
+
+  left: 39px;
+}
+
+body {
+  margin: 0;
+  background-color: #222;
+  font-family: system-ui;
+  display: grid;
+  height: 100vh;
+  color: #ffffff;
+}
+
+.c-subject-card{
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 0px;
+  padding: 0px;
+  height: 200px;
+  box-shadow: #ffffff;
+  width: 30%;
+  color: #222;
+}
+
+.c-subject-img-card{
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  width: 100%;
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+.c-subject-text-card{
+  padding-left: 10px;
+}
+
+html{
+  height: 0;
+}
+
+
+
+
+button > td{
+  width: 100%;
+}
+
+.selec-idiom{
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+}
+.container-logo{
+  display: flex;
+  margin: 0px;
+  margin-top: 61px;  
+  align-items: center;
+  justify-content: center;
+  background-color:#424242;
+  height: 140px;
+  width: 100%;
+}
+
+.fc-widget-content{
+  border: 1px solid #ccc;
+  width: auto;
+  height: 100%;
+}
+
+td{
+  width: 100%;
+}
+
+
+.container-objet{
+  display: flex;
+  width: 98%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  margin-top: 0px;
+  height: 7%;
+  width: 12%;
+  
+}
+
+
+.dropdown-idioma{
+  display: flex;
+  font-size: calc(0.90375rem + 0.045vw);
+  align-items: center;
+  justify-content: right;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  border: 0px solid black;
+  height: 74px;
+  width: 100%;
+  margin: 0px;
+  background-color: #EC3237;
+  align-items: stretch;
+
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+}
+
+.nav-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 17px;
+  margin-left: 16px;
+  cursor: pointer;
+
+
+}
+/*  */
+
+
+.fc-first{
+  width: 100%;
+}
+
+
+
+/* codigo sin corregir se la tabla  */
+.fc-agenda-days{
+  width: 80%;
+}
+.fc-agenda-days ,
+.fc-agenda-days th {
+    border: 1px solid #000000; /* Añade bordes de 1px sólido */
+}
+
+.fc-agenda-axis {
+    border-right: 1px solid #000000; /* Añade bordes de 1px sólido a la derecha */
+}
+
+.fc-ltr{
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+
+.fc-header{
+    width: 100%;
+}
+
+.fc-widget-header{
+    width: 10%;
+
+}
+
+.fc-agenda-axis {
+    position: absolute;
+    height: 20px; 
+    margin-top: 5px;/* Cambia la altura a 20px o el valor que prefieras */
+}
+
+div > td{
+    /* position: relative; */
+    /* height: 0px; */
+    border: #ffffff;
+    height: 100%;
+}
+
+.horario-Button{
+    position: relative;
+    height: 100px;
+    /* text-overflow: ellipsis; */
+    display: block;
+    /* padding: 0px; */
+    width: 100%;
+    /* height: 100%; */
+    /* background-color: #ffffff; */
+}
+
+form{
+  display: flex;
+  position: relative;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  top: 30px;
+  height: 40vh;
+}
+
+.div-button{
+    display: flex;
+    position: block;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* height: 100%; */
+    padding-top: 0px;
+    gap: 20px;
+
+}
+
+.fc-content{
+  width: 100%;
+}
+
+.fc-col0{
+    margin-left: 0px;
+    background-color: #ffff;
+    border: 1px solid #ccc;
+}
+
+.fc-col0 button{
+  border: none;
+  background-color: #ffffff;
+}
+
+.separacion{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+.fc-view-agendaWeek{
+    display: flex;
+    position: block;
+    margin-top: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    flex-wrap: nowrap;
+    left: -10px !important;
+  }
+
+.td-hora{
+    width: 100px;
+    display: block;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    height: 80px;    
+}
+
+.td-button{
+    width: 100px;
+    position: relative;
+    padding-left: 20px;
+    height: 80px;
+    align-items: start;
+    
+}
+
+.button-hora{
+    height: 100%;
+    height: 80px;
+}
+
+/*  */
