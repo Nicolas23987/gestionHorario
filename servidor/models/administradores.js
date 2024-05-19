@@ -1,4 +1,4 @@
-const sequelize = require('../database/database');
+const sequelize = require('../database/database.js');
 const DataTypes = require('sequelize')
 
 const Admin = sequelize.define('administradores', {
@@ -16,7 +16,7 @@ const Admin = sequelize.define('administradores', {
     },
     contraseña: {
         type: DataTypes.STRING
-    }
+    },
 },
 {
     timestamps: false

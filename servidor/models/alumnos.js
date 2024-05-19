@@ -1,6 +1,7 @@
-const sequelize = required('sequelize');
+const sequelize = require('../database/database.js');
 const DataTypes = require('sequelize');
-
+const Asignaturas = require('./asignaturas.js')
+const Alumno_Asignatura = require("./alumno_asignatura.js")
 
 const Alumno = sequelize.define('alumnos', {
     
@@ -14,10 +15,14 @@ const Alumno = sequelize.define('alumnos', {
     },
     correo:{
         type: DataTypes.STRING
-    },
-    
-});
-    
-
+    }
+},
+{
+    timestamp: false
+}
+);
+ 
+Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
+Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura} )
 
 module.exports = Alumno;

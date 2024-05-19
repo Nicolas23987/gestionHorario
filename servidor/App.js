@@ -1,10 +1,11 @@
 const express = require('express');
-const router = require('./router/admin-router.js');
-
+const asignatura_router = require('./router/asignatura_router.js');
+const alumno_router = require('./router/alumno_router.js')
 const app = express();
 
 app.use(express.json());
-app.use("/api/v1",router);
+app.use("/api/asignatura",asignatura_router);
+app.use("/api/alumno",alumno_router)
 
 app.use((err, req, res, next) => {
     if (err.type === 'entity.parse.failed') {

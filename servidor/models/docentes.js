@@ -1,5 +1,24 @@
-const {sequelize} = require('../database/database');
+const sequelize = require('../database/database.js');
+const DataTypes = require('sequelize')
 
-sequelize.define('docentes',{
+const Docente = sequelize.define('docentes',{
     
-});
+    id_docente:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    nombre: {
+        type: DataTypes.STRING
+    },
+    correo: {
+        type: DataTypes.STRING
+    },
+    
+},
+{
+    timestamps: false
+}
+);
+
+module.exports = Docente

@@ -15,11 +15,11 @@ async function main(){
          console.log(`Servidor corriendo en el puerto ${PORT}`);  
         });      
     }catch(error) {
-        console.log('error',error)
+        console.log('error',error);
     }
 }
-main()
 
+main()
 
 // async function main(){
 //     try {
