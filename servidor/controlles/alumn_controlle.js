@@ -17,14 +17,45 @@ const get_Alumno = async(req, res) => {
 }
 
 const delete_Alumnno = async(req, res)=>{
-
-
+    try{
+        const { id } = req.params
+        const delete_alumno = await Alumno.destroy({
+            where: { 
+                id_alumno: id,
+            }
+        });
+    res.status(201).json({
+        success: true, 
+        menssange: 'Alumno eliminado con exito'
+    })
+    }catch(error){
+        res.status(404).json({
+            success: false,
+            error: error.menssange
+        })
+    }
 }
 
 const update_Alumno = async(req, res) => {
+    try{
+        const { id_alumno } = req.params
+        const {nombre, correo} = req.body
+        const put = await Alumno.findOne(id_alumno)
 
-
-
+        put.nombre = nombre
+        put.correo = correo
+        put.save()
+        
+        res.status(202).json({
+            success: true,
+            menssange: "Usuario registrado con exito"
+        })
+    }catch(error){
+        res.status(404).json({
+            success: false,
+            error: error.menssange
+        })
+    }
 }
 
 const create_Alumno = async(req, res) => {

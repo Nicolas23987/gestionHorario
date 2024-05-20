@@ -23,5 +23,4 @@ const Admin = sequelize.define('administradores', {
 }
 );
 
-
 module.exports = Admin;

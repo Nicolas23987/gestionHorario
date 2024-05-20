@@ -89,18 +89,31 @@ const delete_Admin = async(req, res) =>{
 }
 
 const update_Admin = async(req, res)=>{
-    const { id } = req.params;
-    const {nombre, correo, contraseña} = req.body;
+    try{
+        console.log(req.params,req.body);
+        const { idAdministrador } = req.params
+        const {nombre, correo, password} = req.body
+        const put = await Admin.findOne(idAdministrador)
 
-    const put = await Admin.findByPk(id)
+        // console.log(nombre, correo, password, put)
+        put.nombre = nombre
+        put.correo = correo
+        put.contraseña = password
 
-    put.nombre = nombre 
-    put.correo = correo 
-    put.contraseña = contraseña
-    await put.save() 
-    // console.log(put) 
-    res.send('updating')
- 
+        await put.save();
+
+        console.log(put)
+        res.status(202).json({
+            success: true,
+            menssange: "Usuario registrado con exito"
+        })
+    }catch(error){
+        res.status(404).json({
+            success: false,
+            error: error.menssange
+        })
+        console.log(error)
+    }
 }
 
 module.exports = {

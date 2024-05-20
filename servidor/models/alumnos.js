@@ -18,7 +18,7 @@ const Alumno = sequelize.define('alumnos', {
     }
 },
 {
-    timestamp: false
+    timestamps: false
 }
 );
  

@@ -14,7 +14,6 @@ const Docente = sequelize.define('docentes',{
     correo: {
         type: DataTypes.STRING
     },
-    
 },
 {
     timestamps: false

@@ -7,33 +7,45 @@ import materiaUno from '../img/materiaUno.jpg';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'react-router-dom';
 import Axios from 'axios'
-
+import LoadingScreen from '../Componentes/loanding.jsx';
+ 
 function Home(){
 
-  const [materiaList,setMaterias]= useState([])
+  const [materiaList, setMateriaList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const getMaterias = () => { 
-    Axios.get('http://localhost:3000/asignaturas').then(response => {
-    setMaterias(response.data);
-  })
-    console.log(materiaList)
-  }
+  useEffect(() => {
+    const getMaterias = async () => {
+      try {
+        const response = await Axios.get('http://localhost:3000/api/get/asignatura');
+        // console.log('API response:', response.data); // Verifica la estructura de los datos
+        const materias = response.data.data; 
+        setMateriaList(materias);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  useEffect(() =>{
     getMaterias();
-  },[])
-  
+  }, []);
 
+  if (loading) {
+    return <LoadingScreen />; // Mostrar pantalla de carga mientras se están obteniendo los datos
+  }
   return(
     <React.Fragment>
       <NavBar></NavBar>  
+      <div className='dv-containe-section' >
       <section className='section-subjet-card'>
         {materiaList.map((materia) => (
-            <React.Fragment key={materia.id_Materia} >
-             <SubjectCard id={materia.id} paralelo={materia.paralelo} materia= {materia.nombre} img={materiaUno} />  
+            <React.Fragment key={materia.id_materia} >
+             <SubjectCard id={materia.id_materia} paralelo={materia.paralelo} materia= {materia.nombre} img={materiaUno} />  
             </React.Fragment>            
         ))}
-      </section>   
+      </section>
+      </div>
     </React.Fragment>
 
   ) 

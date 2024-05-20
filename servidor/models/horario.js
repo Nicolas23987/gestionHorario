@@ -1,8 +1,6 @@
 const sequelize = require('../database/database.js');
 const DataTypes = require('sequelize');
 
-
-
 const Horario = sequelize.define('horario',{
 
     id_horario:{

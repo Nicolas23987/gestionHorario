@@ -2,6 +2,7 @@ import '../index.css';
 import { BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
 
 export function SubjectCard({id, paralelo,materia, carrera, img}){
+    console.log(id, paralelo,materia, carrera)
     return( 
         <div className='c-subject-card' >
 

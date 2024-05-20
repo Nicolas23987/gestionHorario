@@ -5,6 +5,9 @@ import '../index.css';
 import React, { useRef } from 'react';
 import Axios from "axios";
 
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 class HorarioList{
     constructor(paralelo,color,dia,horaInicio,horaFin, Profesor,nombre){
@@ -27,6 +30,9 @@ new HorarioList('A', 3, 1, 8, 'Ing.Junior Zamora', 'Aplicaciones para el cliente
 new HorarioList('A', 2, 2, 4, 'Sendon Juan', 'Redes de computadora'),
 new HorarioList('B', 7, 1, 2, 'Alex Marin', 'Ing Requisitos'),
 ]
+
+
+
 
 var NewHorario = [];
 var contador = 0
@@ -64,7 +70,20 @@ for (let l = 0; l < horario.length; l++) {
   }
 
 
-export function Horario(){
+export function Horario(){ 
+  const [alumnoData, setAlumnoData] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/get/horario')
+      .then(response => {
+        setAlumnoData(response.data);
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []); 
+
     const location = useLocation();
     const datos = location.state
     const days = ["Hora", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab","Dom"];
