@@ -1,6 +1,6 @@
 const sequelize = require('../database/database.js');
 const DataTypes = require('sequelize');
-// const Alumno = require('./alumnos.js')
+const Alumno = require('./alumnos.js')
 const Alumno_Asignatura = require('./alumno_asignatura.js');
 
 
@@ -28,9 +28,13 @@ const Asignaturas = sequelize.define('asignaturas',{
 );
 
 // Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
-// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura});
+// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura });
+
+// Asignaturas.belongsTo()
+ 
+// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura})
 
 // Asignaturas.belongsTo(Alumno, { foreignKey: 'id_alumno' });
-// Alumno.hasMany(Asignaturas, { foreignKey: 'id_alimno' });
+// Alumno.hasMany(Asignaturas, { foreignKey: 'id_alumno' });
 
 module.exports = Asignaturas;

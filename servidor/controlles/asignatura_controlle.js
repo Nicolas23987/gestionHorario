@@ -1,7 +1,11 @@
 const Asignatura = require('../models/asignaturas');
+const Alumno = require('../models/alumnos')
 
 
-
+// const getAsignatura = await Asignatura.findAll({
+//     include:{ 
+//         model: Alumno
+//     }});
 
 const get_Asignatura = async(req, res) => {
     try{
@@ -17,6 +21,7 @@ const get_Asignatura = async(req, res) => {
             succes: false,
             menssage: error.menssage
         })
+        console.log(error)
     }
 }
 

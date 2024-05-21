@@ -12,7 +12,7 @@ const Alumno = sequelize.define('alumnos', {
     },
     nombre: {
         type: DataTypes.STRING
-    },
+    } ,
     correo:{
         type: DataTypes.STRING
     }
@@ -22,7 +22,7 @@ const Alumno = sequelize.define('alumnos', {
 }
 );
  
-Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
-Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura} )
+// Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
+// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura} )
 
 module.exports = Alumno;

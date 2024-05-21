@@ -30,7 +30,7 @@ asignatura_router.put('/update/asignatura',update_Asignatura);
 // const {get_Horario,update_Horario,delete_Horario,create_Horario} = require('../controlles/horario_controlle.js');
 
 
-
+ 
 //////////Router Administradores/////////////////////
 // router.get('/get', getAdmin);
 // router.post('/create', create_Admin);

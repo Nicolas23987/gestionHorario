@@ -5,6 +5,7 @@ const horario_router = require('./router/horario_router.js');
 const administrador_router = require('./router/administrador_router.js');
 const docente_router = require('./router/docente_router.js')
 const cors = require('cors');
+const { TIMEOUT } = require('dns');
 
 const app = express();
 app.use(cors())
@@ -17,7 +18,9 @@ app.use("/api", docente_router)
 
 
 app.use((err, req, res, next) => {
-
+    setTimeout(()=>{
+      res.send('cargando...')
+    },50000)
     if (err.type === 'entity.parse.failed') { 
       res.status(400).send({ error: 'Invalid JSON' });
     } else {

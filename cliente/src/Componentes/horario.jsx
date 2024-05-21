@@ -99,9 +99,9 @@ export function Horario(){
     }
   return (
     <React.Fragment>
-    <div className="calendar fc fc-ltr" id="calendar" bis_skin_checked="1">
+    {/* <div className="calendar fc fc-ltr" id="calendar" bis_skin_checked="1">
         <div className="fc-content"  bis_skin_checked="1">
-          <div className="fc-view fc-view-agendaWeek fc-agenda" unselectable="on" bis_skin_checked="1">
+          <div className="fc-view fc-view-agendaWeek fc-agenda" unselectable="on" bis_skin_checked="1"> */}
             <table key='1' className="fc-agenda-days fc-border-separate" cellSpacing="0">
               <thead>
                 <tr className="fc-first fc-last">
@@ -146,9 +146,9 @@ export function Horario(){
             </thead>
             ))}
         </table>
-    </div> 
+    {/* </div> 
 </div>
-</div>
+</div> */}
 </React.Fragment>
   );
 }
