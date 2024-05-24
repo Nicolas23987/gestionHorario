@@ -43,10 +43,9 @@ const [horario, setAlumnoData] = useState([]);
   useEffect(() => {
     Axios.get('http://localhost:3000/api/get/horario')
       .then(response => {
-        const set = response.data.data
-        setAlumnoData(set);
+        setAlumnoData(response.data);
         
-        // console.log(response.data)
+        console.log(response.data.data)
         console.log(horario)
 
       })
