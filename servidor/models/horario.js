@@ -1,7 +1,8 @@
 const sequelize = require('../database/database.js');
 const DataTypes = require('sequelize');
+const Docente = require('./docentes.js');
 
-const Horario = sequelize.define('horario',{
+const Horario = sequelize.define('horarios',{
 
     id_horario:{
         type: DataTypes.INTEGER,  
@@ -22,5 +23,8 @@ const Horario = sequelize.define('horario',{
     timestamps: false
 }
 );
+Horario.belongsTo(Docente);
+Docente.hasMany(Horario);
+
 
 module.exports = Horario;

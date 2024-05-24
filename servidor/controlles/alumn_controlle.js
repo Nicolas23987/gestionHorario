@@ -2,9 +2,10 @@ const Alumno = require('../models/alumnos.js');
 
 const get_Alumno = async(req, res) => {
     try{
-        const alumnos = await(Alumno.findAll());
+        const alumnos = await Alumno.findAll();
         res.status(200).json({
             success: true,
+            menssange: 'usuario creado con exito',
             data: alumnos
         });
     }catch(error){

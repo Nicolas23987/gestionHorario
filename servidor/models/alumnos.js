@@ -18,11 +18,12 @@ const Alumno = sequelize.define('alumnos', {
     }
 },
 {
-    timestamps: false
+    timestamps: false,
+    tableName:'alumnos'
 }
 );
  
 // Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
-// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura} )
+// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura})
 
 module.exports = Alumno;

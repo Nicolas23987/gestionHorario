@@ -7,6 +7,9 @@ const Admin = require('./models/administradores.js')
 const Asignatura = require('./models/asignaturas.js');
 
 async function main(){
+    
+    // await sequelize.sync({ force: true });
+
     try {
         const PORT = process.env.PORT || 3000;        
         await sequelize.sync()

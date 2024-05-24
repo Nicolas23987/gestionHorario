@@ -6,7 +6,7 @@ import React, { useRef } from 'react';
 import Axios from "axios";
 
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 class HorarioList{
@@ -20,18 +20,40 @@ class HorarioList{
     }
 }
 
-const horario = [
-new HorarioList('A', 1, 3, 7, 'Alex Marin', 'Ing Requisitos'),
-new HorarioList('B', 1, 1, 8, 'Ing.Junior Zamora', 'Aplicaciones para el cliente web'),
-new HorarioList('C', 2, 2, 4, 'Sendon Juan', 'Redes de computadora'),
-new HorarioList('A', 7, 1, 2, 'Alex Marin', 'Ing Requisitos'),
-new HorarioList('B', 3, 4, 3, 'Sin profesor', 'Ing Requisitos'),
-new HorarioList('A', 3, 1, 8, 'Ing.Junior Zamora', 'Aplicaciones para el cliente web'),
-new HorarioList('A', 2, 2, 4, 'Sendon Juan', 'Redes de computadora'),
-new HorarioList('B', 7, 1, 2, 'Alex Marin', 'Ing Requisitos'),
-]
+// const horario = [
+// // new HorarioList('A', 1, 3, 7, 'Alex Marin', 'Ing Requisitos'),
+// // new HorarioList('B', 1, 1, 8, 'Ing.Junior Zamora', 'Aplicaciones para el cliente web'),
+// // new HorarioList('C', 2, 2, 4, 'Sendon Juan', 'Redes de computadora'),
+// // new HorarioList('A', 7, 1, 2, 'Alex Marin', 'Ing Requisitos'),
+// // new HorarioList('B', 3, 4, 3, 'Sin profesor', 'Ing Requisitos'),
+// // new HorarioList('A', 3, 1, 8, 'Ing.Junior Zamora', 'Aplicaciones para el cliente web'),
+// // new HorarioList('A', 2, 2, 4, 'Sendon Juan', 'Redes de computadora'),
+// // new HorarioList('B', 7, 1, 2, 'Alex Marin', 'Ing Requisitos'),
+// ]
 
 
+
+
+export function Horario(id_asignatura){ 
+const [horario, setAlumnoData] = useState([]);
+
+
+
+
+  useEffect(() => {
+    Axios.get('http://localhost:3000/api/get/horario')
+      .then(response => {
+        const set = response.data.data
+        setAlumnoData(set);
+        
+        // console.log(response.data)
+        console.log(horario)
+
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []); 
 
 
 var NewHorario = [];
@@ -57,33 +79,17 @@ for (let l = 0; l < horario.length; l++) {
       // console.log('helloworder');
       const nuevoHorarioObjeto = new HorarioList(
         horario[l].paralelo,
-        horario[l].color,
+        // horario[l].color,
         horario[l].dia,
         horario[l].horaInicio,
         horario[l].horaFin,
-        horario[l].Profesor,
-        horario[l].nombre  
+        // horario[l].Profesor,
+        // horario[l].nombre  
       );
       NewHorario.push(nuevoHorarioObjeto);
       console.log(NewHorario)
     }
   }
-
-
-export function Horario(){ 
-  const [alumnoData, setAlumnoData] = useState(null);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/get/horario')
-      .then(response => {
-        setAlumnoData(response.data);
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }, []); 
-
     const location = useLocation();
     const datos = location.state
     const days = ["Hora", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab","Dom"];
@@ -125,13 +131,14 @@ export function Horario(){
                                     </button>      
                                 ) : (
                                  NewHorario.map((object) => (
-                                    (hourIndex === object.horaInicio && dayIndex === object.dia ? (
+                                  console.log(object)
+                                    (hourIndex === object.hora_inicio && dayIndex === object.dia ? (
                                           <Link to='/GestionMateria' state={{paralelo: object.paralelo, profesor: object.Profesor}}  >
                                             <div className="div-boton">
                                                 <button className="horario-Button" id={`col${hourIndex}${dayIndex}`}>
                                                     <div className="div-button" >{days[day]}-{hourIndex}:00 - {hourIndex+1}:00</div> 
-                                                    <div className="div-button" >{object.nombre}</div> 
-                                                    <div className="div-button" >{object.Profesor}</div> 
+                                                    <div className="div-button" >{object.dia}</div> 
+                                                    <div className="div-button" >{object.hora_inicio}</div> 
                                                 </button>                    
                                             </div>
                                           </Link>

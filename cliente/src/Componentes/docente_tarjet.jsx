@@ -2,26 +2,27 @@ import React from "react";
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import img from '../img/juan.png'
+import img from '../img/alex.png'
 import timetable from '../img/calendar-week.svg'
 
 
 
 
 export function Tarjet() {
-
-    const [materiaList, setMateriaList] = useState([]);
+    const id = 12;
+    const [docente, setMateriaList] = useState([]);
     const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         const getMaterias = async () => {
             try {
-                const response = await Axios.get('http://localhost:3000/api/get/docente');
+                const response = await Axios.get(`http://localhost:3000/api/get/docente/3`);
                 // console.log('API response:', response.data); // Verifica la estructura de los datos
                 const materias = response.data.data;
                 setMateriaList(materias);
                 setLoading(false);
-                console.log(materiaList)
+                console.log(docente)
             } catch (error) {
                 setLoading(false);
                 console.error('Error fetching data:', error);
@@ -35,7 +36,7 @@ export function Tarjet() {
     return (
         <React.Fragment>
 
-            {materiaList.map(docente => (
+            {/* {materiaList.map(docente => ( */}
                 <div className="dv-dc-tj">
                     <div className="container-img-tj" key={docente.id_docente}>
 
@@ -63,7 +64,7 @@ export function Tarjet() {
                         {/* </a> */}
                     </div>
                 </div>
-            ))}
+            {/* ))} */}
         </React.Fragment>
     )
 

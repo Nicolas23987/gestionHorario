@@ -90,7 +90,7 @@ const delete_Admin = async(req, res) =>{
 
 const update_Admin = async(req, res)=>{
     try{
-        console.log(req.params,req.body);
+        // console.log(req.params,req.body);
         const { idAdministrador } = req.params
         const {nombre, correo, password} = req.body
         const put = await Admin.findOne(idAdministrador)
