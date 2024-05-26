@@ -17,7 +17,7 @@ const [materiaList, setMateriaList] = useState([]);
           const response = await Axios.get('http://localhost:3000/api/get/asignatura');
           // console.log('API response:', response.data); // Verifica la estructura de los datos
           const materias = response.data.data; 
-          console.log(materias)
+          // console.log(materias)
           setMateriaList(materias);
           setLoading(false);
         } catch (error) {
@@ -25,15 +25,11 @@ const [materiaList, setMateriaList] = useState([]);
           console.error('Error fetching data:', error);
         }
       };
-  
+
       getMaterias();
     }, []);
+      console.log(materiaList)
   
-    // if (loading) {
-    //   return <LoadingScreen />; // Mostrar pantalla de carga mientras se están obteniendo los datos
-    // }
-
-    // console.log(id, paralelo,materia, carrera)
     return(
         <>
         {materiaList.map((materia) => (
@@ -44,12 +40,12 @@ const [materiaList, setMateriaList] = useState([]);
                 <article>
 
                     <div>
-                    <Link to='/GestionMateria' state={materia.id} >
+                    <Link to='/materia/horario/' state={{materiaId:materia.id_docente}} >
                         <img className='c-subject-img-card' src={ img } alt="" />
                     </Link>
                     </div>
 
-                    <Link to='/GestionMateria' state={materia.id} className='c-subject-text-card' href="">
+                    <Link to='/materia/horario/' state={{materiaId:materia.id_materia}} className='c-subject-text-card' href="">
                         {materia.paralelo} -- {materia.nombre}
                     </Link>  
                     <div>

@@ -6,7 +6,7 @@ const Asignatura = require('../models/asignaturas.js')
 
 const get_Docente = async(req, res) => {
     try{
-        console.log(req.params, res.body)
+        // console.log(req.params, res.body)
         const  id_docente  = req.params;
 
         const docente = await Docente.findByPk(id_docente.id)
@@ -41,6 +41,20 @@ const get_Docentes = async(req, res) => {
             })
         }
 
+}
+
+const get_Docente_MateriaId = async(res,req)=>{
+    try{
+        const id_materia = res.params;
+        console.log(id_materia)
+        const docente = Docente.findAll({
+            where:{
+                id_materia: id_materia
+            }
+        })
+    }catch(error){
+
+    }
 }
 
 const update_Docente = async(req, res) => {
@@ -108,5 +122,6 @@ module.exports = {
     get_Docente,
     update_Docente,
     delete_Docente,
-    create_Docente
+    create_Docente,
+    get_Docente_MateriaId
 }

@@ -112,6 +112,14 @@ p{
   /* align-items: center; */
 }
 
+/* @media screen and (max-width: 768px) { */
+  /* Estilos que se aplicarán cuando el ancho de la pantalla sea 768px o menos */
+  /* .container-list{
+
+    display: block;
+  } */
+/* } */
+
 
 td  {
   /* display: flex; */

@@ -11,10 +11,10 @@ function App(){
         <BrowserRouter>
             <Routes>
              <Route index="/" element={<Login />} />  
-             <Route path="/home" element={<Home />} />  
-             <Route path="/prueba" element={<Prueba />} />    
-             <Route path="/GestionHorario" element={<GestionHorario />} />  
-             <Route path="/GestionMateria" element={<Informacion />} />  
+             <Route path="/inicio" element={<Home />} />  
+             {/* <Route path="/prueba" element={<Prueba />} />     */}
+             {/* <Route path="/GestionHorario" element={<GestionHorario />} />   */}
+             <Route path="/materia/horario/" element={<Informacion />} />  
             </Routes>
         </BrowserRouter>
     )}

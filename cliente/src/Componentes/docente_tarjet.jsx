@@ -7,9 +7,8 @@ import timetable from '../img/calendar-week.svg'
 
 
 
-
-export function Tarjet() {
-    const id = 12;
+export function Tarjet(id_docente) {
+    console.log(id_docente)
     const [docente, setMateriaList] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -17,7 +16,7 @@ export function Tarjet() {
     useEffect(() => {
         const getMaterias = async () => {
             try {
-                const response = await Axios.get(`http://localhost:3000/api/get/docente/3`);
+                const response = await Axios.get(`http://localhost:3000/api//get/docente/materia/${id_docente.id_materia}`);
                 // console.log('API response:', response.data); // Verifica la estructura de los datos
                 const materias = response.data.data;
                 setMateriaList(materias);

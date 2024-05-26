@@ -14,13 +14,13 @@ const Docente = sequelize.define('docentes',{
     correo: {
         type: DataTypes.STRING
     },
-    // img:{
-    //     type: DataTypes.
-    // }
 },
 {
-    timestamps: false
+    timestamps: false,
+    tableName: 'docentes'
 }
 );
+
+
 
 module.exports = Docente

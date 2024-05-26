@@ -12,7 +12,7 @@ async function main(){
 
     try {
         const PORT = process.env.PORT || 3000;        
-        await sequelize.sync()
+        await sequelize.sync({force:true})
         // app.listen(400)
         app.listen(PORT, () => {
          console.log(`Servidor corriendo en el puerto ${PORT}`);  

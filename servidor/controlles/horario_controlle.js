@@ -1,6 +1,6 @@
 const Horario = require('../models/horario');
 
-const get_Horario = async(req, res) => {
+const get_Horarios = async(req, res) => {
     try{
         const getHorario = await Horario.findAll()  
         res.status(202).json({
@@ -60,7 +60,7 @@ const delete_Horario = async(req, res) => {
 const create_Horario = async(req, res) => {
     try{
         const {dia, hora_inicio, hora_salida} = req.body
-        const newHorario = Horario.create({
+        const newHorario = await Horario.create({
             dia,
             hora_inicio,
             hora_salida
@@ -78,9 +78,30 @@ const create_Horario = async(req, res) => {
     }
 }
 
+
+const get_Horario = async(req, res) => {
+            console.log(req.params, res.body)
+
+    try{
+        const id_horario = req.params;
+        const horario = await Horario.findByPk(id_horario.id);
+        res.status(202).json({
+            status: true,
+            mensage: 'Horario obtenido con exito',
+            data: horario
+        })
+    }catch(error){
+        res.status(404).json({
+            status: false,
+            error: error.mensage
+        })
+    }
+}
+
 module.exports = {
-    get_Horario,
+    get_Horarios,
     update_Horario,
     delete_Horario,
-    create_Horario
+    create_Horario,
+    get_Horario
 }

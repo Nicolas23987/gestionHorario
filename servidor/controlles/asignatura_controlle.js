@@ -1,5 +1,6 @@
 const Asignatura = require('../models/asignaturas');
-const Alumno = require('../models/alumnos')
+const Alumno = require('../models/alumnos');
+const Docente = require('../models/docentes');
 
 
 // const getAsignatura = await Asignatura.findAll({
@@ -9,7 +10,12 @@ const Alumno = require('../models/alumnos')
 
 const get_Asignatura = async(req, res) => {
     try{
-        const getAsignatura = await Asignatura.findAll();
+        const getAsignatura = await Asignatura.findAll({
+            include: [{
+                model: Docente,
+                as: 'docentes'
+            }]
+        });
         res.status(202).json({
             succes: true,
             data: getAsignatura,

@@ -7,10 +7,12 @@ import { Tarjet } from "../Componentes/docente_tarjet.jsx";
 import { Estudiante_list } from "../Componentes/estudiantes_list.jsx";
 import { Horario } from "../Componentes/horario.jsx";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function Informacion() {
 
-
+  const location = useLocation()
+  const id_materia = location.state && location.state.materiaId;
 
   const [mostrarHorario, setMostrarHorario] = useState(true);
   const [mostrarList, setMostrarList] = useState(true);
@@ -23,7 +25,7 @@ function Informacion() {
     // setMostrarHorario(!mostrarHorario);
     setMostrarList(!mostrarList)
   };
-
+//  console.log(id_materia)
   return (
     <React.Fragment>
       <NavBar></NavBar>
@@ -41,17 +43,18 @@ function Informacion() {
 
         <div className="container-list">
           <div className="tj-container">
-            <Tarjet></Tarjet>
+            <Tarjet id_materia={id_materia} />
           </div>
           <div className="dv-container-week">
-            {mostrarHorario && <Horario />}
-            {!mostrarList && <Estudiante_list></Estudiante_list>}
+            {mostrarHorario && <Horario id_materia={id_materia} />}
+            {!mostrarList && <Estudiante_list id_materia={id_materia}/>}
           </div>
         </div>
       </div>
     </React.Fragment>
   );
-      
+     
+    
 }
 
     export default Informacion;

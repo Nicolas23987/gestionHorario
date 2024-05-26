@@ -5,6 +5,7 @@ const Alumno_Asignatura = require('./alumno_asignatura.js');
 
 const Horario = require('../models/horario.js')
 const Asignatura_Horario = require('../models/asignatura_horarios.js')
+const Docente = require('./docentes.js')
 
 const Asignaturas = sequelize.define('asignaturas',{
 
@@ -21,7 +22,7 @@ const Asignaturas = sequelize.define('asignaturas',{
     },
     paralelo: {
         type: DataTypes.INTEGER
-    },
+    },    
 }, 
 {
     timestamps: false,
@@ -29,12 +30,23 @@ const Asignaturas = sequelize.define('asignaturas',{
 }
 );
 
+//muchos a muchos asignatura/alumno
 Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
 Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura });
 
-
+//muchos a muchos asignatura/horario
 Asignaturas.belongsToMany(Horario, {through: Asignatura_Horario});
 Horario.belongsToMany(Asignaturas, {through: Asignatura_Horario});
 
+// muchos a uno asignatura/docente
+Docente.hasMany(Asignaturas, {
+    foreignKey:'idDocente',
+    as: 'asignaturas'
+});
+
+Asignaturas.belongsTo(Docente, {
+    foreignKey:'idDocente',
+    as: 'docentes'
+});
 
 module.exports = Asignaturas;
