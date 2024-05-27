@@ -1,11 +1,11 @@
 const sequelize = require('../database/database.js');
 const DataTypes = require('sequelize');
-const Alumno = require('./alumnos.js')
-const Asignaturas = require('./asignaturas.js')
-const Horario = require('./horario.js')
-const Asignatura_Horario = require('./asignatura_horarios.js')
+// const Alumno = require('./alumnos.js')
+// const Asignaturas = require('./asignaturas.js')
+// const Horario = require('./horario.js')
+// const Asignatura_Horario = require('./asignatura_horarios.js')
 
-const Alumno_Asignatura = sequelize.define('asignatura_alumnos', {
+const Alumno_AsignaturaVirtuales = sequelize.define('asignaturaV_alumnos', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -18,7 +18,7 @@ const Alumno_Asignatura = sequelize.define('asignatura_alumnos', {
 },
 {
     timestamps: false,
-    tableName: 'asignatura_alumnos'
+    tableName: 'asignaturaV_alumnos'
 }
 );
 // Alumno.belongsToMany(Asignatura, { through: Alumno_Asignatura, foreignKey: 'alumnoId' });
@@ -36,4 +36,4 @@ const Alumno_Asignatura = sequelize.define('asignatura_alumnos', {
 // Asignaturas.belongsToMany(Horario, {through: Asignatura_Horario});
 // Horario.belongsToMany(Asignaturas, {through: Asignatura_Horario});
 
-module.exports = Alumno_Asignatura;
+module.exports = Alumno_AsignaturaVirtuales;

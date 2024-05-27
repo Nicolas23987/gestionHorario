@@ -1,7 +1,8 @@
 // const {Horario} = require('../../cliente/src/Componentes/horario');
-const Docente = require('../models/docentes');
-const Horario = require('../models/horario.js')
-const Asignatura = require('../models/asignaturas.js')
+// const Docente = require('../models/docentes');
+const {Docente} = require('../relaciones/relaciones.js');
+// const Horario = require('../models/horario.js')
+const {Asignatura} = require('../relaciones/relaciones.js');
 
 
 const get_Docente = async(req, res) => {
@@ -43,17 +44,27 @@ const get_Docentes = async(req, res) => {
 
 }
 
-const get_Docente_MateriaId = async(res,req)=>{
+const get_Docente_MateriaId = async(req,res) =>{
     try{
-        const id_materia = res.params;
+        const id_materia = req.params;       
         console.log(id_materia)
-        const docente = Docente.findAll({
-            where:{
-                id_materia: id_materia
-            }
+        const materia = await Asignatura.findByPk(
+            id_materia.id
+        )
+        console.log(materia.idDocente)
+        const docente = await Docente.findByPk(materia.idDocente);
+
+        res.status(202).json({
+            status:true,
+            menssage: 'Datos obtenidos con exito',
+            data: docente
         })
     }catch(error){
-
+        res.status(404).json({
+            status: false,
+            error: error.menssage
+        })
+        console.log(error)
     }
 }
 

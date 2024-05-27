@@ -23,8 +23,11 @@ const Horario = sequelize.define('horarios',{
     timestamps: false
 }
 );
-Horario.belongsTo(Docente);
-Docente.hasMany(Horario);
+
+///////////////////////////
+
+// Horario.belongsTo(Docente);
+// Docente.hasMany(Horario);
 
 
 module.exports = Horario;

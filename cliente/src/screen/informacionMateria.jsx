@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { NavBar } from '../Componentes/Nav.jsx'
 // import { useLocation } from "react-router-dom"
 // import { useState, useEffect } from "react";
@@ -9,33 +9,43 @@ import { Horario } from "../Componentes/horario.jsx";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
+
+
+
 function Informacion() {
 
-  const location = useLocation()
-  const id_materia = location.state && location.state.materiaId;
-
+     const toggleLista = () => {
+      setIsVisible(!isVisible); // Cambiar el estado de isVisible al valor opuesto
+    }; 
   const [mostrarHorario, setMostrarHorario] = useState(true);
   const [mostrarList, setMostrarList] = useState(true);
 
-  const toggleHorario = () => {
-    setMostrarHorario(!mostrarHorario);
-    // setMostrarList(!mostrarList)
-  };
-  const toggleList =() => {
-    // setMostrarHorario(!mostrarHorario);
-    setMostrarList(!mostrarList)
-  };
+  const location = useLocation()
+  const id_materia = location.state;
+  console.log(location.state)
+
+
+    const [isVisible, setIsVisible] = useState(false);
+  
+
+
+
+  useEffect(() => {
+
+
+  }, []);
+
 //  console.log(id_materia)
   return (
     <React.Fragment>
       <NavBar></NavBar>
       <div className="container-if">
         <div className="dv-container-selec">
-          <button onClick={toggleHorario}>
+          <button className="" onClick={toggleLista}>
             Horario
           </button>
           <a href="#">
-            <button onClick={toggleList}>
+            <button onClick={toggleLista}>
               Participantes
             </button>
           </a>
@@ -46,8 +56,12 @@ function Informacion() {
             <Tarjet id_materia={id_materia} />
           </div>
           <div className="dv-container-week">
-            {mostrarHorario && <Horario id_materia={id_materia} />}
-            {!mostrarList && <Estudiante_list id_materia={id_materia}/>}
+            <div className="horario" style={{ display: isVisible ? 'none' : 'block' }}>
+              {<Horario  id_materia={id_materia} />}
+            </div>
+            <div className="horario" style={{ display: isVisible ? 'block' : 'none' }}>
+             {<Estudiante_list id="listEstudiantes" id_materia={id_materia}/>}
+            </div>
           </div>
         </div>
       </div>

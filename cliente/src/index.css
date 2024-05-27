@@ -42,16 +42,14 @@
 .img-dc{
   border-radius: 100%;
   width: 40%;
-  height: 40%;
+  height: 100px;
   transition: .7s;
 }
 .img-dc:hover{
 
   border-radius: 5%;
   width: 70%;
-  height: 70%;
-  
-
+  height: 170px;
 }
 .dc-ic-tj{
   width: 10%;
@@ -66,6 +64,14 @@
   color: #000000;
 
 }
+
+
+
+#lista {
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
 
 .dv-if-tj{
   display: flex;
@@ -292,6 +298,37 @@ td{
   border-bottom: 4px solid blueviolet;
 } 
 
+.form-login{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  background-color: #ffffff;
+  height: 50vh;
+  color: #000000;
+  border-radius: 30px;
+}
+.container-form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-label{
+  display: flex;
+  align-items:center;
+  justify-content: left;
+}
+.mb-3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+
+}
+
 .fc-first{
   width: 100%;
 }
@@ -421,6 +458,35 @@ form{
     align-items: start;
     justify-content: center;
   }
+
+  @media screen and (max-width: 1080px) {
+    /* Estilos específicos para pantallas más pequeñas */
+    #horario{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      right: -100px;
+    }
+    .dv-container-week{
+
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      right: -100px;    }
+  }
+  .horario{
+    width: 80%;
+  }
+  @media screen and (max-width: 480px) {
+    /* Estilos específicos para pantallas aún más pequeñas */
+    .dv-container-week{
+      justify-content: right;
+    }
+  
+  }
+
 
 .td-hora{
     width: 100px;

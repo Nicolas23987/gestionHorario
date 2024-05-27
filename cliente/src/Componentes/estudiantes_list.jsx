@@ -4,20 +4,19 @@ import Axios from 'axios';
 // import { response } from '../../../servidor/App';
 // import { useState } from 'react';
 
-const students = [
-    { id: 1, nombre: 'Juan Perez', correo: 'juan.perez@example.com' },
-    { id: 2, nombre: 'Maria Garcia', correo: 'maria.garcia@example.com' },
-    { id: 3, nombre: 'Carlos Lopez', correo: 'carlos.lopez@example.com' }
-  ];
-  
- export function Estudiante_list(){
 
+ export function Estudiante_list(id_materia){
+
+    console.log(id_materia.id_materia);
     const [alumnos, alumnoSet] = useState([]);
 
     useEffect(()=>{
-       const getAlumnos = async() => {
+
+
+
+       const getAlumnos = async(res,req) => {
         try{
-          const response = await Axios.get('http://localhost:3000/api/get/alumno')
+          const response = await Axios.get(`http://localhost:3000/api/get/alumno`)
           const estudiantes = response.data.data
           console.log(estudiantes)
           alumnoSet(estudiantes)

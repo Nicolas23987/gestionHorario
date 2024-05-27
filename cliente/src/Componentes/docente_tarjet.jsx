@@ -7,8 +7,8 @@ import timetable from '../img/calendar-week.svg'
 
 
 
-export function Tarjet(id_docente) {
-    console.log(id_docente)
+export function Tarjet(id_materia) {
+    console.log(id_materia)
     const [docente, setMateriaList] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -16,7 +16,7 @@ export function Tarjet(id_docente) {
     useEffect(() => {
         const getMaterias = async () => {
             try {
-                const response = await Axios.get(`http://localhost:3000/api//get/docente/materia/${id_docente.id_materia}`);
+                const response = await Axios.get(`http://localhost:3000/api/get/docente/materia/${id_materia.id_materia}`);
                 // console.log('API response:', response.data); // Verifica la estructura de los datos
                 const materias = response.data.data;
                 setMateriaList(materias);
@@ -26,6 +26,7 @@ export function Tarjet(id_docente) {
                 setLoading(false);
                 console.error('Error fetching data:', error);
             }
+            console.log(docente)
         };
 
         getMaterias();
@@ -38,10 +39,7 @@ export function Tarjet(id_docente) {
             {/* {materiaList.map(docente => ( */}
                 <div className="dv-dc-tj">
                     <div className="container-img-tj" key={docente.id_docente}>
-
-                        <img className="img-dc" src={img} alt="" />
-
-
+                        <img className="img-dc" src={docente.img} alt="" />
                     </div>
                     <div className="dv-if-tj">
                         <div>

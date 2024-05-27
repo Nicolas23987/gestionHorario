@@ -1,7 +1,7 @@
 // const Asignatura = require('../models/asignaturas');
-const {Asignatura} = require('../relaciones/relaciones.js');
+const {AsignaturaVirtuales} = require('../../relaciones/relaciones.js');
 // const Alumno = require('../models/alumnos');
-const {Docente} = require('../relaciones/relaciones.js');
+// const Docente = require('../models/docentes');
 
 
 // const getAsignatura = await Asignatura.findAll({
@@ -9,9 +9,9 @@ const {Docente} = require('../relaciones/relaciones.js');
 //         model: Alumno
 //     }});
 
-const get_Asignatura = async(req, res) => {
+const get_AsignaturaV = async(req, res) => {
     try{
-        const getAsignatura = await Asignatura.findAll({
+        const getAsignatura = await AsignaturaVirtuales.findAll({
             include: [{
                 model: Docente,
                 as: 'docentes'
@@ -32,11 +32,11 @@ const get_Asignatura = async(req, res) => {
     }
 }
 
-const update_Asignatura = async(req, res) => {
+const update_AsignaturaV = async(req, res) => {
     const {id_asignatura} = req.param
     const {nombre, semestre, paralelo} = req.body
     try{
-        const put = await Alumno.findOne(id_asignatura)
+        const put = await AsignaturaVirtuales.findOne(id_asignatura)
 
         put.nombre = nombre
         put.semestre = semestre
@@ -56,11 +56,11 @@ const update_Asignatura = async(req, res) => {
     }
 }
 
-const delete_Asignatura = async(req, res) => {
+const delete_AsignaturaV = async(req, res) => {
     const {id_asignatura} = req.params
     try{
 
-        const deleteAsignatura = await Asignatura.destroy({
+        const deleteAsignatura = await AsignaturaVirtuales.destroy({
             where: id_asignatura
         })
         res.status(202).json({
@@ -77,10 +77,10 @@ const delete_Asignatura = async(req, res) => {
 
 }
 
-const create_Asignatura = async(req, res) => {
+const create_AsignaturaV = async(req, res) => {
     const { nombre, semestre, paralelo } = req.body
     try{
-        const newAsignatura = await Asignatura.create({
+        const newAsignatura = await AsignaturaVirtuales.create({
             nombre,
             semestre,
             paralelo
@@ -98,8 +98,8 @@ const create_Asignatura = async(req, res) => {
 }
 
 module.exports = {
-    get_Asignatura,
-    update_Asignatura,
-    delete_Asignatura,
-    create_Asignatura
+    get_AsignaturaV,
+    update_AsignaturaV,
+    delete_AsignaturaV,
+    create_AsignaturaV
 }

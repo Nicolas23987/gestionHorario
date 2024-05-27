@@ -1,4 +1,5 @@
-const Alumno = require('../models/alumnos.js');
+// const Alumno = require('../models/alumnos.js');
+const {Alumno} = require('../relaciones/relaciones.js');
 
 const get_Alumno = async(req, res) => {
     try{
@@ -81,5 +82,8 @@ const create_Alumno = async(req, res) => {
 }
 
 module.exports = {
-    get_Alumno,delete_Alumnno,update_Alumno,create_Alumno
+    get_Alumno,delete_Alumnno,
+    update_Alumno,
+    create_Alumno,
+    delete_Alumnno,
 }

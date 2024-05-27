@@ -4,7 +4,7 @@ const Docente = require('./docentes.js')
 
 
 
-const AsignaturaVirtuales = sequelize.define('asignaturas_virtuales', {
+const AsignaturaVirtuales = sequelize.define('asignaturasVirtuales', {
 
     id_materia:{
         type: DataTypes.INTEGER,
@@ -26,18 +26,19 @@ const AsignaturaVirtuales = sequelize.define('asignaturas_virtuales', {
 },
 {
     timestamps: false,
-    tableName: 'asignaturas_virtuales'
+    tableName: 'asignaturasVirtuales'
 }
 );
+//////////////
 
-Docente.hasMany(AsignaturaVirtuales,{
-    foreignKey: 'idMateriaVirtual',
-    as: 'asignaturas_virtuales'
-});
-AsignaturaVirtuales.belongsTo(Docente, {
-    foreignKey:'idMateriaVirtual',
-    as: 'docentes'
-})
+// Docente.hasMany(AsignaturaVirtuales,{
+//     foreignKey: 'idDocente',
+//     as: 'asignaturas_virtuales'
+// });
+// AsignaturaVirtuales.belongsTo(Docente, {
+//     foreignKey:'idDocente',
+//     as: 'docentes'
+// })
 
 
 module.exports = AsignaturaVirtuales;

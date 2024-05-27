@@ -1,11 +1,11 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getStorage, ref, uploadBytes} from 'firebase/storage'
-import { SNAPSHOT } from "sequelize/lib/table-hints";
+import { getAnalytics, ref, uploadBytes, getDownloadURL } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAdTPj3SLcXsJtrqWN1CrsR2S5OFqwBdxE",
   authDomain: "gestionhorario-f867e.firebaseapp.com",
@@ -16,14 +16,19 @@ const firebaseConfig = {
   measurementId: "G-L789ZGM9S6"
 };
 
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
 
-export function UploadFile(img){
-    const storageRef = ref(storage);
-    uploadBytes(storageRef, img).then(snapshot => {
-        console.log(snapshot)
-    }) 
-}
+const app = initializeApp(firebaseConfig);
+// const storage = getStorage(app);
+
+export async function UploadFile(img){
+    const storageRef = ref(storage, v4() );
+    // uploadBytes(storageRef, img).then(snapshot => {
+    //     console.log(snapshot)
+    // }) 
+    await uploadBytes(storageRef, img)
+    const url = await  getDownloadURL(storageRef) 
+    return url
+  }
+
 
 const analytics = getAnalytics(app);

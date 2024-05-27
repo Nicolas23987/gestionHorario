@@ -18,11 +18,15 @@ const Alumno = sequelize.define('alumnos', {
     }
 },
 {
+    sequelize,
+    modelName:"Alumno",
     timestamps: false,
     tableName:'alumnos'
 }
 );
- 
+// Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura, foreignKey: 'alumnoIdAlumno'});
+// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura, foreignKey: 'asignaturaId' });
+
 // Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
 // Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura})
 

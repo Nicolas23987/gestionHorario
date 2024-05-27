@@ -1,4 +1,5 @@
 const { send } = require('process');
+// const  Admin  = require('../models/administradores')
 const  Admin  = require('../models/administradores')
 
 const getAdmin = async(req, res) => {

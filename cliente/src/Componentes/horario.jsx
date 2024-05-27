@@ -23,7 +23,7 @@ const [horario, setAlumnoData] = useState([]);
   // }
   // console.log(id_asignatura)
   useEffect(() => {
-     Axios.get(`http://localhost:3000/api/get/horario/materia/1`)
+     Axios.get(`http://localhost:3000/api/get/horario/`)
       .then(response => {
         const horariolist = response.data.data;
         setAlumnoData(horariolist);
@@ -153,5 +153,3 @@ const [horario, setAlumnoData] = useState([]);
 </React.Fragment>
   );
 }
-
-
