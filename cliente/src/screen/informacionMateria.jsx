@@ -40,6 +40,13 @@ function Informacion() {
     <React.Fragment>
       <NavBar></NavBar>
       <div className="container-if">
+
+
+        <div className="container-list">
+          <div className="tj-container">
+            <Tarjet id_materia={id_materia} />
+          </div>
+          <div className="dv-container-week">
         <div className="dv-container-selec">
           <button className="" onClick={toggleLista}>
             Horario
@@ -49,18 +56,14 @@ function Informacion() {
               Participantes
             </button>
           </a>
-        </div>
-
-        <div className="container-list">
-          <div className="tj-container">
-            <Tarjet id_materia={id_materia} />
-          </div>
-          <div className="dv-container-week">
-            <div className="horario" style={{ display: isVisible ? 'none' : 'block' }}>
-              {<Horario  id_materia={id_materia} />}
-            </div>
-            <div className="horario" style={{ display: isVisible ? 'block' : 'none' }}>
-             {<Estudiante_list id="listEstudiantes" id_materia={id_materia}/>}
+        </div>   
+        <div className="contenedor-he">         
+               <div className="horario" style={{ display: isVisible ? 'none' : 'block' }}>
+                 {<Horario  id_materia={id_materia} />}
+               </div>
+               <div className="horario" style={{ display: isVisible ? 'block' : 'none' }}>
+                {<Estudiante_list id="listEstudiantes" id_materia={id_materia}/>}
+               </div>
             </div>
           </div>
         </div>
