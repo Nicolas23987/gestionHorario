@@ -63,12 +63,13 @@ const update_Alumno = async(req, res) => {
 const create_Alumno = async(req, res) => {
     console.log(req.body)
     try{
-        const { nombre, correo} = req.body;
+        const { nombre, correo, cedula} = req.body;
         const newAlumno = await Alumno.create({
             nombre,
-            correo
+            correo,
+            cedula
         })
-        res.status(201).json({
+        res.status(202).json({
             success: true,
             message: 'usuario reguistrado con exito',
             data: newAlumno

@@ -15,7 +15,7 @@ async function main(){
         const PORT = process.env.PORT || 3000;        
         await sequelize.sync(
             // setTimeout(50)
-            {force:true}
+            // {force:true}
         )
         // app.listen(400)
         app.listen(PORT, () => {
