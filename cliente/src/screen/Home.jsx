@@ -7,7 +7,7 @@ import materiaUno from '../img/materiaUno.jpg';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'react-router-dom';
 import Axios from 'axios'
-import LoadingScreen from '../Componentes/loanding.jsx';
+// import LoadingScreen from '../Componentes/loanding.jsx';
  
 function Home(){
 

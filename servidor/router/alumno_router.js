@@ -1,6 +1,6 @@
 const express = require('express');
 const {get_Alumno,delete_Alumnno,update_Alumno,create_Alumno} = require('../controlles/alumnos_controlle.js');
-const { getAlumnoAsignatura } = require('../controlles/alumnos_asignatura_controlle.js')
+const { getAlumnoAsignatura } = require('../controlles/alumnos_asignatura.js')
 
 
 const alumno_router = express.Router();

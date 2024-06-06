@@ -1,7 +1,7 @@
 import React from 'react';
 // import './LoadingScreen.css'; // Opcional: para estilos
 
-function LoadingScreen() {
+export function LoadingScreen() {
   return (
     <div className="loading-screen">
       <div className="spinner"></div>
@@ -10,4 +10,4 @@ function LoadingScreen() {
   );
 }
 
-export default LoadingScreen;
+// export default LoadingScreen;

@@ -2,8 +2,9 @@ import React from "react";
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import img from '../img/alex.png'
+// import img from '../img/alex.png'
 import timetable from '../img/calendar-week.svg'
+import { bg } from "date-fns/locale";
 
 
 
@@ -37,8 +38,8 @@ export function Tarjet(id_materia) {
         <React.Fragment>
 
             {/* {materiaList.map(docente => ( */}
-                <div className="dv-dc-tj">
-                    <div className="container-img-tj" key={docente.id_docente}>
+                <div className="dv-dc-tj  ">
+                    <div className= "container-img-tj" key={docente.id_docente}>
                         <img className="img-dc" src={docente.img} alt="" />
                     </div>
                     <div className="dv-if-tj">

@@ -5,7 +5,7 @@ const DataTypes = require('sequelize');
 // const Horario = require('./horario.js')
 // const Asignatura_Horario = require('./asignatura_horarios.js')
 
-const Alumno_AsignaturaVirtuales = sequelize.define('asignaturaV_alumnos', {
+const Alumno_AsignaturaVirtuales = sequelize.define('asig_virt_alum', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -18,7 +18,7 @@ const Alumno_AsignaturaVirtuales = sequelize.define('asignaturaV_alumnos', {
 },
 {
     timestamps: false,
-    tableName: 'asignaturaV_alumnos'
+    tableName: 'asig_virt_alum'
 }
 );
 // Alumno.belongsToMany(Asignatura, { through: Alumno_Asignatura, foreignKey: 'alumnoId' });

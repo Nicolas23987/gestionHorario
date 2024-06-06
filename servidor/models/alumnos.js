@@ -15,6 +15,9 @@ const Alumno = sequelize.define('alumnos', {
     } ,
     correo:{
         type: DataTypes.STRING
+    },
+    cedula:{
+        type: DataTypes.STRING
     }
 },
 {

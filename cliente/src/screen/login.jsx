@@ -1,33 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavBar } from "../Componentes/Nav";
+import logoMicrosoft from '../img/logomicrosoft.png'
+import { useForm} from 'react-hook-form'
+import Axios from 'axios'
+import {LoadingScreen} from '../Componentes/loanding.jsx'
+import { useNavigate } from "react-router-dom";
 function Login() {
+  const { register, handleSubmit, formState: {errors} } = useForm()
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // Estado para el mensaje de error
+
+
+  let navigate = useNavigate();
+
+ // Aquí ponemos replace:true para reemplazar la ruta actual con la tuya, pues si usaramos el navigate por sí solo, pushearía la ruta por encima de la otra
+
+
+  const [correo, setCorreo] = useState();
+  const [password, setPassword] = useState();
+ 
+  const data = {
+    correo: correo,
+    password: password
+  }
+
+  const onSubmit = handleSubmit(async (data) => {
+    setError("");
+    setLoading(true);
+
+    try {  
+
+      const response = await Axios.post('http://localhost:3000/api/auth/admin', {
+        correo: data.correo,
+        contraseña: data.password,
+      });
+      if (response.status === 202) {
+        console.log(response)
+        console.log("Inicio de sesión exitoso");
+        navigate('inicio', { replace: true })
+
+      } else {
+        setError("Credenciales incorrectas"); 
+      }
+    } catch(error) {
+      console.error("Error al enviar los datos:", error);
+      setError('Credenciales incorrectas');
+    } finally {
+      setLoading(false);
+    }
+  });
+
   return (
-    <React.Fragment>
-      <NavBar></NavBar>
+    <React.Fragment>      
+      {loading && <LoadingScreen />}
+
+      <NavBar />
       <div className="container-form">
-        <form className="form-login" >
-          <div class="mb-3">
-           <div className="laber-form">
-            <label for="exampleInputEmail1" class="form-label"><h3>Correo electronico</h3></label>
-           </div>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
-          </div>
-          <div class="mb-3 ">
-            <div className="laber-form">
-             <label for="exampleInputPassword1" class="form-label"><h3>Contraseña</h3></label>
+        <div className="form-center">
+          <div className="form-login">
+            <form onSubmit={onSubmit}>
+              <div className="container-ob-form">
+                <h1 class=''>Administracion de horarios Uleam</h1>
+              {error && <div className="error-span"> <span className="error-span">{error}</span></div>} {/* Mostrar mensaje de error */}
+              {errors.correo && <div className="error-span"> <span className="error-span">Nombre es requerido</span> </div>}
+                <input 
+                  value={correo}
+                  onChange={(e) =>setCorreo(e.target.value)}
+                  type="email" 
+                  className="form-control" 
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  {...register("correo", { required: true })}
+                  placeholder="correo electronico"
+                />
+                {errors.password && <div className="error-span"> <span className="error-span">Ingrese una contraseña</span></div>}
+                <input
+                  value={password}
+                  onChange={(e)=> setPassword(e.target.value)}
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="contraseña"
+                  {...register("password", { required: true })}
+                />
+                <button type="submit" className="btn btn-primary">ACCEDER</button>
+                <a href="">Olvido su contraseña?</a>
+              </div>
+            </form>
+            <div className="login-divide"></div>
+            <div className="">
+              <h3>Identifíquese usando su cuenta en:</h3>
             </div>
-            <input type="password" class="form-control" id="exampleInputPassword1"></input>
+            <div className="ctn-btn-mcsft">
+              <a href="https://login.microsoftonline.com/uleam.onmicrosoft.com/oauth2/authorize?response_type=code&client_id=2ad44653-fa35-4d81-b320-96befa1b5088&scope=openid%20profile%20email&nonce=N665f3ac73ff2e&response_mode=form_post&state=XWbBuTvnklIcnZt&redirect_uri=https%3A%2F%2Faulavirtualmoodle.uleam.edu.ec%2Fauth%2Foidc%2F&resource=https%3A%2F%2Fgraph.microsoft.com">
+              <button className="btn-mcsf" >
+                <div className="dv-bt-mcsft" >
+                  <img className="img-mft-btn" src={logoMicrosoft} alt="" />
+                  <p>Microsoft 365 Uleam</p>
+                </div>
+              </button>
+              </a>
+            </div>
+            <div className="login-divide"></div>
+            <div className="btn-idm-cks">
+              <select name="" id="">
+                <option className='' value="es">ESPAÑOL (INTERNACIONAL) (ES)</option>
+                <option className='' value="es">English (en)</option>
+              </select> 
+              <div className="divisor-vertical"></div>
+               <button>AVISO DE COOKIES</button>
+            </div>
           </div>
-          <div class="mb-3 form-check">
-           
-            <label class="form-check-label" for="exampleCheck1">Check me out
-             <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-            </label>
-          </div>
-          <div className="mb-3">
-            <button type="submit" class="btn btn-primary">ingresar</button>
-          </div>
-        </form>
+        </div>
       </div>
     </React.Fragment>
   )

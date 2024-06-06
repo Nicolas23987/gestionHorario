@@ -8,6 +8,8 @@ import { Estudiante_list } from "../Componentes/estudiantes_list.jsx";
 import { Horario } from "../Componentes/horario.jsx";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+// import LoadingScreen from '../Componentes/loanding.jsx';
+
 
 
 
@@ -24,7 +26,7 @@ function Informacion() {
   const id_materia = location.state;
   console.log(location.state)
 
-
+    console.log(id_materia)
     const [isVisible, setIsVisible] = useState(false);
   
 
@@ -56,6 +58,7 @@ function Informacion() {
               Participantes
             </button>
           </a>
+          
         </div>   
         <div className="contenedor-he">         
                <div className="horario" style={{ display: isVisible ? 'none' : 'block' }}>

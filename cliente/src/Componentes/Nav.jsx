@@ -9,6 +9,8 @@ export function NavBar() {
             <nav className="navbar">        
                 <a className="nav-link" >Pagina Principal</a>
                 <a href="/" id="MateriasVirtuales" to="" className='nav-link' >Materias virtuales</a> 
+                {/* <a href=''>ingresar estudiantes</a> */}
+                {/* <a href=''>ingresar Docente</a> */}
                 {/* <Link to=''></Link> */}
 
             </nav>

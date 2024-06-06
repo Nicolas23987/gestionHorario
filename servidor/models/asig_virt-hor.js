@@ -4,7 +4,7 @@ const DataTypes = require('sequelize')
 // const Horario = require('./horario.js')
 
 
-const AsignaturaVirtuales_Horario =  sequelize.define('asignaturaV_h',{
+const AsignaturaVirtuales_Horario =  sequelize.define('asig_virt_hor',{
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -14,7 +14,7 @@ const AsignaturaVirtuales_Horario =  sequelize.define('asignaturaV_h',{
 },
 {
     timestamps: false,
-    tableName: 'asignaturaV_h'
+    tableName: 'asig_virt_hor'
 }
 );
 //

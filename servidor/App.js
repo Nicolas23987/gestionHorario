@@ -7,9 +7,20 @@ const docente_router = require('./router/docente_router.js')
 const asignaturas_virtuales = require('./router/asignaturasVirtuales.js');
 const cors = require('cors');
 const { TIMEOUT } = require('dns');
+const cookieParser = require('cookie-parser')
+require('dotenv').config();
+
+const corsOptions = {
+  origin: 'http://localhost:5173', // Reemplaza con el dominio de tu frontend
+  credentials: true // Esto permite el envío de cookies en las solicitudes CORS
+};
+
+
 
 const app = express();
-app.use(cors())
+app.use(cookieParser())
+
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use("/api",asignatura_router);
 app.use("/api",alumno_router)

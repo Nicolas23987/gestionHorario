@@ -55,4 +55,4 @@ asignatura_router.put('/update/asignatura',update_Asignatura);
 // router.put('/update/alumno',update_Alumno);
 
 ///Lo exporta como router
-module.exports = asignatura_router; 
+module.exports = asignatura_router;

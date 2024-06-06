@@ -18,6 +18,9 @@ const Horario = sequelize.define('horarios',{
     hora_salida: {
         type: DataTypes.INTEGER
     },
+    aula:{
+        type: DataTypes.STRING
+    }
 },
 {
     timestamps: false

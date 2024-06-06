@@ -5,14 +5,14 @@ import Home from "./screen/Home.jsx";
 import GestionHorario from "./screen/GestionHorario.jsx";
 import Login from "./screen/login.jsx";
 import Informacion from './screen/informacionMateria.jsx'
-
+import {Nuevo_Docente} from './screen/new_docente.jsx'
 function App(){
     return(
         <BrowserRouter>
             <Routes>
              <Route index="/" element={<Login />} />  
              <Route path="/inicio" element={<Home />} />  
-             {/* <Route path="/prueba" element={<Prueba />} />     */}
+             <Route path="/nuevo/docente" element={<Nuevo_Docente />} />    
              {/* <Route path="/GestionHorario" element={<GestionHorario />} />   */}
              <Route path="/materia/horario/" element={<Informacion />} />  
             </Routes>

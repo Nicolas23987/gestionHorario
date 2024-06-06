@@ -5,6 +5,7 @@ const app = require('./App');
 const  sequelize   = require('./database/database.js');
 const Admin = require('./models/administradores.js')
 const Asignatura = require('./models/asignaturas.js');
+// const { timeStamp } = require('console');
 
 async function main(){
     
@@ -13,7 +14,8 @@ async function main(){
     try {
         const PORT = process.env.PORT || 3000;        
         await sequelize.sync(
-            // {force:true}
+            // setTimeout(50)
+            {force:true}
         )
         // app.listen(400)
         app.listen(PORT, () => {

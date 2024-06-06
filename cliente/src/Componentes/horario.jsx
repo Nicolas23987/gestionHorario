@@ -102,11 +102,11 @@ const [horario, setAlumnoData] = useState([]);
     {/* <div className="calendar fc fc-ltr" id="calendar" bis_skin_checked="1">
         <div className="fc-content"  bis_skin_checked="1">
           <div className="fc-view fc-view-agendaWeek fc-agenda" unselectable="on" bis_skin_checked="1"> */}
-            <table key='1' className="fc-agenda-days fc-border-separate" cellSpacing="0">
-              <thead>
+            <table key='1' className="custom-table" cellSpacing="0">
+              <thead className="custom-thead">
                 <tr className="fc-first fc-last">
                   {days.map((day, index) => (
-                    <th key={index} className={` fc-widget-header`}>{day}</th>
+                    <th scope="col" key={index} className={` fc-widget-header`}>{day}</th>
                   ))}
                 </tr>
               </thead>

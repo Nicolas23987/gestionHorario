@@ -1,6 +1,10 @@
 const { send } = require('process');
 // const  Admin  = require('../models/administradores')
 const  Admin  = require('../models/administradores')
+const jwt = require('jsonwebtoken');
+const {serialize} = require('cookie');
+// const { serialize } = require('v8');
+const path = require('path');
 
 const getAdmin = async(req, res) => {
     try {
@@ -111,12 +115,66 @@ const update_Admin = async(req, res)=>{
     }catch(error){
         res.status(404).json({
             success: false,
-            error: error.menssange
+            error: ''
         })
         console.log(error)
     }
 }
 
+
+const auth_admin = async(req, res) => {
+
+    const {correo, contraseña} = req.body;
+    console.log(correo, contraseña)
+
+
+    // const correo = 'n@gmail.com'
+    try{
+        const admin = await Admin.findOne({
+            where: {correo : correo}
+        })
+        
+        if(admin !== null && admin.contraseña === contraseña){
+            const token = jwt.sign({
+                exp: Math.floor(Date.now() /1000) + 60 * 60 * 24 * 7,
+                email: admin.correo,
+                usernem: admin.nombre
+                
+            },'secret');
+
+            const serialized = serialize('my_token', token,{
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                maxAge: 1000 * 60 * 60 * 24 * 7,
+                path: '/'
+            })
+            res.setHeader("Set-Cookie", serialized)
+
+            return res.status(202).json({
+                status: true,
+                data: admin,
+                menssage: 'Admin obtenido con exito'
+            });
+            // console.log(res)
+            // return res.json('login success');
+
+        }else{
+            res.status(401).json({
+                status: false
+            })
+        }
+
+    }catch(error){
+        res.status(404).json({
+            status: false,
+            error: error.menssage
+        })
+        console.log(error)
+    }
+
+}
+
 module.exports = {
-    create_Admin, getAdmin, delete_Admin, update_Admin
+    create_Admin, getAdmin, delete_Admin, update_Admin, auth_admin
 };

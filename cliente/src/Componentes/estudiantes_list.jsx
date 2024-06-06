@@ -31,22 +31,23 @@ import Axios from 'axios';
 
 
     return (
-      <div className='list-std' >
-        <h1>Lista de Estudiantes</h1>
-        <table border="1">
-          <thead>
+      <div className='' >
+        <table className="custom-table">
+          <thead className="custom-thead">
             <tr>
-              <th>Nro</th>
-              <th>Nombre</th>
-              <th>Correo</th>
+              <th scope="col">Nro</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Carrera</th>
             </tr>
           </thead>
           <tbody>
             {alumnos.map((student, index) => (
               <tr key={student.id}>
-                <td>{index+1}</td>
+                <th scope="row">{index+1}</th>
                 <td>{student.nombre}</td>
                 <td>{student.correo}</td>
+                <td>carrera</td>
               </tr>
             ))}
           </tbody>

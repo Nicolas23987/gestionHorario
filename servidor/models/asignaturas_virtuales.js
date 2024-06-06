@@ -4,7 +4,7 @@ const Docente = require('./docentes.js')
 
 
 
-const AsignaturaVirtuales = sequelize.define('asignaturasVirtuales', {
+const AsignaturaVirtuales = sequelize.define('asignaturas_virtuales', {
 
     id_materia:{
         type: DataTypes.INTEGER,
@@ -26,7 +26,7 @@ const AsignaturaVirtuales = sequelize.define('asignaturasVirtuales', {
 },
 {
     timestamps: false,
-    tableName: 'asignaturasVirtuales'
+    tableName: 'asignatura_virtuales'
 }
 );
 //////////////
