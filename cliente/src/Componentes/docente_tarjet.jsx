@@ -66,7 +66,7 @@ export function Tarjet(id_materia) {
                         <div className="container-ic-tj">
                             {/* <a href="#" > */}
                             {/* <button href="#"> */}
-                            <img className="dc-ic-tj" src={timetable} alt="" />
+                            {/* <img className="dc-ic-tj" src={timetable} alt="" /> */}
                             {/* </button> */}
                             {/* </a> */}
                         </div>

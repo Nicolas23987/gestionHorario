@@ -3,8 +3,17 @@
 @tailwind utilities;
 
  */
-.alum-week-div{
-  height: 80vh;
+
+.if-materia{
+  display: flex;
+  color: #000000;
+  height: 10vh;
+  align-items: center;
+}
+
+
+ .alum-week-div{
+  
   /* margin: 0 auto;
   align-items: center; */
   display: flex;
@@ -13,13 +22,14 @@
   width: 100px;
   height: 100px0;
   border: 3px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 15px solid #ffffff; /* Color blanco */
+  /* border-left: 10px solid transparent; */
+  /* border-right: 10px solid transparent; */
+  /* border-top: 15px solid #ffffff; Color blanco */
   border-bottom:3px solid violet;
 }
 
 .btn-icon div{
+  border:1px solid violet; 
   border-bottom:3px solid violet; 
   border-radius: 100px;
 
@@ -121,12 +131,13 @@
   height: 130px;
 }
 .custom-table {
-  width:100% auto;
+  width:80% ;
   margin-bottom: 1rem;
   color: #212529;
   /* border-collapse: collapse; */
   /* margin-left: 100px; */
   /* height: %; */
+  box-shadow: 0px 0px 15px #615e5e;
 }
 
 .dv-start{
@@ -190,6 +201,7 @@
 }
 .container-list-flex{
   display: flex;
+  flex-direction: column;
   border: 1px solid black;
 }
 table{
@@ -292,10 +304,11 @@ table{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .container-if{
-  display: block;
+  display: flex;
   width: 100%;
   height: 88%;
-  align-items: center;
+  flex-direction: column;
+  
   /* padding-top: 9%; */
   /* min-height: 40%; */
   /* gap: 150px; */
@@ -327,7 +340,10 @@ p{
 .container-list{
   display: flex;
   width:100%;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  
   /* margin-bottom: 15px; */
   /* align-items: center; */
 }
@@ -365,7 +381,7 @@ td  {
 }
 body {
   margin: 0;
-  background-color: #222;
+  background-color: #ffffffc2;
   font-family: system-ui;
   display: grid;
   height: 100vh;
@@ -473,7 +489,7 @@ td{
   height: 74px;
   width: 100%;
   margin: 0px;
-  background-color: #000000;
+  background-color: #1a73048e;
   align-items: stretch;
 
   /* position: absolut; */
@@ -513,7 +529,7 @@ td{
 .dv-container-selec{
   width: 100%;
   display: flex;
-  height: 15vh;
+  height: 5vh;
 
   align-items: end;
   justify-content: center;
@@ -720,10 +736,11 @@ form{
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: space-between;
+
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   height: 100vh auto;
-  flex-direction: row;
+  /* flex-direction: row; */
   /* position: relative; */
   /* justify-content: right; */
   /* margin-top: 20px; */
@@ -920,7 +937,7 @@ div > td{
       /* display: none; */
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 0px;
       /* justify-content: center; */
     }
 

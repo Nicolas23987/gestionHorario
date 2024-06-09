@@ -52,7 +52,7 @@ export function SubjectCard() {
           <th scope="row">{index + 1}</th>
           <td>{materia.nombre}</td>
           <td>{materia.semestre}</td>
-          <td><Link to='/materia/horario' state={materia.id_materia}><img className='' src={editIcon} /></Link></td>
+          <td><Link to='/materia/horario' state={{materia_id: materia.id_materia, nombre: materia.nombre}}><img className='' src={editIcon} /></Link></td>
         </tr>
       ))}
     </tbody>

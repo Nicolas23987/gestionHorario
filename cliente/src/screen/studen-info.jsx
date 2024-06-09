@@ -21,14 +21,14 @@ export function StudeInfo() {
 
   const toggleLista = () => {
     // if(isVisible){
-     setIsVisible(!isVisible); // Cambiar el estado de isVisible al valor opuesto
+    setIsVisible(!isVisible); // Cambiar el estado de isVisible al valor opuesto
     // }else{
-      // setColor(!isColor);
+    // setColor(!isColor);
     // }
-};
+  };
   const toggleColor = () => {
     // if(isColor){
-      setColor(!isColor); // Cambiar el estado de isVisible al valor opuesto      
+    setColor(!isColor); // Cambiar el estado de isVisible al valor opuesto      
     // }
 
   };
@@ -36,10 +36,10 @@ export function StudeInfo() {
   const [mostrarList, setMostrarList] = useState(true);
 
   const location = useLocation()
-  const id_materia = location.state;
-  console.log(location.state)
+  const materia = location.state;
+  console.log(location)
 
-  console.log(id_materia)
+  // console.log(id_materia)
 
   const [isVisible, setIsVisible] = useState(false);
   const [isColor, setColor] = useState(false);
@@ -59,46 +59,49 @@ export function StudeInfo() {
       <div className="container-if">
         <Barra_izq></Barra_izq>
         <div className="container-list">
+          <div className="full-width if-materia" >
+            {materia.nombre}
+          </div>
           <div className="dv-container-week">
             <div className="dv-container-selec">
-                 <button className="" 
-                //  style={{borderBottom: isColor ? 'none' : '4px solid blueviolet',}} onClick={()=>{ 
-                //   toggleColor() ,toggleLista()}}
-                  >
-                    <Link state={id_materia} to='/materia/docente'>
-                      <div className="container-icon">
-                        <img className="imgStudents" src={iconTeacher} alt="" />
-                      </div>
-                    </Link>
-                    </button>
+              <button className=""
+              //  style={{borderBottom: isColor ? 'none' : '4px solid blueviolet',}} onClick={()=>{ 
+              //   toggleColor() ,toggleLista()}}
+              >
+                <Link state={{materia: materia.materia, nombre: materia.nombre}} to='/materia/docente'>
+                  <div className="container-icon">
+                    <img className="imgStudents" src={iconTeacher} alt="" />
+                  </div>
+                </Link>
+              </button>
 
-                 <button className="" 
-                //  style={{borderBottom: isColor ? '4px solid blueviolet' : '4px solid blueviolet',}} onClick={()=>{ 
-                //   toggleColor() ,toggleLista()}}
-                  >
-                    <Link to='/materia/horario'>
-                      <div className="container-icon">
-                        <img className="" src={iconWeek} alt="" />
-                      </div>
-                    </Link>
-                  </button>
+              <button className=""
+              //  style={{borderBottom: isColor ? '4px solid blueviolet' : '4px solid blueviolet',}} onClick={()=>{ 
+              //   toggleColor() ,toggleLista()}}
+              >
+                <Link to='/materia/horario' state={materia.materia}>
+                  <div className="container-icon">
+                    <img className="" src={iconWeek} alt="" />
+                  </div>
+                </Link>
+              </button>
 
-                <button className="btn-icon"
-                // style={{borderBottom: '4px solid blueviolet'}}
-                >
-                    <Link to="/materia/estudiantes">
-                      <div className="container-icon">
-                        <img className="imgStudents" src={iconStudents} alt="" />
-                      </div>
-                    </Link>
-                </button>
+              <button className="btn-icon"
+              // style={{borderBottom: '4px solid blueviolet'}}
+              >
+                <Link to="/materia/estudiantes">
+                  <div className="container-icon">
+                    <img className="imgStudents" src={iconStudents} alt="" />
+                  </div>
+                </Link>
+              </button>
             </div>
-          <div className="tj-container">
-          </div>   
-              <div className="div-center dv-start alum-week-div" >
-                {<Estudiante_list id_materia={id_materia} />}
-              </div>
+            <div className="tj-container">
             </div>
+            <div className="dv-center dv-start alum-week-div" >
+              {<Estudiante_list id_materia={materia.materia_id} />}
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>

@@ -35,7 +35,7 @@ export function TeacherInfo() {
 
     const location = useLocation()
     const id_materia = location.state;
-    console.log(location.state)
+    console.log(location)
 
     // console.log(id_materia)
 
@@ -57,6 +57,9 @@ export function TeacherInfo() {
             <div className="container-if">
                 <Barra_izq></Barra_izq>
                 <div className="container-list">
+                    <div className="full-width if-materia" >
+                        hola 
+                    </div>
                     <div className="dv-container-week">
                         <div className="dv-container-selec">
                             <button className="btn-icon">
@@ -86,7 +89,7 @@ export function TeacherInfo() {
                         </div>
 
                         <div className="tj-container">
-                            <Tarjet  id_materia={id_materia} />
+                            {/* <Tarjet  id_materia={id_materia} /> */}
                         </div>
 
 

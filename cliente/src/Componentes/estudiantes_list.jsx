@@ -1,13 +1,16 @@
 // StudentList.jsx
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
+import { useLocation } from 'react-router-dom';
 // import { response } from '../../../servidor/App';
 // import { useState } from 'react';
 
 
- export function Estudiante_list(id_materia){
+ export function Estudiante_list(){
 
-    console.log(id_materia.id_materia);
+    const location = useLocation();
+    const id_materia = location.state
+    // console.log(id_materia.id_materia);
     const [alumnos, alumnoSet] = useState([]);
 
 
@@ -17,6 +20,7 @@ import Axios from 'axios';
 
        const getAlumnos = async(res,req) => {
         try{
+          console.log(id_materia)
           const response = await Axios.get(`http://localhost:3000/api/get/alumno`)
           const estudiantes = response.data.data
           console.log(estudiantes)
@@ -32,7 +36,7 @@ import Axios from 'axios';
 
 
     return (
-      <div className='full-width' >
+      <div className='full-width dv-center' >
         <table className="custom-table">
           <thead className="custom-thead">
             <tr>

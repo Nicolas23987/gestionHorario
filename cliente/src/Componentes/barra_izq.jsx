@@ -9,7 +9,7 @@
       
     
 
-    //   side.style.transform = 'translateX(250px)';  
+      // side.style.transform = 'translateX(-250px)';  
        
       
       
