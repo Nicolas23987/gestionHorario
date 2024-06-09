@@ -10,6 +10,7 @@ import Axios from 'axios';
     console.log(id_materia.id_materia);
     const [alumnos, alumnoSet] = useState([]);
 
+
     useEffect(()=>{
 
 
@@ -20,7 +21,7 @@ import Axios from 'axios';
           const estudiantes = response.data.data
           console.log(estudiantes)
           alumnoSet(estudiantes)
-          
+
         
         }catch(error){
         
@@ -31,7 +32,7 @@ import Axios from 'axios';
 
 
     return (
-      <div className='' >
+      <div className='full-width' >
         <table className="custom-table">
           <thead className="custom-thead">
             <tr>

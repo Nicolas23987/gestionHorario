@@ -8,8 +8,23 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'react-router-dom';
 import Axios from 'axios'
 // import LoadingScreen from '../Componentes/loanding.jsx';
- 
+import { Barra_izq } from "../Componentes/barra_izq.jsx";
+
 function Home(){
+
+  // const side = document.getElementById('side');
+  // const btnSide = document.getElementById('btn-side');
+  
+  // btnSide.addEventListener('click',()=> {
+  //   console.log('hizo click')
+  // })
+
+  
+
+  // btnSide.style.transform = 'translateX(250px);'
+
+  // btnSide.addEventListener('click',)
+  
 
   // const [materiaList, setMateriaList] = useState([]);
   // const [loading, setLoading] = useState(true);
@@ -37,13 +52,18 @@ function Home(){
   // }
   return(
     <React.Fragment>
-      <NavBar></NavBar>  
+      <NavBar></NavBar>   
+      
       <div className='dv-containe-section' >
       <section className='section-subjet-card'>
         {/* {materiaList.map((materia) => ( */}
-            <React.Fragment>
+            {/* <React.Fragment> */}
+             {/* <button >has click</button> */}
+              <div className='cdd'>
+                <Barra_izq />  
+              </div>            
              <SubjectCard  />  
-            </React.Fragment>            
+            {/* </React.Fragment>             */}
         {/* ))} */}
       </section>
       </div>

@@ -18,6 +18,9 @@ const Alumno = sequelize.define('alumnos', {
     },
     cedula:{
         type: DataTypes.STRING
+    },
+    img: {
+        type: DataTypes.STRING
     }
 },
 {
