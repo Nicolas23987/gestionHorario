@@ -1,8 +1,49 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*/
 
- */
+.iconLogin{
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+
+}
+
+.dropdown-item{
+  display: none;
+  position: relative;
+}
+
+
+
+.imgStudent{
+  display: flex;
+  align-items:center ;
+  /* justify-content: center; */
+  flex-direction: row;
+  gap: 30px;
+}
+.imgStudent img{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 1px rgb(162, 162, 162);
+}
+
+
+.h1-materias{
+  display: flex;
+  justify-content: left;
+  /* gap: 10px; */
+  /* margin-left: 20px; */
+
+}
+.h1-materias a {
+  display: flex;
+  font-size: 15px;
+  margin: 15px;
+}
 
 .if-materia{
   display: flex;
@@ -131,21 +172,23 @@
   height: 130px;
 }
 .custom-table {
-  width:80% ;
+  width:100%;
   margin-bottom: 1rem;
   color: #212529;
   /* border-collapse: collapse; */
   /* margin-left: 100px; */
   /* height: %; */
+  /* width: 100%; */
   box-shadow: 0px 0px 15px #615e5e;
 }
 
 .dv-start{
   /* display: flex; */
-  width: 100%;
+  width: 60%;
 }
 .custom-table th,
 .custom-table td {
+  /* width: 100%; */
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
@@ -159,6 +202,7 @@
 .custom-thead {
   background-color: #343a40;
   color: #fff;
+  width: 100%;
 }
 
 .custom-table tbody tr:nth-child(odd) {
@@ -262,15 +306,15 @@ table{
 
 .img-dc{
   border-radius: 100%;
-  width: 40%;
-  height: 40%;
+  width: 15%;
+  height: 15%;
   transition: .7s;
 }
 .img-dc:hover{
 
   border-radius: 5%;
-  width: 70%;
-  height: 70%;
+  width: 20%;
+  height: 20%;
 }
 .dc-ic-tj{
   width: 10%;
@@ -321,7 +365,7 @@ p{
 }
 .container-img-tj{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -471,7 +515,7 @@ td{
   margin-top: 0px;
   height: 7%;
   width: 140px;
-
+  margin-left: 20px;
 }
 
 
@@ -531,7 +575,7 @@ td{
   display: flex;
   height: 5vh;
 
-  align-items: end;
+  align-items: center;
   justify-content: center;
   gap: 130px;
   margin-bottom: 10px;
@@ -667,7 +711,7 @@ form{
   height: 80vh auto;
   color: #000000;
   border-radius:10px;
-  box-shadow: rgb(white, black, white);
+  box-shadow: 0px 0px  5px #615e5e;
   margin-bottom: 100px;
 }
 .form-control{
@@ -734,12 +778,12 @@ form{
 
 .dv-container-week{
   display: flex;
-  flex-direction: column;
-  align-items: start;
-
+  /* flex-direction: column; */
+  align-items: center;
+  margin-bottom: 30px;
   /* justify-content: space-between; */
   flex-wrap: wrap;
-  height: 100vh auto;
+  height: 70px;
   /* flex-direction: row; */
   /* position: relative; */
   /* justify-content: right; */

@@ -2,21 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useLocation } from 'react-router-dom';
-// import { response } from '../../../servidor/App';
-// import { useState } from 'react';
-
+import icono from '../img/icono.jpg'
 
  export function Estudiante_list(){
 
     const location = useLocation();
     const id_materia = location.state
-    // console.log(id_materia.id_materia);
     const [alumnos, alumnoSet] = useState([]);
 
-
     useEffect(()=>{
-
-
 
        const getAlumnos = async(res,req) => {
         try{
@@ -33,8 +27,6 @@ import { useLocation } from 'react-router-dom';
       }
       getAlumnos();
     },[]);
-
-
     return (
       <div className='full-width dv-center' >
         <table className="custom-table">
@@ -50,7 +42,12 @@ import { useLocation } from 'react-router-dom';
             {alumnos.map((student, index) => (
               <tr key={student.id}>
                 <th scope="row">{index+1}</th>
-                <td>{student.nombre}</td>
+                <td>
+                  <div className='imgStudent'>
+                  <img  src={icono} alt="" />
+                  {student.nombre}                    
+                  </div>
+                </td>
                 <td>{student.correo}</td>
                 <td>carrera</td>
               </tr>
