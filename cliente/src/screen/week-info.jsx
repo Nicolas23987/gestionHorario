@@ -14,6 +14,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Barra_izq } from "../Componentes/barra_izq.jsx";
 
 import { BtnOption } from "../Componentes/btn_info.jsx";
+import { Footer } from "../Componentes/footer.jsx";
 
 
 
@@ -57,17 +58,18 @@ export function WeekInfo() {
     return (
         <React.Fragment>
             <NavBar></NavBar>
-
-            <div className="container-if">
-                <Barra_izq></Barra_izq>
+                 <Barra_izq/>
+            <div className="">
                 <BtnOption state={{ materia: materia.materia_id, nombre: materia.nombre }} ></BtnOption>
-                <div className="dv-center  full-width">
+   
+                <div className="flex w-full items-center justify-center mb-16">
                     <div className="dv-start">
                     {<Horario id_materia={materia.materia_id} />}
 
                     </div>
                 </div>
             </div>
+            <Footer/>
         </React.Fragment>
     );
 

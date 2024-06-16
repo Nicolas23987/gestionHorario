@@ -5,6 +5,7 @@ import { useForm} from 'react-hook-form'
 import Axios from 'axios'
 import {LoadingScreen} from '../Componentes/loanding.jsx'
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../Componentes/footer.jsx";
 function Login() {
   const { register, handleSubmit, formState: {errors} } = useForm()
   const [loading, setLoading] = useState(false);
@@ -35,9 +36,10 @@ function Login() {
         contraseña: data.password,
       });
       if (response.status === 202) {
-        console.log(response)
         console.log("Inicio de sesión exitoso");
-        navigate('inicio', { replace: true })
+        console.log(response)
+
+        navigate('inicio', {state : response.data})
 
       } else {
         setError("Credenciales incorrectas"); 
@@ -55,11 +57,11 @@ function Login() {
       {loading && <LoadingScreen />}
 
       <NavBar />
-      <div className="container-form">
-        <div className="form-center">
-          <div className="form-login">
+      <div className="container-form flex w-full items-center justify-center ">
+        <div className="my-16">
+          <div className="w-full flex flex-col items-center justify-center bg-white h-4/5 text-black rounded-r-xl shadow-lg">
             <form onSubmit={onSubmit}>
-              <div className="container-ob-form">
+              <div className="container-ob-form flex flex-col items-start gap-5 w-11/12 h-11/12 ">
                 <h1 class=''>Administracion de horarios Uleam</h1>
               {error && <div className="error-span"> <span className="error-span">{error}</span></div>} {/* Mostrar mensaje de error */}
               {errors.correo && <div className="error-span"> <span className="error-span">Nombre es requerido</span> </div>}
@@ -67,7 +69,7 @@ function Login() {
                   value={correo}
                   onChange={(e) =>setCorreo(e.target.value)}
                   type="email" 
-                  className="form-control" 
+                  className="w-full h-10 pl-2" 
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   {...register("correo", { required: true })}
@@ -78,7 +80,7 @@ function Login() {
                   value={password}
                   onChange={(e)=> setPassword(e.target.value)}
                   type="password"
-                  className="form-control"
+                  className="w-full h-10 text-black pl-2"
                   id="exampleInputPassword1"
                   placeholder="contraseña"
                   {...register("password", { required: true })}
@@ -89,12 +91,12 @@ function Login() {
             </form>
             <div className="login-divide"></div>
             <div className="">
-              <h3>Identifíquese usando su cuenta en:</h3>
+              <h3 className="m-2 font-serif text-red-700 font-bold text-lg ">Identifíquese usando su cuenta en:</h3>
             </div>
-            <div className="ctn-btn-mcsft">
+            <div className="ctn-btn-mcsft flex items-center my-4 w-10/12">
               <a href="https://login.microsoftonline.com/uleam.onmicrosoft.com/oauth2/authorize?response_type=code&client_id=2ad44653-fa35-4d81-b320-96befa1b5088&scope=openid%20profile%20email&nonce=N665f3ac73ff2e&response_mode=form_post&state=XWbBuTvnklIcnZt&redirect_uri=https%3A%2F%2Faulavirtualmoodle.uleam.edu.ec%2Fauth%2Foidc%2F&resource=https%3A%2F%2Fgraph.microsoft.com">
-              <button className="btn-mcsf" >
-                <div className="dv-bt-mcsft" >
+              <button className="p-2 rounded-2xl border-black border " >
+                <div className="flex gap-2" >
                   <img className="img-mft-btn" src={logoMicrosoft} alt="" />
                   <p>Microsoft 365 Uleam</p>
                 </div>
@@ -102,17 +104,19 @@ function Login() {
               </a>
             </div>
             <div className="login-divide"></div>
-            <div className="btn-idm-cks">
+            <div className="btn-idm-cks flex w-11/12 gap-5 my-6">
               <select name="" id="">
                 <option className='' value="es">ESPAÑOL (INTERNACIONAL) (ES)</option>
                 <option className='' value="es">English (en)</option>
               </select> 
               <div className="divisor-vertical"></div>
-               <button>AVISO DE COOKIES</button>
+               <button className="w-full px-1" >AVISO DE COOKIES</button>
             </div>
           </div>
         </div>
+        
       </div>
+      <Footer/>
     </React.Fragment>
   )
 }

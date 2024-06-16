@@ -84,9 +84,9 @@ export function Horario() {
 
   return (
     <React.Fragment>
-      <table key='1' className="custom-table" cellSpacing="0">
+      <table key='1' className="custom-table " cellSpacing="0">
         <thead className="custom-thead">
-          <tr className="fc-first fc-last">
+          <tr className="fc-first fc-last items-center ">
             {days.map((day, index) => (
               <th scope="col" key={index} className={` fc-widget-header`}>{day}</th>
             ))}
@@ -101,7 +101,7 @@ export function Horario() {
               {dayss.map((day, dayIndex) => (
                 <td key={dayIndex} className={`fc-col${day} fc-widget-content fc-hour-cell`}>
                   {dayIndex === 0 ? (
-                    <button className="horario-Button" id={`col${hourIndex}${dayIndex}`}>
+                    <button className="" id={`col${hourIndex}${dayIndex}`}>
                       <div className="div-button">
                         {`${hour}:00`}
                       </div>

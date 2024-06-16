@@ -1,4 +1,3 @@
-// const Alumno = require('../models/alumnos.js');
 const {Alumno} = require('../relaciones/relaciones.js');
 
 const get_Alumno = async(req, res) => {

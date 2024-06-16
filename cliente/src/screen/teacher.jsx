@@ -1,13 +1,13 @@
 import React, { useEffect } from "react"
 import { NavBar } from '../Componentes/Nav.jsx'
-import { Estudiante_list } from "../Componentes/estudiantes_list.jsx";
+import { Docentes_list } from "../Componentes/docente_list.jsx";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Barra_izq } from "../Componentes/barra_izq.jsx";
 import { BtnOption } from "../Componentes/btn_info.jsx";
 import { Footer } from "../Componentes/footer.jsx";
 
-export function StudeInfo() {
+export function Docentes() {
 
   const [mostrarHorario, setMostrarHorario] = useState(true);
   const [mostrarList, setMostrarList] = useState(true);

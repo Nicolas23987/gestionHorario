@@ -12,13 +12,10 @@ export function SubjectCard() {
     const getMaterias = async () => {
       try {
         const response = await Axios.get('http://localhost:3000/api/get/asignatura');
-        // console.log('API response:', response.data); // Verifica la estructura de los datos
         const materias = response.data.data;
-        // console.log(materias)
         setMateriaList(materias);
         setLoading(false);
       } catch (error) {
-        //   setLoading(false);
         console.error('Error fetching data:', error);
       }
     };
@@ -28,19 +25,19 @@ export function SubjectCard() {
 
   return (
     <>
-      <div className='full-width'>
-        <table className="custom-table">
-          <thead className="custom-thead">
+      <div className='w-full'>
+        <table className="custom-table shadow-2xl w-full bottom-4 text-black">
+          <thead className="">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">semestre</th>
-              <th scope="col"></th>
+              <th scope="col">Editar</th>
             </tr>
           </thead>
           <tbody>
             {materiaList.map((materia, index) => (
-              <tr key={index}>
+              <tr>
                 <th scope="row">{index + 1}</th>
                 <td>{materia.nombre}</td>
                 <td>{materia.semestre}</td>

@@ -1,7 +1,5 @@
-// const Alumno_Asignatura = require('../models/alumno_asignatura.js');
 const {Alumno_Asignatura} = require('../relaciones/relaciones.js');
 const {Alumno} = require('../relaciones/relaciones.js');
-// const Docente = require('../models/docentes.js')
 
 
 
@@ -11,18 +9,10 @@ const getAlumnoAsignatura = async(req, res) => {
     try{
         const asignaturaAlumnos = await Alumno_Asignatura.findAll({
             where: {
-                asignaturaIdMateria: id_materia,
-                // id_docente: id_materia
+                IDMateria: id_materia,
             },
-            // include:[
-            //     {
-            //         model: Alumno,
-            //         as: 'alumno'
-            //     }
-            // ]
         });
         console.log(asignaturaAlumnos.alumnoIdAlumno)
-        // const alumnos = await Alumno.findByPk(asignatura.alumnoIdAlumno)
 
         res.status(202).json({
             status: true,
@@ -35,8 +25,11 @@ const getAlumnoAsignatura = async(req, res) => {
     }
 }
 
+// const update_alum_asig = async(res,req){
+//     const 
+// }
+
 
 module.exports = {
     getAlumnoAsignatura,
-
 }

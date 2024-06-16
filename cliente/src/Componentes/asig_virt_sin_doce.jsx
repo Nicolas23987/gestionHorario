@@ -1,0 +1,26 @@
+import { Link } from "react-router-dom";
+import iconStudents from '../img/school_students.svg'
+import { useState, useEffect } from "react";
+import { LoadingScreen } from "./loanding";
+
+
+
+
+export function Asig_virt_sin_doce() {
+
+
+
+    return (
+        <Link href="">
+            <section class=" flex justify-between items-center p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
+                <ul class="mt-4 list-disc list-inside ">
+                    <li className="text-black" >Todo bien por aqui</li>
+                </ul>
+                <div className="text-black flex justify-center items-center gap-2">
+                    <p><img className="w-7" src={iconStudents}/></p>
+                    <p>33</p>
+                </div>
+            </section>
+        </Link>
+    )
+}

@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import icono from '../img/icono.jpg'
 
- export function Estudiante_list(){
+ export function Docentes_list(){
 
     const location = useLocation();
     const id_materia = location.state
@@ -58,5 +58,3 @@ import icono from '../img/icono.jpg'
     );
   };
   
-
-// export default Estudiante_list;

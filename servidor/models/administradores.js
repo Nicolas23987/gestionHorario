@@ -8,8 +8,11 @@ const Admin = sequelize.define('administradores', {
         primaryKey: true,
         autoIncrement: true
     },
-    nombre:{
+    nombres:{
         type: DataTypes.STRING,
+    },
+    apellidos:{
+        type: DataTypes.STRING
     },
     correo: {
         type: DataTypes.STRING
@@ -17,6 +20,9 @@ const Admin = sequelize.define('administradores', {
     contraseña: {
         type: DataTypes.STRING
     },
+    img:{
+        type: DataTypes.STRING
+    }
 },
 {
     timestamps: false

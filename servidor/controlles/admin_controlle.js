@@ -1,10 +1,9 @@
 const { send } = require('process');
-// const  Admin  = require('../models/administradores')
 const  Admin  = require('../models/administradores')
 const jwt = require('jsonwebtoken');
 const {serialize} = require('cookie');
-// const { serialize } = require('v8');
 const path = require('path');
+const bcrypt = require('bcryptjs')
 
 const getAdmin = async(req, res) => {
     try {
@@ -13,8 +12,6 @@ const getAdmin = async(req, res) => {
         success: true,
         data: admins
       });
-    //   console.log(admins)
-    //  res.json(admins)
     } catch (error) {
       console.error('Error al obtener administradores:', error);
       res.status(500).json({
@@ -40,9 +37,6 @@ const create_Admin = async(req, res)=>{
             menssage: 'Administrador registrado exitosamente',
             data: newAdmin
         })
-        // res.json(newAdmin);        
-        // res.send('creando admin')  
-        // console.log(newAdmin)
     }catch (error){
          console.error('Error al crear usuario:', error);
 
@@ -64,34 +58,6 @@ const create_Admin = async(req, res)=>{
     }}
 }
 
-const delete_Admin = async(req, res) =>{
-    try{
-        const {id} = req.params
-        const delet = await Admin.destroy({
-         where: {
-            id_Administrador: id,
-        }});
-        res.status(200).json({
-            success: true,
-            menssage: 'administrador elimiinado con exito',
-            data: delet
-        })
-    
-    }catch(error){
-        res.status(404).json({
-            success: false,
-            menssage: 'No se pudo eliminar',
-        })
-    }
-
-    // console.log(req.params.id)
-    // res.send('delete admins')
-
-    // send.status(204).json({
-    //     success: true,
-    //     data: delet
-    // })
-}
 
 const update_Admin = async(req, res)=>{
     try{
@@ -122,19 +88,28 @@ const update_Admin = async(req, res)=>{
 }
 
 
+
+async function hashPassword(password) {
+    try {
+        // Genera un salt (valor aleatorio) con 10 rondas de trabajo
+        const salt = await bcrypt.genSalt(10);
+        // Hashea la contraseña usando el salt
+        const hashedPassword = await bcrypt.hash(password, salt);
+        // console.log(hashedPassword);
+        return hashedPassword;
+    } catch (error) {
+        console.error('Error al hashear la contraseña:', error);
+    }
+}
+
 const auth_admin = async(req, res) => {
-
     const {correo, contraseña} = req.body;
-    console.log(correo, contraseña)
-
-
-    // const correo = 'n@gmail.com'
     try{
         const admin = await Admin.findOne({
             where: {correo : correo}
         })
         
-        if(admin !== null && admin.contraseña === contraseña){
+        if(admin !== null && await bcrypt.compare(contraseña , admin.contraseña )){
             const token = jwt.sign({
                 exp: Math.floor(Date.now() /1000) + 60 * 60 * 24 * 7,
                 email: admin.correo,
@@ -150,15 +125,19 @@ const auth_admin = async(req, res) => {
                 path: '/'
             })
             res.setHeader("Set-Cookie", serialized)
+            const data = {
+                nombres: admin.nombres,
+                apellidos: admin.apellidos,
+                correo: admin.correo,
+                img: admin.img,
+                rol: admin.rol_admin
+            }
 
             return res.status(202).json({
                 status: true,
-                data: admin,
+                data: data,
                 menssage: 'Admin obtenido con exito'
             });
-            // console.log(res)
-            // return res.json('login success');
-
         }else{
             res.status(401).json({
                 status: false
@@ -176,5 +155,5 @@ const auth_admin = async(req, res) => {
 }
 
 module.exports = {
-    create_Admin, getAdmin, delete_Admin, update_Admin, auth_admin
+    create_Admin, getAdmin, update_Admin, auth_admin
 };

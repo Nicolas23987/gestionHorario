@@ -7,7 +7,7 @@ function GestionHorario() {
     return (
         <React.Fragment>
             <NavBar></NavBar>
-            <div className="dv-container-week">
+            <div className=" dv-container-week">
                 <div className="fc-view-agendaWeek">
                     <Horario ></Horario>
                 </div>

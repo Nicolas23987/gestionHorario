@@ -30,10 +30,5 @@ const Alumno = sequelize.define('alumnos', {
     tableName:'alumnos'
 }
 );
-// Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura, foreignKey: 'alumnoIdAlumno'});
-// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura, foreignKey: 'asignaturaId' });
-
-// Alumno.belongsToMany(Asignaturas, { through: Alumno_Asignatura});
-// Asignaturas.belongsToMany(Alumno, { through: Alumno_Asignatura})
 
 module.exports = Alumno;

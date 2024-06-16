@@ -4,6 +4,7 @@ import iconWeek from '../img/calendar-week.svg'
 import iconTeacher from '../img/teacher.svg'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import '../index.css';
 
 
 export function BtnOption(){
@@ -15,8 +16,8 @@ export function BtnOption(){
 
     return(
 
-        <div className="container-list">
-        <div className="full-width if-materia h1-materias" >
+        <div className=" w-full">
+        <div className=" w-full if-materia h1-materias" >
             
             <a href="/inicio">
                 MATERIAS VIRTUALES                 
@@ -27,8 +28,8 @@ export function BtnOption(){
             </a>      
 
             </div>
-            <div className="dv-container-week">
-                <div className="dv-container-selec">
+            <div className="w-full">
+                <div className="dv-container-selec flex w-full items-center justify-center gap-10">
                     <button className="">
                         <Link to='/materia/docente' state={materia.materia_id} >
                             <div className="container-icon">
@@ -38,7 +39,7 @@ export function BtnOption(){
                     </button>
 
                     <button className="btn-icon">
-                        <Link >
+                        <Link to="/materia/horario" state={{materia: materia.materia_id , nombre: materia.nombre} }>
                             <div className="container-icon">
                                 <img className="" src={iconWeek} alt="" />
                             </div>

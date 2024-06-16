@@ -1,27 +1,29 @@
 import React from "react";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
-import Home from "./screen/Home.jsx";
-import GestionHorario from "./screen/GestionHorario.jsx";
+import { Materias } from "./screen/materias.jsx";
+import { Materias_virt } from "./screen/materias_virtuales.jsx";
 import Login from "./screen/login.jsx";
 import {StudeInfo} from './screen/studen-info.jsx'
 import {NewDocente} from './screen/new_docente.jsx'
 import { TeacherInfo } from "./screen/teacher-info.jsx";
 import { WeekInfo } from "./screen/week-info.jsx";
-// import Lista_alum_gestion from './screen/lista_alum_gestion.jsx'
+import { Selec_Home } from "./screen/selec_home.jsx";
+import { Docentes } from './screen/teacher.jsx'
 function App(){
     return(
         <BrowserRouter>
             <Routes>
-             <Route path="/inicio" element={<Login />} />  
-             <Route index="/" element={<Home />} />  
+             <Route path="/ss" element={<Login />} />  
+             <Route path="/materias" element={< Materias />} />  
+             <Route path="/materias/virtuales" element={< Materias_virt />} />  
              <Route path="/nuevo/docente" element={<NewDocente />} />    
-             {/* <Route path="/GestionHorario" element={<GestionHorario />} />   */}
-             <Route path="/materia/estudiantes/" element={<StudeInfo />} />  
-             {/* <Route path="/participantes/gestion" element={ <Lista_alum_gestion/>} /> */}
-             {/* <Route path="/materia/estudiantes" element={<StudeInfo/>}/> */}
+             <Route path="/materia/estudiantes/" element={<StudeInfo />}/>
+             <Route path="/inicio" element={ <Selec_Home/> }/>  
              <Route path="/materia/horario" element={<WeekInfo/>}/>
              <Route path="/materia/docente" element={<TeacherInfo/>}/>
-            </Routes>
+             <Route index="/" element={<TeacherInfo/>}/>
+             <Route path="docentes/lista" element={ <Docentes/>} />
+             </Routes>
         </BrowserRouter>
     )}
 

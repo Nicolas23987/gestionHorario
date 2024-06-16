@@ -1,7 +1,4 @@
-// const {Horario} = require('../../cliente/src/Componentes/horario');
-// const Docente = require('../models/docentes');
 const {Docente} = require('../relaciones/relaciones.js');
-// const Horario = require('../models/horario.js')
 const {Asignatura} = require('../relaciones/relaciones.js');
 
 

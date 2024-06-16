@@ -1,49 +1,68 @@
-
-  const side = document.getElementById('sidebar');
-  const btnSide = document.getElementById('btn-side');
-  
-//   btnSide.addEventListener('click', () => {
-//     console.log('hizo click');
-//   })
-    // btnSide.addEventListener('click', () => {
-      
-    
-
-      // side.style.transform = 'translateX(-250px)';  
-       
-      
-      
-      // console.log('hizo click')
-    // })
-
-    
-    
-    
-
-
-
+import React, { useState, useEffect, useRef } from 'react';
 
 export function Barra_izq() {
+  const [btn_ltr, setBtn] = useState(false);
+  const sideRef = useRef(null);
 
+  const handleButtonClick = () => {
+    setBtn(!btn_ltr); // Cambiar el estado del botón al hacer clic
+  };
 
+  useEffect(() => {
+    const side = sideRef.current;
 
-    return (
+    const handleClickOutside = (event) => {
+      if (side && !side.contains(event.target)) {
+        // Si se hace clic fuera del sidebar y el botón está abierto, ciérralo
+        if (btn_ltr) {
+          setBtn(false);
+        }
+      }
+    };
 
-            <div id="sidebar" class="sidebar">
-                <h2>Uleam</h2>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Asignaturas</a></li>
-                    <li><a href="#servicios">Asignaturas Virtules</a></li>
-                    <li><a href="#servicios">Docentes</a></li>
-                    <li><a href="#servicios">Estudiantes</a></li>
-                    <li><a href="#servicios">Asignatura sin docentes</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#acerca">Acerca de</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
+    document.addEventListener('click', handleClickOutside);
 
-    )
-};
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [btn_ltr]); // Escuchar cambios en btn_ltr para actualizar la transformación y el event listener
 
+  useEffect(() => {
+    const side = sideRef.current;
+    if (side) {
+      side.style.transition = 'transform 0.5s ease-in-out';
+      if (btn_ltr) {
+        side.style.transform = 'translateX(0px)';
+      } else {
+        side.style.transform = 'translateX(-257px)';
+      }
+    }
+  }, [btn_ltr]); // Escuchar cambios en btn_ltr para actualizar la transformación
+
+  return (
+    <div ref={sideRef} id="sidebar" className="sidebar w-80 translate-y-56 h-screen text-white pt-5 fixed top-0">
+
+      <div className="translate-y-56 flex h-screen w-64 flex-col  bg-white text-black fixed top-0 left-0">
+        
+        <div className='items-center sm:container flex bg-green-700 h-24 mb-16 rounded-br-full '>
+        <img className='mt-2 ml-2 w-3/5' src="https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/1/theme_klass/logo/1717190707/logo_ULEAM_2017_horizontal_blanco.png" alt="" />
+        </div>
+        <ul className="list-none p-0">
+          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/inicio">Inicio</a></li>
+          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/materias">Asignaturas</a></li>
+          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/materias/virtuales">Asignaturas Virtules</a></li>
+          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/docentes">Docentes</a></li>
+          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/lista/estudiantes">Estudiantes</a></li>
+          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="#">Asignatura sin docentes</a></li>
+        </ul>
+        <div className=''>`${}`</div>
+      </div>
+
+      <div className=" opacity-20 hover:opacity-100 cursor-pointer flex absolute mt-28 bg-blue-500 p-2 rounded-br-2xl rounded-tr-2xl right-0">
+        <button onClick={handleButtonClick} className="w-12">
+          {btn_ltr ? 'Cerrar' : 'Abrir'}
+        </button>
+      </div>
+    </div>
+  );
+}

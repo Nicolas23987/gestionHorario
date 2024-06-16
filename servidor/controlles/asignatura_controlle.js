@@ -1,16 +1,9 @@
-// const Asignatura = require('../models/asignaturas');
-const {Asignatura} = require('../relaciones/relaciones.js');
-// const Alumno = require('../models/alumnos');
-const {Docente} = require('../relaciones/relaciones.js');
+const { Asignatura } = require('../relaciones/relaciones.js');
+const { Docente } = require('../relaciones/relaciones.js');
 
 
-// const getAsignatura = await Asignatura.findAll({
-//     include:{ 
-//         model: Alumno
-//     }});
-
-const get_Asignatura = async(req, res) => {
-    try{
+const get_Asignatura = async (req, res) => {
+    try {
         const getAsignatura = await Asignatura.findAll({
             include: [{
                 model: Docente,
@@ -23,7 +16,7 @@ const get_Asignatura = async(req, res) => {
             menssage: "Asignatura obtenidad"
         });
 
-    }catch(error){
+    } catch (error) {
         res.status(404).json({
             succes: false,
             menssage: error.menssage
@@ -32,10 +25,10 @@ const get_Asignatura = async(req, res) => {
     }
 }
 
-const update_Asignatura = async(req, res) => {
-    const {id_asignatura} = req.param
-    const {nombre, semestre, paralelo} = req.body
-    try{
+const update_Asignatura = async (req, res) => {
+    const { id_asignatura } = req.param
+    const { nombre, semestre, paralelo } = req.body
+    try {
         const put = await Alumno.findOne(id_asignatura)
 
         put.nombre = nombre
@@ -48,7 +41,7 @@ const update_Asignatura = async(req, res) => {
             succes: true,
             menssage: 'Asignatura actualizada con exito'
         })
-    }catch(error){
+    } catch (error) {
         res.status(404).json({
             status: false,
             error: error.menssage
@@ -56,9 +49,9 @@ const update_Asignatura = async(req, res) => {
     }
 }
 
-const delete_Asignatura = async(req, res) => {
-    const {id_asignatura} = req.params
-    try{
+const delete_Asignatura = async (req, res) => {
+    const { id_asignatura } = req.params
+    try {
 
         const deleteAsignatura = await Asignatura.destroy({
             where: id_asignatura
@@ -68,7 +61,7 @@ const delete_Asignatura = async(req, res) => {
             menssage: "Asignatura eliminada con exito"
         })
 
-    }catch(error){
+    } catch (error) {
         res.status(404).json({
             status: false,
             error: error.menssage
@@ -77,9 +70,9 @@ const delete_Asignatura = async(req, res) => {
 
 }
 
-const create_Asignatura = async(req, res) => {
+const create_Asignatura = async (req, res) => {
     const { nombre, semestre, paralelo } = req.body
-    try{
+    try {
         const newAsignatura = await Asignatura.create({
             nombre,
             semestre,
@@ -89,7 +82,7 @@ const create_Asignatura = async(req, res) => {
             succes: true,
             menssage: "Nueva asignatura creada con exito"
         })
-    }catch(error){ 
+    } catch (error) {
         res.status.json({
             succes: false,
             error: error.menssage
@@ -97,9 +90,22 @@ const create_Asignatura = async(req, res) => {
     }
 }
 
+
+const getAsigSinDocente = async() =>{
+    try{
+        const Asignaturas = await Asignatura.findAll({
+            where: docente = null
+        })
+
+    }catch(error){
+
+    }
+}
+
 module.exports = {
     get_Asignatura,
     update_Asignatura,
     delete_Asignatura,
-    create_Asignatura
+    create_Asignatura,
+
 }
