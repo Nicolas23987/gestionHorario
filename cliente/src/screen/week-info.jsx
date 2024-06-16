@@ -5,7 +5,7 @@ import { NavBar } from '../Componentes/Nav.jsx'
 // import { useLocation } from "react-router-dom"
 // import { useState, useEffect } from "react";
 // import  Axios  from "axios";
-import { Tarjet } from "../Componentes/docente_tarjet.jsx";
+// import { Tarjet } from "../Componentes/docente_tarjet.jsx";
 import { Estudiante_list } from "../Componentes/estudiantes_list.jsx";
 import { Horario } from "../Componentes/horario.jsx";
 import { useState } from "react";

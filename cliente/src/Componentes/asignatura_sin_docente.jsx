@@ -3,16 +3,10 @@ import iconStudents from '../img/school_students.svg'
 import { useState, useEffect } from "react";
 import { LoadingScreen } from "./loanding";
 
-
-
-
 export function AddDocenteAsignatura() {
-
-
-
     return (
         <Link href="">
-            <section class=" flex justify-between items-center p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
+            <section class="flex justify-between items-center p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
                 <ul class="mt-4 list-disc list-inside ">
                     <li className="text-black" >Aqui va la materias sin docentes</li>
                 </ul>
