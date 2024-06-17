@@ -25,7 +25,7 @@ export function SubjectCard() {
 
   return (
     <>
-      <div className='w-full'>
+      <div className='w-3/4'>
         <table className="custom-table shadow-2xl w-full bottom-4 text-black">
           <thead className="">
             <tr>

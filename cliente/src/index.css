@@ -48,13 +48,9 @@ a, a:hover {
   display: none;
   position: relative;
 }
-
-
-
 .imgStudent{
   display: flex;
   align-items:center ;
-  /* justify-content: center; */
   flex-direction: row;
   gap: 30px;
 }
@@ -69,9 +65,6 @@ a, a:hover {
 .h1-materias{
   display: flex;
   justify-content: left;
-  /* gap: 10px; */
-  /* margin-left: 20px; */
-
 }
 .h1-materias a {
   display: flex;
@@ -88,18 +81,12 @@ a, a:hover {
 
 
  .alum-week-div{
-  
-  /* margin: 0 auto;
-  align-items: center; */
   display: flex;
 }
 .btn-icon{
   width: 100px;
   height: 100px0;
   border: 3px;
-  /* border-left: 10px solid transparent; */
-  /* border-right: 10px solid transparent; */
-  /* border-top: 15px solid #ffffff; Color blanco */
   border-bottom:3px solid violet;
 }
 
@@ -129,29 +116,6 @@ a, a:hover {
   margin-top: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @keyframes transformX {
   50%{
     transform:translateX(0px);
@@ -163,8 +127,6 @@ a, a:hover {
     transform:translateX(-500px);
   }
 }
-
-
 
 .btn-add{
   background-color: transparent;
@@ -214,10 +176,6 @@ a, a:hover {
   height: 140px
 }
 
-
-
-
-
 .dv-center{
   display: flex;
   align-items: center;
@@ -254,12 +212,10 @@ table{
 
 .redes{
   transition: ease-in-out 1s;
-  /* animation: ease-in-out 1s;   */
 }.redes:hover{
   width: 130px;
 
 }
-
 
 .dv-dc-tj{
   display: block;
@@ -268,8 +224,6 @@ table{
   height: 120%; 
   padding: 30px;
   border: 1px solid #ffff;
-  /* margin-left: 50px ; */
-  /* margin-top: 140px; */
   border-radius: 30px;
   align-items: start;
   padding-top: 30px;
@@ -306,13 +260,10 @@ table{
 
 }
 
-
-
 #lista {
   transition: transform 0.5s ease-in-out;
   transform: translateX(-100%);
 }
-
 
 .dv-if-tj{
   display: flex;
@@ -323,15 +274,12 @@ table{
   font-size: .9375rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
-
 .container-img-tj{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* gap: 25px; */
 }
 .list-std{
   display: block;
@@ -345,30 +293,20 @@ table{
 }
 .container-list{
   display: flex;
-
-  
-  /* margin-bottom: 15px; */
-  /* align-items: center; */
 }
 
 
 
 td  {
-  /* display: flex; */
   width: auto;
 }
 .section-subjet-card{
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
   height: 70vh;
   width: 80%;
   gap: 30px;
-  /* align-items: center; */
   justify-content: center;
-  /* flex-wrap: wrap; */
   position: relative;
-  /* align-items: self-start; */
   top: 70px;
 }
 .laber-form{
@@ -382,9 +320,6 @@ body {
   display: grid;
   height: 100vh;
   color: #ffffff;
-  /* display: block;
-  align-items: center;
-  justify-content: center; */
 }
 .dv-containe-section{
   display: flex;
@@ -422,9 +357,6 @@ html{
   height: 0;
 }
 
-
-
-
 button > td{
   width: 100%;
 }
@@ -455,7 +387,6 @@ td{
   width: 100%;
 }
 
-
 .container-objet{
   display: flex;
   width: 98%;
@@ -470,14 +401,12 @@ td{
   margin-left: 20px;
 }
 
-
 .dropdown-idioma{
   display: flex;
   font-size: calc(0.90375rem + 0.045vw);
   align-items: center;
   justify-content: right;
 }
-
 .navbar{
   display: flex;
   align-items: center;
@@ -487,8 +416,6 @@ td{
   margin: 0px;
   background-color: #1a73048e;
   align-items: stretch;
-
-  /* position: absolut; */
   z-index: 1000;
   top: 0px;
 }
@@ -501,30 +428,16 @@ td{
   font-size: 17px;
   margin-left: 16px;
   cursor: pointer;
-
-
 }
-/*  */
 .container-icon{
   width: 50px;
-  /* border-radius: 100px; */
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 0px;
-
-  border: 3px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 15px solid #ffffff; /* Color blanco */
-  /* border-bottom:3px solid violet;  */
-
 }
 
-.dv-container-selec{
 
-}
 .materia-h1{
   color: red;
   margin-right: auto;
@@ -547,7 +460,6 @@ td{
   width: auto;
   /* border-bottom: 4px solid blueviolet; */
 } 
-
 .container-ob-form2{
   width: 90%;
   height: 90%;
@@ -620,14 +532,11 @@ td{
   height: 30px;
 }
 
-
 form{
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-
 
 .btn-idm-cks select{
   border: transparent;
@@ -656,7 +565,6 @@ form{
   background-color: #0f6cbf;
 }
 
-
 .form-label{
   display: flex;
   align-items:center;
@@ -676,21 +584,13 @@ form{
 
 .dv-container-week{
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   margin-bottom: 30px;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
   height: 70px;
-  /* flex-direction: row; */
-  /* position: relative; */
-  /* justify-content: right; */
-  /* margin-top: 20px; */
   width: 90%;
-  /* padding-top: 10%; */
 }
 
-/* codigo sin corregir se la tabla  */
 .fc-agenda-days{
   width: 90%;
 }
@@ -720,17 +620,14 @@ form{
     margin-top: 5px;/* Cambia la altura a 20px o el valor que prefieras */
 }
 
-
 .div-button{
     display: flex;
     position: block;
     align-items: center;
     justify-content: center;
     width: 100%;
-    /* height: 100%; */
     padding-top: 0px;
     gap: 20px;
-
 }
 
 .fc-content{
@@ -766,14 +663,6 @@ form{
     flex-wrap: nowrap;
     /* left: -10px !important; */
   }
-  /* .dv-container-week{
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
-
-
   .horario{
     display: flex;
     width: 100%;
@@ -787,10 +676,6 @@ form{
     justify-content: right;
     /* padding-left: 100px; */
   }
-  
-
-
-
 .td-hora{
     width: 100px;
     display: block;
@@ -807,11 +692,8 @@ form{
     padding-left: 20px;
     height: 80px;
     align-items: start;
-    
 }
-
 .button-hora{
     height: 100%;
     height: 80px;
 }
-

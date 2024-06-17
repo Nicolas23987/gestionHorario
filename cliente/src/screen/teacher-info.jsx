@@ -15,14 +15,20 @@ export function TeacherInfo() {
 
     const location = useLocation()
     const id_materia = location.state;
-    console.log(location)
+    console.log(location.state)
 
     return (
         <React.Fragment>
             <NavBar></NavBar>
-            <div className="mb-16">
+
+            {id_materia === null ? (
+                <div><h1 className="text-black w-screen h-screen flex items-center justify-center text-4xl font-bold" >Sin docente</h1></div>
+            ) : (
+                <div>
+
+                <div className="mb-16">
                 <Barra_izq></Barra_izq>
-                <BtnOption/>
+                {/* <BtnOption/> */}
                 <DocenteInfo id={id_materia}/>
             </div>
             <div className="w-full flex justify-center">
@@ -30,8 +36,10 @@ export function TeacherInfo() {
                 <h2  className="text-3xl font-bold mb-2 text-black ">Horario</h2>
                 <Horario/>
             </div>
-            </div>
-            <Footer />
+                </div>
+            </div>)}
+            < Footer />
+            
         </React.Fragment>
     );
 

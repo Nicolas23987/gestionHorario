@@ -11,15 +11,11 @@ export function Materias(){
     <React.Fragment>
       <Barra_izq />
       <NavBar></NavBar>   
-      <div className='dv-containe-section ' >
-      <section className='section-subjet-card'>
-              <div className='cdd'>
-                {/* <Barra_izq />   */}
-              </div>            
+      <div className='w-full flex justify-center mt-16 mb-16'>
              <SubjectCard  />  
-      </section>
       </div>
       <Footer/>
+
     </React.Fragment>
 
   ) 

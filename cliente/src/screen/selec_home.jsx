@@ -24,19 +24,19 @@ export function Selec_Home() {
 
   useEffect(() => {
     const getAsignaturas = async () => {
-      setLoade(true)
+      setLoading(true)
       try {
-        const asignatura = await Axios.get('http://localhost:3000/api/get/asignaturas/');
-        const asignatura_virt = await Axios.get('http://localhost:3000/api/get/asignaturas/virtuales');
+        const asignatura = await Axios.get('http://localhost:3000/api/get/asignatura/sin/docente');
+        // const asignatura_virt = await Axios.get('http://localhost:3000/api/get/asignaturas/virtuales');
         
         setAsignaturas(asignatura.data.data)
-        setAsignaturas_virt(asignatura_virt.data.data)
+        // setAsignaturas_virt(asignatura_virt.data.data)
         // console.log(asignaturas)
-        setLoade(false)
+        setLoading(false)
 
       } catch (error) {
         console.log(error)
-        setLoade(false)
+        setLoading(false)
       }
     } 
     getAsignaturas()
@@ -58,8 +58,11 @@ export function Selec_Home() {
         </section>
         <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
           <h2 className="text-black">Materia Virtuales</h2>
-          
-            <AddDocenteAsignatura/>
+          {asignaturas.map((asignatura, index) =>(
+            // console.log(asignatura)
+            <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} />
+         
+         ))}
 
         </section>
 

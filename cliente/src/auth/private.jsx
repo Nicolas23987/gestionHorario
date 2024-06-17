@@ -1,11 +1,18 @@
-// PrivateRoute.jsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import Login from '../screen/login';
 
-export const PrivateRoute = ({ children }) => {
-  const isAuthenticated = !!localStorage.getItem('authToken'); // Verifica si hay un token de autenticación
+const PrivateRoute = (Element) => {
+  const isAuthenticated = !!localStorage.getItem('token'); // Verifica si hay un token de autenticación
+  Element = Element;
+  console.log(Element)
 
-  return isAuthenticated ? children : <Navigate to="/inicio" />;
+
+  return isAuthenticated ? (
+    Element
+  ) : (
+    <Navigate to='/' />
+  );
 };
 
-// export default PrivateRoute;
+export default PrivateRoute;

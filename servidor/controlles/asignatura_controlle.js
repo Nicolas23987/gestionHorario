@@ -1,4 +1,4 @@
-const { Asignatura } = require('../relaciones/relaciones.js');
+const { Asignatura, Alumno } = require('../relaciones/relaciones.js');
 const { Docente } = require('../relaciones/relaciones.js');
 
 
@@ -91,19 +91,32 @@ const create_Asignatura = async (req, res) => {
 }
 
 
-const getAsigSinDocente = async() =>{
+const { Op } = require('sequelize');
+const getAsigSinDocente = async(req, res) =>{
     try{
         const Asignaturas = await Asignatura.findAll({
-            where: docente = null
+            // include:{
+            //     model: Alumno
+            // },
+            where: {
+                idDocente:{
+                    [Op.is]: null
+                }}
+        })
+        console.log(Asignaturas)
+        res.status(202).json({
+            status: true,
+            data: Asignaturas
         })
 
     }catch(error){
-
+        console.log(error)
     }
 }
 
 module.exports = {
     get_Asignatura,
+    getAsigSinDocente,
     update_Asignatura,
     delete_Asignatura,
     create_Asignatura,

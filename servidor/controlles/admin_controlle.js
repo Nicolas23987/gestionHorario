@@ -3,7 +3,8 @@ const  Admin  = require('../models/administradores')
 const jwt = require('jsonwebtoken');
 const {serialize} = require('cookie');
 const path = require('path');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const { TransformStreamDefaultController } = require('stream/web');
 
 const getAdmin = async(req, res) => {
     try {
@@ -114,30 +115,31 @@ const auth_admin = async(req, res) => {
                 exp: Math.floor(Date.now() /1000) + 60 * 60 * 24 * 7,
                 email: admin.correo,
                 usernem: admin.nombre
-                
             },'secret');
 
             const serialized = serialize('my_token', token,{
-                httpOnly: true,
+                httpOnly:true ,
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'strict',
                 maxAge: 1000 * 60 * 60 * 24 * 7,
-                path: '/'
+                path: '/'            
             })
-            res.setHeader("Set-Cookie", serialized)
+            res.setHeader("set-cookie", serialized);
+
             const data = {
                 nombres: admin.nombres,
                 apellidos: admin.apellidos,
                 correo: admin.correo,
                 img: admin.img,
-                rol: admin.rol_admin
-            }
+                rol: admin.rol_admin,
+            };
 
             return res.status(202).json({
                 status: true,
                 data: data,
                 menssage: 'Admin obtenido con exito'
             });
+
         }else{
             res.status(401).json({
                 status: false

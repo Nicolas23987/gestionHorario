@@ -9,6 +9,7 @@ export function DocenteInfo(id_materia) {
     const [loading, setLoading] = useState(true);
 
 
+
     useEffect(() => {
         const getMaterias = async () => {
             try {
