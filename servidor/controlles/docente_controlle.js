@@ -1,5 +1,8 @@
+const { Model } = require('sequelize');
 const {Docente} = require('../relaciones/relaciones.js');
 const {Asignatura} = require('../relaciones/relaciones.js');
+const Especialidad_Docente = require('../models/especialidad_docente.js');
+const Especialidad = require('../models/especialidad.js');
 
 
 const get_Docente = async(req, res) => {
@@ -43,18 +46,30 @@ const get_Docentes = async(req, res) => {
 
 const get_Docente_MateriaId = async(req,res) =>{
     try{
-        const id_materia = req.params;       
-        console.log(id_materia)
-        const materia = await Asignatura.findByPk(
-            id_materia.id
+        const {id} = req.params;  
+
+        console.log(id)
+        const materia = await Asignatura.findOne({
+            where: {
+                 id_materia : id
+            },
+            include: {
+                model: Docente,
+                as: 'docentes',
+                include:{
+                    model: Especialidad
+                }
+            }
+        },
+            
         )
         console.log(materia.idDocente)
-        const docente = await Docente.findByPk(materia.idDocente);
+        // const docente = await Docente.findByPk(materia.idDocente);
 
         res.status(202).json({
             status:true,
             menssage: 'Datos obtenidos con exito',
-            data: docente
+            data: materia
         })
     }catch(error){
         res.status(404).json({

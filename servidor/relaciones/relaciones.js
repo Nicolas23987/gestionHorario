@@ -21,8 +21,8 @@ const Especialidad_Asignatura = require('../models/especialidad_asignatura.js');
 Especialidad.belongsToMany(Asignatura, { through: Especialidad_Asignatura, foreignKey: 'IDespecialida'});
 Asignatura.belongsToMany(Especialidad, { through: Especialidad_Asignatura, foreignKey: 'asignatura'})
 
-Especialidad.belongsToMany(Docente, {through: Especialidad_Docente, foreignKey: 'IDdocente'});
-Docente.belongsToMany(Especialidad, {through: Especialidad_Docente, foreignKey:'IDespecialidad'});
+Especialidad.belongsToMany(Docente, {through: Especialidad_Docente, foreignKey: 'IDespecialidad'});
+Docente.belongsToMany(Especialidad, {through: Especialidad_Docente, foreignKey:'IDdocente'});
 
 // Especialidad.belongsToMany(Asignatura, { through: })
 
@@ -75,8 +75,8 @@ Asignatura.belongsToMany(Alumno, { through: Alumno_Asignatura, foreignKey: 'IDMa
 
 
 //muchos a muchos asignatura/horario
-Asignatura.belongsToMany(Horario, {through: Asignatura_Horario});
-Horario.belongsToMany(Asignatura, {through: Asignatura_Horario});
+Asignatura.belongsToMany(Horario, {through: Asignatura_Horario, foreignKey: 'asignaturaIdMateria' });
+Horario.belongsToMany(Asignatura, {through: Asignatura_Horario, foreignKey: 'horarioIdMateria' });
 
 
 //mucho a muchos asignatura virtuales/ alumno

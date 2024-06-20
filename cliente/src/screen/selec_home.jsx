@@ -10,13 +10,23 @@ import { LoadingScreen } from '../Componentes/loanding.jsx'
 import Axios from 'axios'
 import {  useEffect } from "react";
 import { Asig_virt_sin_doce } from "../Componentes/asig_virt_sin_doce.jsx";
-
+import { jwtDecode } from "jwt-decode";
+// import { verify } from 'jsonwebtoken'
 export function Selec_Home() {
   
   const location = useLocation()
-  console.log(location.state)
   
+  const cookie = document.cookie
+  const use = jwtDecode(cookie)
+  
+  console.log(use)
+  // const decoder = jwtDecode.
+
+  console.log(cookie)
+
   const [loading, setLoading] = useState(false);
+
+
 
   const [asignaturas, setAsignaturas] = useState([])
   const [asignaturas_virt, setAsignaturas_virt] = useState([])
@@ -49,7 +59,7 @@ export function Selec_Home() {
   return (
     <React.Fragment>
       {loading && < LoadingScreen></LoadingScreen>}
-      <NavBar data={location.state.data} />
+      <NavBar data={use} />
       <Barra_izq />
       <div className="mb-16">
         
@@ -57,7 +67,7 @@ export function Selec_Home() {
           <h3 class="text-xl text-black font-bold">Asignaturas sin docente</h3>
         </section>
         <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
-          <h2 className="text-black">Materia Virtuales</h2>
+          <h2 className="text-black text-xl font-bold ">Materia Virtuales</h2>
           {asignaturas.map((asignatura, index) =>(
             // console.log(asignatura)
             <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} />
@@ -67,7 +77,7 @@ export function Selec_Home() {
         </section>
 
         <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
-          <h2 className="text-black">Materias</h2>
+          <h2 className="text-black font-bold text-xl ">Materias</h2>
           <AddDocenteAsignatura/>
 
         </section>

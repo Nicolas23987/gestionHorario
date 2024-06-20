@@ -1,25 +1,23 @@
 // StudentList.jsx
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import icono from '../img/icono.jpg'
 
  export function Estudiante_list(){
-
+    
     const location = useLocation();
-    const id_materia = location.state
+    const {id} = useParams()
+    console.log(id)
     const [alumnos, alumnoSet] = useState([]);
 
     useEffect(()=>{
 
        const getAlumnos = async(res,req) => {
         try{
-          console.log(id_materia)
           const response = await Axios.get(`http://localhost:3000/api/get/alumno`)
           const estudiantes = response.data.data
-          console.log(estudiantes)
           alumnoSet(estudiantes)
-
         
         }catch(error){
         
@@ -27,29 +25,32 @@ import icono from '../img/icono.jpg'
       }
       getAlumnos();
     },[]);
+
+    console.log(alumnos)
+
     return (
       <div className='w-full items-center justify-center'>
-        <table className="custom-table">
-          <thead className="custom-thead">
+        <table className="text-black w-full">
+          <thead className="border border-black text-white bg-gray-900">
             <tr>
-              <th scope="col">Nro</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Correo</th>
-              <th scope="col">Carrera</th>
+              <th className='border-t border-b border-gray-400' scope="col">Nro</th>
+              <th className='border-t border-b border-gray-400' scope="col"><div className='flex pl-5'>Nombre</div></th>
+              <th className='border-t border-b border-gray-400' scope="col">Correo</th>
+              <th className='border-t border-b border-gray-400' scope="col">Carrera</th>
             </tr>
           </thead>
           <tbody>
             {alumnos.map((student, index) => (
-              <tr key={student.id}>
-                <th scope="row">{index+1}</th>
-                <td>
-                  <div className='imgStudent'>
-                  <img  src={icono} alt="" />
+              <tr className='hover:bg-gray-100' key={student.id}>
+                <th className='border-t border-b p-2 border-gray-400' scope="row">{index+1}</th>
+                <td className='border-t border-b  p-2 border-gray-400'>
+                  <div className='pl-5 w-full flex gap-5 items-center'>
+                  <img className='rounded-full h-10 w-10' src={student.img} alt="" />
                   {student.nombre}                    
                   </div>
                 </td>
-                <td>{student.correo}</td>
-                <td>carrera</td>
+                <td className='border-t border-b border-gray-400'><div className='flex w-full justify-center'>{student.correo}</div></td>
+                <td className='border-t border-b border-gray-400'><div className='flex w-full justify-center items-center'>carrera</div></td>
               </tr>
             ))}
           </tbody>

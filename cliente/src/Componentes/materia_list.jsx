@@ -37,11 +37,11 @@ export function SubjectCard() {
           </thead>
           <tbody>
             {materiaList.map((materia, index) => (
-              <tr>
+              <tr className=''>
                 <th scope="row">{index + 1}</th>
                 <td>{materia.nombre}</td>
-                <td>{materia.semestre}</td>
-                <td><Link to='/materia/horario' state={{ materia_id: materia.id_materia, nombre: materia.nombre }}><img className='' src={editIcon} /></Link></td>
+                <td className=''><div className='flex items-center w-full justify-center'>{materia.semestre}</div></td>
+                <td className='flex flex-row  items-center justify-center' ><Link to={`/materia/horario/${materia.id_materia}`} ><img className='' src={editIcon} /></Link></td>
               </tr>
             ))}
           </tbody>

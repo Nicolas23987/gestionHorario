@@ -1,4 +1,4 @@
-const {Horario} = require('../relaciones/relaciones.js');
+const {Horario, Asignatura} = require('../relaciones/relaciones.js');
 const {Asignatura_Horario} = require('../relaciones/relaciones.js');
 
 const get_Horarios = async(req, res) => {
@@ -81,12 +81,19 @@ const create_Horario = async(req, res) => {
 
 
 const get_Horario = async(req, res) => {
-            console.log(req.params, res.body)
-
+    console.log(req.params, res.body)
+    const id = req.params
+    console.log(id)
     try{
-        const id = req.params;
-        const horario = await Asignatura_Horario.findAll({
-            where: asignaturaIdMateria= id ,
+        const {id} = req.params;
+        const horario = await Asignatura.findAll({
+            where: {
+                id_materia: id
+            },
+            // include:{
+            //     model: Asignatura_Horario,
+            //     as: 'asignatura_horarios'
+            // }
         },
         );
     

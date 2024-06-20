@@ -111,10 +111,13 @@ const auth_admin = async(req, res) => {
         })
         
         if(admin !== null && await bcrypt.compare(contraseña , admin.contraseña )){
+          
+          
             const token = jwt.sign({
                 exp: Math.floor(Date.now() /1000) + 60 * 60 * 24 * 7,
                 email: admin.correo,
-                usernem: admin.nombre
+                username: admin.nombre,
+                img: admin.img          
             },'secret');
 
             const serialized = serialize('my_token', token,{
@@ -124,17 +127,20 @@ const auth_admin = async(req, res) => {
                 maxAge: 1000 * 60 * 60 * 24 * 7,
                 path: '/'            
             })
-            res.setHeader("set-cookie", serialized);
-
+            
             const data = {
                 nombres: admin.nombres,
                 apellidos: admin.apellidos,
                 correo: admin.correo,
                 img: admin.img,
                 rol: admin.rol_admin,
+                // serialized: serialized
             };
-
-            return res.status(202).json({
+            
+            return res
+            .setHeader("auth-cookie", serialized)
+            .setHeader('pueba', 'esto es una prueba')
+            .status(202).json({
                 status: true,
                 data: data,
                 menssage: 'Admin obtenido con exito'

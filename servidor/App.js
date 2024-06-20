@@ -12,7 +12,8 @@ require('dotenv').config();
 
 const corsOptions = {
   origin: 'http://localhost:5173', // Reemplaza con el dominio de tu frontend
-  credentials: true // Esto permite el envío de cookies en las solicitudes CORS
+  credentials: true, // Esto permite el envío de cookies en las solicitudes CORS
+  exposedHeaders: ['auth-cookie']
 };
 
 

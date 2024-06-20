@@ -1,4 +1,4 @@
-import { Link, Route, useLocation } from "react-router-dom";
+import { Link, Route, useLocation, useParams } from "react-router-dom";
 import '../index.css';
 import React, { useRef } from 'react';
 import Axios from "axios";
@@ -16,12 +16,13 @@ class HorarioList {
 
 export function Horario() {
   const [horario, setAlumnoData] = useState([]);
+  const id = useParams()
 
   if (horario.length < 1) {
     const contador = 0;
     contador == contador + 1
-    console.log('entro al bucle', contador)
-    Axios.get(`http://localhost:3000/api/get/horario/`)
+    console.log('entro al bucle', id)
+    Axios.get(`http://localhost:3000/api/get/horario/materia/${id.id}`)
       .then(response => {
         const horariolist = response.data.data;
         setAlumnoData(horariolist);
@@ -84,11 +85,11 @@ export function Horario() {
 
   return (
     <React.Fragment>
-      <table key='1' className="custom-table " cellSpacing="0">
-        <thead className="custom-thead">
-          <tr className="fc-first fc-last items-center ">
+      <table key='1' className="text-black w-full border-gray-300 rounded-3xl" cellSpacing="0">
+        <thead className="custom-thead ">
+          <tr className="border border-gray-300">
             {days.map((day, index) => (
-              <th scope="col" key={index} className={` fc-widget-header`}>{day}</th>
+              <th scope="col" key={index} className={`w-24`}>{day}</th>
             ))}
           </tr>
         </thead>
@@ -99,22 +100,22 @@ export function Horario() {
             <tr key={hourIndex}>
 
               {dayss.map((day, dayIndex) => (
-                <td key={dayIndex} className={`fc-col${day} fc-widget-content fc-hour-cell`}>
+                <td key={dayIndex} className={`w- border border-gray-300`}>
                   {dayIndex === 0 ? (
                     <button className="" id={`col${hourIndex}${dayIndex}`}>
-                      <div className="div-button">
+                      <div className="p-2">
                         {`${hour}:00`}
                       </div>
                     </button>
                   ) : (
                     NewHorario.map((object) => (
                       (hour === object.hora_inicio && dayIndex === object.dia ? (
-                        <Link to='/GestionMateria' state={{ paralelo: object.paralelo, profesor: object.Profesor }}  >
-                          <div className="div-boton">
-                            <button className="horario-Button" id={`col${hourIndex}${dayIndex}`}>
-                              <div className="div-button" >{days[day]}-{hour}:00 - {hour + 1}:00</div>
-                              <div className="div-button" >{object.dia}</div>
-                              <div className="div-button" >{object.hora_inicio}</div>
+                        <Link to={`/GestionMateria${object.id_horario}`}  >
+                          <div className="hover:bg-gray-300 p-2">
+                            <button className="" id={`col${hourIndex}${dayIndex}`}>
+                              <div className="" >{days[day]}-{hour}:00 - {hour + 1}:00</div>
+                              <div className="" >{object.dia}</div>
+                              <div className="" >{object.hora_inicio}</div>
                             </button>
                           </div>
                         </Link>

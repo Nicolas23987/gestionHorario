@@ -11,7 +11,7 @@ export function AddDocenteAsignatura(data) {
     // console.log(data)
 
     return (
-        <Link to='/materia/horario'  state={data.id} href="">
+        <Link to={`/materia/horario/${data.id}`}  state={data.id} href="">
             <section class="flex justify-between items-center p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
                 <ul class="mt-4 list-disc list-inside">
                     <li className="text-black" >{data.data},{data.id}</li>

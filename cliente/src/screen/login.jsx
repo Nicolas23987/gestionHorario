@@ -7,7 +7,7 @@ import { LoadingScreen } from '../Componentes/loanding.jsx'
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../Componentes/footer.jsx";
 import Cookies from 'js-cookie'
-function Login() {
+export function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(""); // Estado para el mensaje de error
@@ -25,9 +25,10 @@ function Login() {
     correo: correo,
     password: password
   }
-    const instance = Axios.create({
-      withCredentials: true
-    });
+  const instance = Axios.create({
+    withCredentials: true
+  });
+
   const onSubmit = handleSubmit(async (data) => {
     setError("");
     setLoading(true);
@@ -38,26 +39,30 @@ function Login() {
       const response = await instance.post('http://localhost:3000/api/auth/admin', {
         correo: data.correo,
         contraseña: data.password,
+      }, {
+        withCredentials: true // Importante para enviar y recibir cookies
       });
       // Configuración en Axios para permitir intercambio de cookies (CORS)
-      const cookieHeader = response.headers;
-      console.log(cookieHeader);  // Debería mostrar la cadena de la cookie
+
+      console.log(response)
 
       if (response.status === 202) {
         console.log("Inicio de sesión exitoso");
-        console.log(response)
-        console.log(response.headers['set-cookie'])
 
-        Cookies.set('my_token', response.data.token, {
+        // console.log(response.headers['auth-cookie'])
+
+        localStorage.setItem('auth-cookie', response.headers['auth-cookie'])
+
+        Cookies.set('my_token', response.headers, {
           expires: 7, // Duración en días
           path: '/', // Ruta donde es accesible la cookie
           secure: true, // Cookie solo accesible en HTTPS si está en producción
           sameSite: 'strict' // Restricción de SameSite para mitigar CSRF
         });
-        localStorage.setItem('token',response.headers['set-cookie'])
 
 
-        navigate('inicio', { state: response.data });
+
+        // navigate('inicio', { state: response.data });
 
       } else {
         setError("Credenciales incorrectas");
@@ -79,15 +84,15 @@ function Login() {
         <div className="my-16">
           <div className="w-full flex flex-col items-center justify-center bg-white h-4/5 text-black rounded-r-xl shadow-lg">
             <form onSubmit={onSubmit}>
-              <div className="container-ob-form flex flex-col items-start gap-5 w-11/12 h-11/12 ">
-                <h1 class=''>Administracion de horarios Uleam</h1>
+              <div className="container-ob-form flex w-full flex-col items-start gap-6 pt-3 h-11/12 ">
+                <h1 class='text-red-600 font-bold text-xl'>Administracion de horarios Uleam</h1>
                 {error && <div className="error-span"> <span className="error-span">{error}</span></div>} {/* Mostrar mensaje de error */}
                 {errors.correo && <div className="error-span"> <span className="error-span">Nombre es requerido</span> </div>}
                 <input
                   value={correo}
                   onChange={(e) => setCorreo(e.target.value)}
                   type="email"
-                  className="w-full h-10 pl-2"
+                  className="w-full  h-10 pl-2"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   {...register("correo", { required: true })}
@@ -103,7 +108,7 @@ function Login() {
                   placeholder="contraseña"
                   {...register("password", { required: true })}
                 />
-                <button type="submit" className="btn btn-primary">ACCEDER</button>
+                <button type="submit" className="flex bg-red-600 w-20 items-center justify-center text-white">ACCEDER</button>
                 <a href="">Olvido su contraseña?</a>
               </div>
             </form>
@@ -115,7 +120,7 @@ function Login() {
               <a href="https://login.microsoftonline.com/uleam.onmicrosoft.com/oauth2/authorize?response_type=code&client_id=2ad44653-fa35-4d81-b320-96befa1b5088&scope=openid%20profile%20email&nonce=N665f3ac73ff2e&response_mode=form_post&state=XWbBuTvnklIcnZt&redirect_uri=https%3A%2F%2Faulavirtualmoodle.uleam.edu.ec%2Fauth%2Foidc%2F&resource=https%3A%2F%2Fgraph.microsoft.com">
                 <button className="p-2 rounded-2xl border-black border " >
                   <div className="flex gap-2" >
-                    <img className="img-mft-btn" src={logoMicrosoft} alt="" />
+                    <img className="w-5" src={logoMicrosoft} alt="" />
                     <p>Microsoft 365 Uleam</p>
                   </div>
                 </button>
@@ -128,7 +133,7 @@ function Login() {
                 <option className='' value="es">English (en)</option>
               </select>
               <div className="divisor-vertical"></div>
-              <button className="w-full px-1" >AVISO DE COOKIES</button>
+              <button className="w-full text-white  bg-green-900 px-1" >AVISO DE COOKIES</button>
             </div>
           </div>
         </div>
@@ -139,4 +144,4 @@ function Login() {
   )
 }
 
-export default Login;
+// export default Login;

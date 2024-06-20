@@ -11,7 +11,22 @@ const Docente = sequelize.define('docentes',{
     nombre: {
         type: DataTypes.STRING
     },
+    apellido: {
+        type: DataTypes.STRING
+    },
     correo: {
+        type: DataTypes.STRING
+    },
+    telefono: {
+        type: DataTypes.STRING
+    },
+    edad: {
+        type: DataTypes.STRING
+    },
+    oficina: {
+        type: DataTypes.STRING
+    },
+    cedula: {
         type: DataTypes.STRING
     },
     img: {
