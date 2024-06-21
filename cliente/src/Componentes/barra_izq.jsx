@@ -42,7 +42,7 @@ export function Barra_izq() {
   return (
     <div ref={sideRef} id="sidebar" className="sidebar w-80 translate-y-56 h-screen text-white pt-5 fixed top-0">
 
-      <div className="translate-y-56 flex h-screen w-64 flex-col items-center bg-white text-black fixed top-0 left-0">
+      <div className="pb-9 translate-y-56 overflow-y-auto flex h-screen w-64 flex-col items-center bg-white text-black fixed top-0 left-0">
         
         <div className='items-center sm:container flex bg-green-800 h-24 mb-10 rounded-br-full '>
         <img className='mt-2 ml-2 w-3/5' src="https://aulavirtualmoodle.uleam.edu.ec/pluginfile.php/1/theme_klass/logo/1717190707/logo_ULEAM_2017_horizontal_blanco.png" alt="" />
@@ -59,7 +59,7 @@ export function Barra_izq() {
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/agregar/alumno">Agregar Alumno</a></li>
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/agregar/asignatura">Agregar Asignatura</a></li>
         </ul>
-        <button className='bg-green-800 w-10/12 mt-6 text-white rounded-lg h-10'>Cerrar session</button>
+        <button className='bg-green-800 w-10/12 mt-6 text-white rounded-lg h-14'>Cerrar session</button>
       </div>
 
         <button onClick={handleButtonClick} className="w-12">

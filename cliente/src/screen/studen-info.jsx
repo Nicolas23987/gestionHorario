@@ -12,10 +12,14 @@ export function StudeInfo() {
   const [mostrarHorario, setMostrarHorario] = useState(true);
   const [mostrarList, setMostrarList] = useState(true);
 
-  const id = useParams()
+  const {id} = useParams()
 
   const [isVisible, setIsVisible] = useState(false);
   const [isColor, setColor] = useState(false);
+
+
+
+
 
   return (
     <React.Fragment>
@@ -24,7 +28,7 @@ export function StudeInfo() {
         <Barra_izq></Barra_izq>
         <BtnOption materia={id} ></BtnOption>
           <div className="dv-center full-width alum-week-div" >
-          <Estudiante_list id_materia={id} />
+          <Estudiante_list consulta={`http://localhost:3000/api/get/asignatura/alumnos/${id}`} />
         </div>
       </div>
       <Footer/>

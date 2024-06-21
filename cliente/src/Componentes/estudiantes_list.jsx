@@ -4,9 +4,8 @@ import Axios from 'axios';
 import { useLocation, useParams } from 'react-router-dom';
 import icono from '../img/icono.jpg'
 
- export function Estudiante_list(){
-    
-    const location = useLocation();
+ export function Estudiante_list({consulta}){
+    console.log(consulta)
     const {id} = useParams()
     console.log(id)
     const [alumnos, alumnoSet] = useState([]);
@@ -15,9 +14,9 @@ import icono from '../img/icono.jpg'
 
        const getAlumnos = async(res,req) => {
         try{
-          const response = await Axios.get(`http://localhost:3000/api/get/alumno`)
-          const estudiantes = response.data.data
-          alumnoSet(estudiantes)
+          const response = await Axios.get(consulta)
+          const data = response.data.data
+          alumnoSet(data)
         
         }catch(error){
         

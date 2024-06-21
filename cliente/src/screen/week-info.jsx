@@ -37,7 +37,7 @@ export function WeekInfo() {
     const [mostrarHorario, setMostrarHorario] = useState(true);
     const [mostrarList, setMostrarList] = useState(true);
 
-    const id = useParams()
+    const { id } = useParams()
 
 
     const [isVisible, setIsVisible] = useState(false);
@@ -55,17 +55,17 @@ export function WeekInfo() {
     return (
         <React.Fragment>
             <NavBar></NavBar>
-                 <Barra_izq/>
+            <Barra_izq />
             <div className="">
                 <BtnOption materia={id} ></BtnOption>
-   
+
                 <div className="flex w-full items-center justify-center mb-16">
                     <div className="w-2/3 p-28 flex items-center justify-center shadow-2xl pt-10 pb-10 rounded-2xl">
-                     {<Horario/>}
+                        {<Horario consulta={`http://localhost:3000/api/get/docente/materia/${id}`} />}
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </React.Fragment>
     );
 

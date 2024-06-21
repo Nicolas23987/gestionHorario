@@ -24,6 +24,33 @@ const get_Asignatura = async (req, res) => {
         console.log(error)
     }
 }
+const get_AsignaturaAlumnos = async (req, res) => {
+     const {id} = req.params
+     console.log(id)
+    try {
+        const getAsignatura = await Asignatura.findAll({
+            where:{
+                id_materia: id
+            },
+            include: [{
+                model: Alumno,
+                as: 'alumnos'
+            }]
+        });
+        res.status(202).json({
+            succes: true,
+            data: getAsignatura,
+            menssage: "Asignatura obtenidad"
+        });
+
+    } catch (error) {
+        res.status(404).json({
+            succes: false,
+            menssage: error.menssage
+        })
+        console.log(error)
+    }
+}
 
 const update_Asignatura = async (req, res) => {
     const { id_asignatura } = req.param
@@ -120,5 +147,6 @@ module.exports = {
     update_Asignatura,
     delete_Asignatura,
     create_Asignatura,
+    get_AsignaturaAlumnos
 
 }

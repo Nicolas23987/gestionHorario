@@ -14,23 +14,24 @@ class HorarioList {
   }
 }
 
-export function Horario() {
+export function Horario({consulta}) {
+  console.log(consulta)
   const [horario, setAlumnoData] = useState([]);
-  const id = useParams()
+  const {id} = useParams()
+  // const 
 
-  if (horario.length < 1) {
-    const contador = 0;
-    contador == contador + 1
-    console.log('entro al bucle', id)
-    Axios.get(`http://localhost:3000/api/get/horario/materia/${id.id}`)
-      .then(response => {
-        const horariolist = response.data.data;
-        setAlumnoData(horariolist);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
+    useEffect(() =>{
+      Axios.get(consulta)
+        .then(response => {
+          const horarios = response.data.data.docentes.horarios;
+          setAlumnoData(horarios);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    
+    },[])
+    console.log(horario)
 
   var NewHorario = [];
   var contador = 0
@@ -85,7 +86,7 @@ export function Horario() {
 
   return (
     <React.Fragment>
-      <table key='1' className="text-black w-full border-gray-300 rounded-3xl" cellSpacing="0">
+      <table key='1' className=" text-black w-full border-gray-300 rounded-3xl" cellSpacing="0">
         <thead className="custom-thead ">
           <tr className="border border-gray-300">
             {days.map((day, index) => (

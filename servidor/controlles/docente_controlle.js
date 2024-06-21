@@ -1,5 +1,5 @@
 const { Model } = require('sequelize');
-const {Docente} = require('../relaciones/relaciones.js');
+const {Docente, Horario} = require('../relaciones/relaciones.js');
 const {Asignatura} = require('../relaciones/relaciones.js');
 const Especialidad_Docente = require('../models/especialidad_docente.js');
 const Especialidad = require('../models/especialidad.js');
@@ -56,9 +56,14 @@ const get_Docente_MateriaId = async(req,res) =>{
             include: {
                 model: Docente,
                 as: 'docentes',
-                include:{
-                    model: Especialidad
-                }
+                include:[
+                    {
+                        model: Especialidad
+                    },
+                    {
+                        model: Horario
+                    }
+                ]
             }
         },
             
