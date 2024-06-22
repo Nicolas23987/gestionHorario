@@ -1,9 +1,33 @@
-const {Horario, Asignatura} = require('../relaciones/relaciones.js');
+const {Horario, Asignatura, Docente} = require('../relaciones/relaciones.js');
 const {Asignatura_Horario} = require('../relaciones/relaciones.js');
 
 const get_Horarios = async(req, res) => {
     try{
         const getHorario = await Horario.findAll()  
+        res.status(202).json({
+            success: true,
+            data: getHorario
+        })      
+    }catch(error){
+        res.status(404).json({
+            success: false,
+            error: error.mensage
+        })
+    }
+}
+const get_HorarioDocente = async(req, res) => {
+    const { id } = req.params
+    console.log(id)
+    try{
+        const getHorario = await Docente.findAll({
+            where: {
+                id_docente:id
+            },
+            include:{
+                model: Horario
+            }
+
+        })  
         res.status(202).json({
             success: true,
             data: getHorario
@@ -90,10 +114,10 @@ const get_Horario = async(req, res) => {
             where: {
                 id_materia: id
             },
-            // include:{
-            //     model: Asignatura_Horario,
-            //     as: 'asignatura_horarios'
-            // }
+            include:{
+                model: Horario,
+                // as: 'asignatura_horarios'
+            }
         },
         );
     
@@ -116,5 +140,6 @@ module.exports = {
     update_Horario,
     delete_Horario,
     create_Horario,
-    get_Horario
+    get_Horario,
+    get_HorarioDocente
 }

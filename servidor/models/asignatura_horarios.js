@@ -14,7 +14,7 @@ const Asignatura_Horario =  sequelize.define('asignatura_horarios',{
 },
 {
     timestamps: false,
-    tableName: 'asignatura_horarios'
+    // tableName: 'asignatura_horarios'
 }
 );
 //

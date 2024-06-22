@@ -36,10 +36,10 @@ export function TeacherInfo() {
                     <DocenteInfo id={id} />
                 </div>
                 <div className="w-full flex justify-center">
-                    <div className="flex mb-32 w-11/12 max-w-4xl rounded-xl flex-col items-center justify-center p-6 m-4 shadow-lg ">
+                    {/* <div className="flex mb-32 w-11/12 max-w-4xl rounded-xl flex-col items-center justify-center p-6 m-4 shadow-lg ">
                         <h2 className="text-3xl font-bold mb-2 text-black ">Horario</h2>
                         <Horario consulta={`http://localhost:3000/api/get/docente/materia/${id}`} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {/* )} */}

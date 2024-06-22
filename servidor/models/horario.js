@@ -23,7 +23,8 @@ const Horario = sequelize.define('horarios',{
     }
 },
 {
-    timestamps: false
+    timestamps: false,
+    
 }
 );
 

@@ -23,7 +23,8 @@ export function Horario({consulta}) {
     useEffect(() =>{
       Axios.get(consulta)
         .then(response => {
-          const horarios = response.data.data.docentes.horarios;
+          console.log(response)
+          const {horarios} = response.data.data[0];
           setAlumnoData(horarios);
         })
         .catch(error => {

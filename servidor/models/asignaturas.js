@@ -27,10 +27,10 @@ const Asignatura = sequelize.define('asignaturas',{
     },    
 }, 
 {
-    sequelize,
-    modelName:'Asignatura',
+    // sequelize,
+    // modelName:'Asignatura',
     timestamps: false,
-    tableName:'asignaturas'
+    // tableName:'asignaturas'
 }
 );
 

@@ -61,7 +61,7 @@ export function WeekInfo() {
 
                 <div className="flex w-full items-center justify-center mb-16">
                     <div className="w-2/3 p-28 flex items-center justify-center shadow-2xl pt-10 pb-10 rounded-2xl">
-                        {<Horario consulta={`http://localhost:3000/api/get/docente/materia/${id}`} />}
+                        {<Horario consulta={`http://localhost:3000/api/get/horario/materia/${id}`} />}
                     </div>
                 </div>
             </div>

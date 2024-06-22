@@ -15,8 +15,8 @@ import icono from '../img/icono.jpg'
        const getAlumnos = async(res,req) => {
         try{
           const response = await Axios.get(consulta)
-          const data = response.data.data
-          alumnoSet(data)
+          const data = response.data
+          alumnoSet(data.data[0].alumnos)
         
         }catch(error){
         

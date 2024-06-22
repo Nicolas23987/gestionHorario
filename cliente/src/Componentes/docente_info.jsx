@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { is } from "date-fns/locale";
 import { LoadingScreen } from '../Componentes/loanding'
+import { Horario } from "./horario";
 export function DocenteInfo(materia) {
     const id = materia.id
     const [docente, setDocente] = useState([]);
@@ -28,6 +29,7 @@ export function DocenteInfo(materia) {
 
         getMaterias();
     }, []);
+    console.log(docente)
 
     return (
         <React.Fragment>
@@ -93,6 +95,10 @@ export function DocenteInfo(materia) {
                     </div>
                 </div>
             </div>
+            <div className="flex mb-32 w-11/12 max-w-4xl rounded-xl flex-col items-center justify-center p-6 m-4 shadow-lg ">
+                        <h2 className="text-3xl font-bold mb-2 text-black ">Horario</h2>
+                        <Horario consulta={`http://localhost:3000/api/get/horario/docente/${docente.id_docente}`} />
+                    </div>
         </React.Fragment>
     )
 
