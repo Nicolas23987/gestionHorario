@@ -22,9 +22,9 @@ export function BtnOption(data){
 <div className="flex flex-col   w-full  mb-16">
     {/* Contenido principal */}
     <div className="w-full  md:w-auto mb-4 md:mb-0 md:mr-4">
-        <a href="/inicio" className=" block text-left text-black py-2 px-4 rounded-lg mb-2">
+        {/* <a href="/inicio" className=" block text-left text-black py-2 px-4 rounded-lg mb-2">
             MATERIAS VIRTUALES
-        </a>
+        </a> */}
         <div>{h}</div>
         <a href="" className="block text-center text-blue-500"></a>
     </div>

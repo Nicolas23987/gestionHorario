@@ -53,7 +53,7 @@ export function Login() {
 
         localStorage.setItem('auth-cookie', response.headers['auth-cookie'])
 
-        Cookies.set('my_token', response.headers, {
+        Cookies.set('auth-cookie', response.headers, {
           expires: 7, // Duración en días
           path: '/', // Ruta donde es accesible la cookie
           secure: true, // Cookie solo accesible en HTTPS si está en producción

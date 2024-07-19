@@ -127,7 +127,7 @@ module.exports = {
     Alumno_Asignatura,
     Asignatura_Horario,
     Docente,
-
+    Especialidad,
     AsignaturaVirtuales,
     AsignaturaVirtuales_Horario,
     Alumno_AsignaturaVirtuales

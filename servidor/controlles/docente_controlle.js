@@ -1,8 +1,8 @@
 const { Model } = require('sequelize');
 const {Docente, Horario} = require('../relaciones/relaciones.js');
-const {Asignatura} = require('../relaciones/relaciones.js');
+const {Asignatura , Especialidad} = require('../relaciones/relaciones.js');
 const Especialidad_Docente = require('../models/especialidad_docente.js');
-const Especialidad = require('../models/especialidad.js');
+// const Especialidad = require('../models/especialidad.js');
 
 
 const get_Docente = async(req, res) => {
@@ -29,7 +29,16 @@ const get_Docente = async(req, res) => {
 
 const get_Docentes = async(req, res) => {
         try{
-            const docentes = await Docente.findAll({include: Horario})
+            const docentes = await Docente.findAll(
+                {
+                    include:[
+                        {
+                            model: Especialidad
+                        },
+                        {
+                            model: Horario
+                        }
+                ]})
             console.log(docentes)
             res.status(200).json({
                 status: true,
@@ -68,7 +77,7 @@ const get_Docente_MateriaId = async(req,res) =>{
         },
             
         )
-        console.log(materia.idDocente)
+        // console.log(materia.idDocente)
         // const docente = await Docente.findByPk(materia.idDocente);
 
         res.status(202).json({

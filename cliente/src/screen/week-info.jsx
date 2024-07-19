@@ -59,10 +59,9 @@ export function WeekInfo() {
             <div className="">
                 <BtnOption materia={id} ></BtnOption>
 
-                <div className="flex w-full items-center justify-center mb-16">
-                    <div className="w-2/3 p-28 flex items-center justify-center shadow-2xl pt-10 pb-10 rounded-2xl">
-                        {<Horario consulta={`http://localhost:3000/api/get/horario/materia/${id}`} />}
-                    </div>
+                <div className="flex mb-32 w-full px-20  rounded-xl flex-col items-center justify-center p-6 m-4 shadow-lg ">
+                    <h2 className="text-3xl font-bold mb-2 text-black ">Horario</h2>
+                    <Horario consulta={`http://localhost:3000/api/get/horario/materia/${id}`} />
                 </div>
             </div>
             <Footer />

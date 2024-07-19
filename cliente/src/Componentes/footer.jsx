@@ -3,7 +3,7 @@ import { RedesSociales } from "./redes_sociales";
 
 export function Footer() {
     return (
-        <footer id="page-footer" className="text-black border-t-4 border-black pt-6 flex flex-row">
+        <footer id="page-footer" className="mt-96 text-black border-t-4 border-black pt-6 flex flex-row">
             <div id="footer" bis_skin_checked="1" className="flex flex-col " >
                 <div className="flex footer-main " bis_skin_checked="1">
                     <div class="container-fluid" bis_skin_checked="1">

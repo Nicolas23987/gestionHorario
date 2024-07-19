@@ -7,7 +7,7 @@ import { Barra_izq } from "../Componentes/barra_izq.jsx";
 import { useLocation } from "react-router-dom";
 import { AddDocenteAsignatura } from "../Componentes/asignatura_sin_docente.jsx";
 import { LoadingScreen } from '../Componentes/loanding.jsx'
-import Axios from 'axios'
+import axios from 'axios'
 import {  useEffect } from "react";
 import { Asig_virt_sin_doce } from "../Componentes/asig_virt_sin_doce.jsx";
 import { jwtDecode } from "jwt-decode";
@@ -15,8 +15,18 @@ import { jwtDecode } from "jwt-decode";
 export function Selec_Home() {
   
   const location = useLocation()
-  
-  const cookie = document.cookie
+
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+
+  const cookie = getCookie('my_token')
+  console.log(cookie)
   const use = jwtDecode(cookie)
   
   console.log(use)
@@ -36,12 +46,26 @@ export function Selec_Home() {
     const getAsignaturas = async () => {
       setLoading(true)
       try {
-        const asignatura = await Axios.get('http://localhost:3000/api/get/asignatura/sin/docente');
+        const asignatura = await axios.get('http://localhost:3000/api/get/asignatura/sin/docente');
         // const asignatura_virt = await Axios.get('http://localhost:3000/api/get/asignaturas/virtuales');
-        
+        // console.log(asignatura)
         setAsignaturas(asignatura.data.data)
-        // setAsignaturas_virt(asignatura_virt.data.data)
-        // console.log(asignaturas)
+
+        setLoading(false)
+
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    } 
+    const getAsignaturas_virt = async () => {
+      setLoading(true)
+      try {
+        const asignatura = await axios.get('http://localhost:3000/api/get/asignatura/virtuales/sin/docente');
+        // const asignatura_virt = await Axios.get('http://localhost:3000/api/get/asignaturas/virtuales');
+        // console.log(asignatura)
+        setAsignaturas_virt(asignatura.data.data)
+
         setLoading(false)
 
       } catch (error) {
@@ -50,10 +74,12 @@ export function Selec_Home() {
       }
     } 
     getAsignaturas()
+    getAsignaturas_virt()
   }, [])
 
 
  console.log(asignaturas)
+ console.log(asignaturas_virt)
 
 
   return (
@@ -76,11 +102,14 @@ export function Selec_Home() {
 
         </section>
 
-        <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
+        {/* <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
           <h2 className="text-black font-bold text-xl ">Materias</h2>
-          <AddDocenteAsignatura/>
-
-        </section>
+          {asignaturas_virt.map((asignatura, index) =>(
+            // console.log(asignatura)
+            <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} />
+         
+         ))}
+        </section> */}
       </div>
       <Footer />
       

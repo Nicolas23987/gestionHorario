@@ -5,9 +5,13 @@ import Axios from "axios";
 import { is } from "date-fns/locale";
 import { LoadingScreen } from '../Componentes/loanding'
 import { Horario } from "./horario";
+import DocenteSelector from "./selec_docente";
+import { setWeek } from "date-fns";
 export function DocenteInfo(materia) {
     const id = materia.id
+    console.log(materia)
     const [docente, setDocente] = useState([]);
+    const [materias, setMateria] = useState([]);
     const [especialidad, setEspecialidad] = useState([])
     const [loading, setLoading] = useState(true);
 
@@ -16,9 +20,9 @@ export function DocenteInfo(materia) {
             setLoading(true)
             try {
                 const response = await Axios.get(`http://localhost:3000/api/get/docente/materia/${id}`);
-                const {docentes} = response.data.data
-                const {especialidads} = docentes
-                setEspecialidad(especialidads);
+                const { docentes } = response.data.data
+                // const { especialidad } = docentes
+                setEspecialidad(especialidad);
                 setDocente(docentes);
                 setLoading(false);
             } catch (error) {
@@ -28,12 +32,57 @@ export function DocenteInfo(materia) {
         };
 
         getMaterias();
+
+        const getMateria = async () => {
+            setLoading(true)
+            try {
+                const response = await Axios.get(`http://localhost:3000/api/get/asignatura/${id}`);
+                const  docentes  = response
+                // const { especialidad } = docentes
+                // setEspecialidad(especialidad);
+                setMateria(docentes);
+                setLoading(false);
+            } catch (error) {
+                setLoading(false);
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        getMateria();
     }, []);
-    console.log(docente)
+    console.log(materias);
+
+    const [selectedDocente, setSelectedDocente] = useState(null);
+    // const [loading, setLoading] = useState(false);
+
+    const handleSelectDocente = (docente) => {
+        setSelectedDocente(docente);
+
+        console.log(docente)
+
+    };
+
+    const onsubmit = () => {
+        try {
+            console.log(`${selectedDocente.id_docente}/${id}`)
+            const response = Axios.put(`http://localhost:3000/api/update/asignatura/${selectedDocente.id_docente}/${id}/`)
+            window.location.reload();
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    if (docente == null) {
+        return (
+            <DocenteSelector onSelect={handleSelectDocente} onsubmit={onsubmit} />
+        )
+    }
+
 
     return (
         <React.Fragment>
-            {loading && <LoadingScreen/>}
+            {loading && <LoadingScreen />}
             <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class=" p-6 text-black text-center">
                     <h1 class="text-3xl font-bold">Perfil del Docente</h1>
@@ -48,9 +97,9 @@ export function DocenteInfo(materia) {
                             <h2 className="font-semibold text-xl mb-2 ">Especialidades</h2>
                             {/* {docente.especialidad.map((especialidad) => ( */}
 
-                                  {especialidad.map((data) => (
-                                     <li>{data.nombre}</li>
-                                   ))}
+                            {especialidad.map((data) => (
+                                <li>{data.nombre}</li>
+                            ))}
 
                             {/* ))} */}
                         </div>
@@ -95,10 +144,10 @@ export function DocenteInfo(materia) {
                     </div>
                 </div>
             </div>
-            <div className="flex mb-32 w-11/12 max-w-4xl rounded-xl flex-col items-center justify-center p-6 m-4 shadow-lg ">
-                        <h2 className="text-3xl font-bold mb-2 text-black ">Horario</h2>
-                        <Horario consulta={`http://localhost:3000/api/get/horario/docente/${docente.id_docente}`} />
-                    </div>
+            <div className="flex mb-32 w-full rounded-xl flex-col items-center justify-center p-6 m-4 shadow-lg ">
+                <h2 className="text-3xl font-bold mb-2 text-black ">Horario</h2>
+                <Horario consulta={`http://localhost:3000/api/get/horario/docente/${docente.id_docente}`} />
+            </div>
         </React.Fragment>
     )
 

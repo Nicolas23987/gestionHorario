@@ -1,5 +1,6 @@
 // const Asignatura = require('../models/asignaturas');
-const {AsignaturaVirtuales} = require('../../relaciones/relaciones.js');
+// const Especialidad = require('../../models/especialidad.js');
+const {AsignaturaVirtuales, Especialidad} = require('../../relaciones/relaciones.js');
 // const Alumno = require('../models/alumnos');
 // const Docente = require('../models/docentes');
 
@@ -97,9 +98,66 @@ const create_AsignaturaV = async(req, res) => {
     }
 }
 
+const get_AsignaturaById = async (req, res) => {
+    const { id } = req.params; // Obtén el id de los parámetros de la solicitud
+
+    try {
+        const asignatura = await AsignaturaVirtuales.findOne({
+            where: { id_materia: id },
+            include: [{
+                model: Especialidad,
+            }]
+        });
+
+        if (!asignatura) {
+            return res.status(404).json({
+                success: false,
+                message: "Asignatura no encontrada"
+            });
+        }
+
+        res.status(202).json({
+            success: true,
+            data: asignatura,
+            message: "Asignatura obtenida"
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+        console.error(error);
+    }
+};
+
+const { Op } = require('sequelize');
+const getAsigVirtSinDocente = async(req, res) =>{
+    try{
+        const Asignaturas = await AsignaturaVirtuales.findAll({
+            // include:{
+            //     model: Alumno
+            // },
+            where: {
+                idDocente:{
+                    [Op.is]: null
+                }}
+        })
+        console.log(Asignaturas)
+        res.status(202).json({
+            status: true,
+            data: Asignaturas
+        })
+
+    }catch(error){
+        console.log(error)
+    }
+}
+
 module.exports = {
     get_AsignaturaV,
     update_AsignaturaV,
     delete_AsignaturaV,
-    create_AsignaturaV
+    create_AsignaturaV,
+    getAsigVirtSinDocente,
+    get_AsignaturaById
 }

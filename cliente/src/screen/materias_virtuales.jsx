@@ -12,12 +12,9 @@ export function Materias_virt(){
   <React.Fragment>
       <NavBar></NavBar>   
        <Barra_izq />  
-      <div className='dv-containe-section ' >
-      <section className='section-subjet-card'>
-              <div className='cdd'>
-              </div>            
+       <div className='w-full flex justify-center mt-16 mb-16'>         
              <SubjectCard  />  
-      </section>
+    
       </div>
       <Footer/>
     </React.Fragment>

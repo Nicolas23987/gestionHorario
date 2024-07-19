@@ -1,4 +1,4 @@
-const { Asignatura, Alumno } = require('../relaciones/relaciones.js');
+const { Asignatura, Alumno, Especialidad } = require('../relaciones/relaciones.js');
 const { Docente } = require('../relaciones/relaciones.js');
 
 
@@ -24,6 +24,37 @@ const get_Asignatura = async (req, res) => {
         console.log(error)
     }
 }
+const get_AsignaturaById = async (req, res) => {
+    const { id } = req.params; // Obtén el id de los parámetros de la solicitud
+    console.log(id)
+    try {
+        const asignatura = await Asignatura.findOne({
+            where: { id_materia: id },
+            include: [{
+                model: Especialidad,
+            }]
+        });
+
+        if (!asignatura) {
+            return res.status(404).json({
+                success: false,
+                message: "Asignatura no encontrada"
+            });
+        }
+
+        res.status(202).json({
+            success: true,
+            data: asignatura,
+            message: "Asignatura obtenida"
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+        console.error(error);
+    }
+};
 const get_AsignaturaAlumnos = async (req, res) => {
      const {id} = req.params
      console.log(id)
@@ -73,6 +104,39 @@ const update_Asignatura = async (req, res) => {
             status: false,
             error: error.menssage
         })
+    }
+}
+const update_AsignaturaDocente = async (req, res) => {
+    const { id_asignatura, id_docente } = req.params; // Asegúrate de extraer ambos parámetros correctamente
+    console.log('Updating Asignatura:', id_asignatura, 'with Docente:', id_docente);
+
+    try {
+        // Buscar la asignatura por ID
+        const asignatura = await Asignatura.findByPk(id_asignatura);
+
+        if (!asignatura) {
+            return res.status(404).json({
+                success: false,
+                message: 'Asignatura no encontrada'
+            });
+        }
+
+        // Actualizar el docente de la asignatura
+        asignatura.idDocente = id_docente;
+
+        // Guardar los cambios en la base de datos
+        await asignatura.save();
+
+        res.status(200).json({
+            success: true,
+            message: 'Asignatura actualizada con éxito'
+        });
+    } catch (error) {
+        console.error('Error:', error); // Para depuración
+        res.status(500).json({
+            success: false,
+            message: error.message // Asegúrate de usar 'message' aquí
+        });
     }
 }
 
@@ -147,6 +211,9 @@ module.exports = {
     update_Asignatura,
     delete_Asignatura,
     create_Asignatura,
-    get_AsignaturaAlumnos
+    get_AsignaturaAlumnos,
+    update_AsignaturaDocente,
+    get_AsignaturaById
+    
 
 }
