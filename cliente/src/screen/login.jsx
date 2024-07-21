@@ -49,20 +49,19 @@ export function Login() {
       if (response.status === 202) {
         console.log("Inicio de sesión exitoso");
 
-        // console.log(response.headers['auth-cookie'])
-
-        localStorage.setItem('auth-cookie', response.headers['auth-cookie'])
-
-        Cookies.set('auth-cookie', response.headers, {
-          expires: 7, // Duración en días
-          path: '/', // Ruta donde es accesible la cookie
-          secure: true, // Cookie solo accesible en HTTPS si está en producción
-          sameSite: 'strict' // Restricción de SameSite para mitigar CSRF
-        });
+        const cookie = document.cookie
+        console.log(cookie)
+        localStorage.setItem('my_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjIxNDU0NDQsImVtYWlsIjoiYWRtaW4xQGV4YW1wbGUuY29tIiwiaW1nIjoiaHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9nZXN0aW9uaG9yYXJpby1mODY3ZS5hcHBzcG90LmNvbS9vL09JUCUyMCgxKS5qcGVnP2FsdD1tZWRpYSZ0b2tlbj05NzQ2ZGM0My1lNTRjLTRlYjUtYjQ1Yi1iNDFlYmIyMmJiY2IiLCJpYXQiOjE3MjE1NDA2NDR9.hlwe7s5p1JB9O03REeipxfnTSwq5WJ5vuyiLM_NAvsI')
 
 
 
-        // navigate('inicio', { state: response.data });
+        console.log(cookie)
+        Cookies.set('my_token', cookie)
+
+
+
+
+
 
       } else {
         setError("Credenciales incorrectas");

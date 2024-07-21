@@ -7,7 +7,7 @@ import { StudeInfo } from './screen/studen-info.jsx'
 import { NewDocente } from './screen/new_docente.jsx'
 import { TeacherInfo } from "./screen/teacher-info.jsx";
 import { WeekInfo } from "./screen/week-info.jsx";
-import { Selec_Home } from "./screen/selec_home.jsx";
+import { Home } from "./screen/home.jsx";
 import { Docentes } from './screen/teacher.jsx'
 import PrivateRoute from "./auth/private.jsx";
 import {  AgregarAsignatura } from "./screen/addAsignatura.jsx";
@@ -16,9 +16,9 @@ function App() {
         <BrowserRouter>
             <Routes>
 
-                <Route index="/" element={<PrivateRoute Element={Selec_Home}/>} />
+                <Route index="/" element={<PrivateRoute Element={Home}/>} />
 
-                <Route path="/inicio" element={<PrivateRoute Element={Selec_Home}/>} />
+                <Route path="/inicio" element={<PrivateRoute Element={Home}/>} />
 
                 {/* <Route path="/inicio" element={PrivateRoute(Selec_Home)} /> */}
 

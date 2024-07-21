@@ -5,7 +5,10 @@ const horario_router = require('./router/horario_router.js');
 const administrador_router = require('./router/administrador_router.js');
 const docente_router = require('./router/docente_router.js')
 const asignaturas_virtuales = require('./router/asignaturasVirtuales.js');
+const {auth_admin} = require('./controlles/auth_user.js')
 const cors = require('cors');
+const authMiddleware = require('./auth_token/auth_token.js');
+
 const { TIMEOUT } = require('dns');
 const cookieParser = require('cookie-parser')
 require('dotenv').config();
@@ -23,6 +26,13 @@ app.use(cookieParser())
 
 app.use(cors(corsOptions))
 app.use(express.json());
+
+
+const auth_user = express.Router()
+auth_user.post('/auth/admin', auth_admin);
+app.use('/api', auth_user)
+
+app.use(authMiddleware);
 app.use("/api",asignatura_router);
 app.use("/api",alumno_router)
 app.use("/api", horario_router)
