@@ -8,6 +8,7 @@ import { useLocation, useParams } from 'react-router-dom';
     const {id} = useParams()
     console.log(id)
     const [alumnos, alumnoSet] = useState([]);
+    const [carrera, setCarrera] = useState([]);
 
     useEffect(()=>{
 
@@ -16,7 +17,7 @@ import { useLocation, useParams } from 'react-router-dom';
           const response = await Axios.get(consulta, {withCredentials: true})
           const data = response.data
           alumnoSet(data.data[0].alumnos)
-        
+          setCarrera(data.data[0].carreras[0])
         }catch(error){
         
         }
@@ -48,7 +49,7 @@ import { useLocation, useParams } from 'react-router-dom';
                   </div>
                 </td>
                 <td className='border-t border-b border-gray-400'><div className='flex w-full justify-center'>{student.correo}</div></td>
-                <td className='border-t border-b border-gray-400'><div className='flex w-full justify-center items-center'>carrera</div></td>
+                <td className='border-t border-b border-gray-400'><div className='flex w-full justify-center items-center'>{student.carreras[0]?.descripcion}</div></td>
               </tr>
             ))}
           </tbody>

@@ -11,6 +11,7 @@ import { Home } from "./screen/home.jsx";
 import { Docentes } from './screen/teacher.jsx'
 import PrivateRoute from "./auth/private.jsx";
 import {  AgregarAsignatura } from "./screen/addAsignatura.jsx";
+import { AgregarEstudiantePage } from "./screen/agregar_estudiante.jsx";
 function App() {
     return (
         <BrowserRouter>
@@ -64,6 +65,9 @@ function App() {
 
                 <Route path="/agregar/asignatura" element={
                     <AgregarAsignatura/>
+                } />
+                <Route path="/agregar/estudiante" element={
+                    <AgregarEstudiantePage/>
                 } />
             </Routes>
         </BrowserRouter>

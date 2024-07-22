@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   oficina: yup.string().required('Oficina es requerida'),
   cedula: yup.string().required('Cédula es requerida'),
   img: yup.string().url('Debe ser una URL válida'),
-  rol_docente: yup.string().required('Rol de docente es requerido')
+  // rol_docente: 2 //yup.string().required('Rol de docente es requerido')
 });
 
 export const FormularioDocente = () => {
@@ -40,10 +40,23 @@ export const FormularioDocente = () => {
     fetchRoles();
   }, []);
 
-  const onSubmit = data => {
-    console.log(data);
-    
+  const onSubmit = async (data) => {
+    try {
+      // Enviar datos del formulario a la API
+      const response = await axios.post('http://localhost:3000/api/create/docente', data, {withCredentials: true});
+
+      // Manejar la respuesta de la API
+      if (response.status === 201) {
+        console.log('Docente creado con éxito:', response.data);
+        // Puedes hacer algo adicional aquí, como redirigir al usuario o limpiar el formulario
+      }
+    } catch (error) {
+      // Manejar errores de la solicitud
+      console.error('Error al crear el docente:', error);
+      // Puedes mostrar un mensaje de error al usuario aquí
+    }
   };
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto bg-white p-8 shadow-lg rounded-lg">
@@ -95,19 +108,19 @@ export const FormularioDocente = () => {
         {errors.img && <p className="text-red-500 text-sm">{errors.img.message}</p>}
       </div>
       
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label className="block text-gray-700">Rol Docente</label>
         <select {...register('rol_docente')} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
 
-          {/* {roles.map(role => (
+          {roles.map(role => (
             <option key={role.id} value={role.id}>
               {role.name}
             </option>
-          ))} */}
+          ))}
         </select>
         {errors.rol_docente && <p className="text-red-500 text-sm">{errors.rol_docente.message}</p>}
       </div>
-      
+       */}
       <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Enviar</button>
     </form>
   );

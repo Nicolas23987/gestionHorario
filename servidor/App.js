@@ -5,12 +5,15 @@ const horario_router = require('./router/horario_router.js');
 const administrador_router = require('./router/administrador_router.js');
 const docente_router = require('./router/docente_router.js')
 const asignaturas_virtuales = require('./router/asignaturasVirtuales.js');
+const rolesRouter = require('./router/roles.js');
+const especialidadesRouter = require('./router/especialidad.js');
 const {auth_admin} = require('./controlles/auth_user.js')
 const cors = require('cors');
 const authMiddleware = require('./auth_token/auth_token.js');
 
 const { TIMEOUT } = require('dns');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const carreraRouter = require('./router/carreras.js');
 require('dotenv').config();
 
 const corsOptions = {
@@ -39,6 +42,10 @@ app.use("/api", horario_router)
 app.use('/api', administrador_router)
 app.use("/api", docente_router)
 app.use("/api", asignaturas_virtuales);
+app.use("/api", rolesRouter);
+app.use("/api", especialidadesRouter);
+app.use("/api", carreraRouter);
+
 
 
 app.use((err, req, res, next) => {

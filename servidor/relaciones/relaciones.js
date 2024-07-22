@@ -15,6 +15,7 @@ const Asig_carrera = require('../models/asignatura_carrera.js');
 const Especialidad = require('../models/especialidad.js')
 const Especialidad_Docente = require('../models/especialidad_docente.js');
 const Especialidad_Asignatura = require('../models/especialidad_asignatura.js');
+const Carrera_alumno = require('../models/carrera_alumno.js');
 
 
 
@@ -117,10 +118,14 @@ Horario.belongsTo(Docente);
 Docente.hasMany(Horario);
 
 
+Carrera.belongsToMany(Alumno, {through: Carrera_alumno, foreignKey: 'idCarrera'});
+Alumno.belongsToMany(Carrera, {through: Carrera_alumno , foreignKey: 'idAlumno'})
+
 
 
 module.exports = {
     Admin,
+    Rol,
     Carrera,
     Alumno,
     Asignatura,

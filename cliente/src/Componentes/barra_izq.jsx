@@ -50,8 +50,8 @@ export function Barra_izq() {
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/inicio">Inicio</a></li>
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/materias">Asignaturas</a></li>
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/materias/virtuales">Asignaturas Virtules</a></li>
-          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/docentes">Docentes</a></li>
-          <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/lista/estudiantes">Estudiantes</a></li>
+          {/* <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/docentes">Docentes</a></li> */}
+          {/* <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/lista/estudiantes">Estudiantes</a></li> */}
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/inicio">Asignatura sin docentes</a></li>
           
           <li className="p-3 text-center hover:opacity-5"><a className="text-black text-center hover:text-gray-900" href="/agregar/docente">Agregar Docente</a></li>

@@ -14,7 +14,7 @@ export function AddDocenteAsignatura(data) {
                 </ul>
                 <div className="text-black flex justify-center items-center gap-2">
                     <p><img className="w-7" src={iconStudents}/></p>
-                    <p>33</p>
+                    <p>{data.cantidadAlumnos}</p>
                 </div>
             </section>
         </Link>

@@ -98,20 +98,20 @@ export function Home() {
           <h2 className="text-black text-xl font-bold ">Materia Virtuales</h2>
           {asignaturas.map((asignatura, index) => (
             // console.log(asignatura)
-            <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} />
+            <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} cantidadAlumnos={asignatura.cantidadAlumnos}/>
 
           ))}
 
         </section>
-
+{/* 
         <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
           <h2 className="text-black font-bold text-xl ">Materias</h2>
           {asignaturas_virt.map((asignatura, index) =>(
             // console.log(asignatura)
-            <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} />
+            <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} cantidadAlumnos={asignatura.cantidadAlumnos} />
          
          ))}
-        </section>
+        </section> */}
       </div>
       <Footer />
 

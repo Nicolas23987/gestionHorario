@@ -1,4 +1,6 @@
-const {Carrera, Asignatura, Alumno, Especialidad } = require('../relaciones/relaciones.js');
+const Asig_carrera = require('../models/asignatura_carrera.js');
+const Especialidad_Asignatura = require('../models/especialidad_asignatura.js');
+const { Carrera, Asignatura, Alumno, Especialidad } = require('../relaciones/relaciones.js');
 const { Docente } = require('../relaciones/relaciones.js');
 
 
@@ -56,20 +58,24 @@ const get_AsignaturaById = async (req, res) => {
     }
 };
 const get_AsignaturaAlumnos = async (req, res) => {
-     const {id} = req.params
-     console.log(id)
+    const { id } = req.params
+    console.log(id)
     try {
         const getAsignatura = await Asignatura.findAll({
-            where:{
+            where: {
                 id_materia: id
             },
+
             include: [{
                 model: Alumno,
                 as: 'alumnos',
-                // model: Carrera,
-                // as: 'carreras'
+                include: {
+                    model: Carrera,
+                    as: 'carreras',
+                },
+                
             }]
-   
+
         });
         res.status(202).json({
             succes: true,
@@ -165,37 +171,56 @@ const delete_Asignatura = async (req, res) => {
 }
 
 const create_Asignatura = async (req, res) => {
-    const { nombre, semestre, paralelo } = req.body
+    const { nombre, semestre, paralelo, idEspecialidad, idCarrera, tipo } = req.body;
+    console.log(nombre, semestre, paralelo, idEspecialidad, idCarrera, tipo)
     try {
-        const newAsignatura = await Asignatura.create({
+        // Crear la asignatura
+        const nuevaAsignatura = await Asignatura.create({
             nombre,
             semestre,
             paralelo
-        })
+        });
+
+        // Crear la relación en Especialidad_asignatura
+        await Especialidad_Asignatura.create({
+            IDespecialida: idEspecialidad,
+            asignatura: nuevaAsignatura.id_materia // Asegúrate de que `id_materia` es la clave primaria correcta
+        });
+
+        // Crear la relación en asig_carrera solo si el tipo es 'normal'
+        // if (tipo === 'normal' && idCarrera) {
+            await Asig_carrera.create({
+                IDasignatura: nuevaAsignatura.id_materia,
+                IDcarrera: idCarrera
+            });
+        // }
+
         res.status(202).json({
-            succes: true,
-            menssage: "Nueva asignatura creada con exito"
-        })
+            success: true,
+            message: "Nueva asignatura creada con éxito"
+        });
     } catch (error) {
-        res.status.json({
-            succes: false,
-            error: error.menssage
-        })
+        console.log(error)
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
 }
 
 
 const { Op } = require('sequelize');
-const getAsigSinDocente = async(req, res) =>{
-    try{
+const getAsigSinDocente = async (req, res) => {
+    try {
         const Asignaturas = await Asignatura.findAll({
             // include:{
             //     model: Alumno
             // },
             where: {
-                idDocente:{
+                idDocente: {
                     [Op.is]: null
-                }}
+                }
+            }
         })
         console.log(Asignaturas)
         res.status(202).json({
@@ -203,7 +228,7 @@ const getAsigSinDocente = async(req, res) =>{
             data: Asignaturas
         })
 
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
@@ -217,6 +242,6 @@ module.exports = {
     get_AsignaturaAlumnos,
     update_AsignaturaDocente,
     get_AsignaturaById
-    
+
 
 }
