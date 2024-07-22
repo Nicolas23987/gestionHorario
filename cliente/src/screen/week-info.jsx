@@ -13,7 +13,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 // import LoadingScreen from '../Componentes/loanding.jsx';]
 import { Barra_izq } from "../Componentes/barra_izq.jsx";
 
-import { BtnOption } from "../Componentes/btn_info.jsx";
+import { BtnOption } from "../Componentes/btn_nav.jsx";
 import { Footer } from "../Componentes/footer.jsx";
 // import { useParams } from "react-router-dom";
 
@@ -38,7 +38,7 @@ export function WeekInfo() {
     const [mostrarList, setMostrarList] = useState(true);
 
     const { id } = useParams()
-
+    console.log(id)
 
     const [isVisible, setIsVisible] = useState(false);
     const [isColor, setColor] = useState(false);

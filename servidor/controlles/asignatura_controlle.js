@@ -1,4 +1,4 @@
-const { Asignatura, Alumno, Especialidad } = require('../relaciones/relaciones.js');
+const {Carrera, Asignatura, Alumno, Especialidad } = require('../relaciones/relaciones.js');
 const { Docente } = require('../relaciones/relaciones.js');
 
 
@@ -65,8 +65,11 @@ const get_AsignaturaAlumnos = async (req, res) => {
             },
             include: [{
                 model: Alumno,
-                as: 'alumnos'
+                as: 'alumnos',
+                // model: Carrera,
+                // as: 'carreras'
             }]
+   
         });
         res.status(202).json({
             succes: true,

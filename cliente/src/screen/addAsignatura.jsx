@@ -93,4 +93,3 @@ export const AgregarAsignatura = () => {
     );
 };
 
-// export default AgregarAsignatura;

@@ -3,7 +3,7 @@ const sequelize = require('../database/database.js');
 
 
 
-const Carrera = sequelize.define('careras', {
+const Carrera = sequelize.define('carreras', {
     id:{ 
         type: DataTypes.INTEGER,
         primaryKey: true,

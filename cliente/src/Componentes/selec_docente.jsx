@@ -27,7 +27,7 @@ const DocenteSelector = ({ onSelect, onsubmit }) => {
         const getMateria = async () => {
             setLoading(true);
             try {
-                const response = await Axios.get(`http://localhost:3000/api/get/asignatura/${id}`);
+                const response = await Axios.get(`http://localhost:3000/api/get/asignatura/${id}`, {withCredentials: true});
                 const asig = response.data.data;
                 const { especialidads } = asig;
                 setEspecialidad(especialidads);
@@ -62,7 +62,7 @@ const DocenteSelector = ({ onSelect, onsubmit }) => {
     }
 
     return (
-        <div className="p-4 text-black bg-gray-100 rounded-lg shadow">
+        <div className=" w-10/12 p-4 text-black bg-gray-100 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-2">Seleccionar Docente</h2>
             <select
                 className="bg-white border border-gray-300 rounded-lg p-2 w-full"

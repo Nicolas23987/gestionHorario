@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useLocation, useParams } from 'react-router-dom';
-import icono from '../img/icono.jpg'
 
  export function Estudiante_list({consulta}){
     console.log(consulta)
@@ -14,7 +13,7 @@ import icono from '../img/icono.jpg'
 
        const getAlumnos = async(res,req) => {
         try{
-          const response = await Axios.get(consulta)
+          const response = await Axios.get(consulta, {withCredentials: true})
           const data = response.data
           alumnoSet(data.data[0].alumnos)
         

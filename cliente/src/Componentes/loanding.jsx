@@ -1,5 +1,4 @@
 import React from 'react';
-// import './LoadingScreen.css'; // Opcional: para estilos
 
 export function LoadingScreen() {
   return (
@@ -10,4 +9,3 @@ export function LoadingScreen() {
   );
 }
 
-// export default LoadingScreen;

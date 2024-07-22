@@ -1,10 +1,6 @@
 
 
 
-
-
-
-
 export function Selec_Tarjet(Info){
     console.log(Info.text)
     return(

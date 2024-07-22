@@ -10,6 +10,6 @@ body {
   font-family: system-ui;
   display: grid;
   height: 100vh;
-  color: #ffffff;
+  /* color: #ffffff; */
   width: 100%;
 }

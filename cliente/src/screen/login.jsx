@@ -7,6 +7,10 @@ import { LoadingScreen } from '../Componentes/loanding.jsx'
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../Componentes/footer.jsx";
 import Cookies from 'js-cookie'
+
+
+
+
 export function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [loading, setLoading] = useState(false);
@@ -14,8 +18,6 @@ export function Login() {
 
 
   let navigate = useNavigate();
-
-  // Aquí ponemos replace:true para reemplazar la ruta actual con la tuya, pues si usaramos el navigate por sí solo, pushearía la ruta por encima de la otra
 
 
   const [correo, setCorreo] = useState();
@@ -42,7 +44,6 @@ export function Login() {
       }, {
         withCredentials: true // Importante para enviar y recibir cookies
       });
-      // Configuración en Axios para permitir intercambio de cookies (CORS)
 
       console.log(response)
 
@@ -143,4 +144,3 @@ export function Login() {
   )
 }
 
-// export default Login;

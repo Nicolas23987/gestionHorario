@@ -1,4 +1,3 @@
-// StudentList.jsx
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useLocation } from 'react-router-dom';

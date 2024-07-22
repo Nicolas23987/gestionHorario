@@ -11,7 +11,7 @@ export function SubjectCard() {
   useEffect(() => {
     const getMaterias = async () => {
       try {
-        const response = await Axios.get('http://localhost:3000/api/get/asignatura');
+        const response = await Axios.get('http://localhost:3000/api/get/asignatura', {withCredentials: true});
         const materias = response.data.data;
         setMateriaList(materias);
         setLoading(false);

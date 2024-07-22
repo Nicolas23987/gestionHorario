@@ -5,10 +5,6 @@ import { LoadingScreen } from "./loanding";
 
 export function AddDocenteAsignatura(data) {
     console.log(data)
-    // console.log(id)
-    // const location = useLocation()
-    
-    // console.log(data)
 
     return (
         <Link to={`/materia/horario/${data.id}`}  state={data} href="">

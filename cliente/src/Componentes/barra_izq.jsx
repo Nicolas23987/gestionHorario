@@ -13,7 +13,6 @@ export function Barra_izq() {
 
     const handleClickOutside = (event) => {
       if (side && !side.contains(event.target)) {
-        // Si se hace clic fuera del sidebar y el botón está abierto, ciérralo
         if (btn_ltr) {
           setBtn(false);
         }

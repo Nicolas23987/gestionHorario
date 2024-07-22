@@ -1,8 +1,15 @@
-const {Alumno} = require('../relaciones/relaciones.js');
+const {Alumno, Asignatura, Alumno_Asignatura} = require('../relaciones/relaciones.js');
 
 const get_Alumno = async(req, res) => {
     try{
-        const alumnos = await Alumno.findAll();
+        const alumnos = await Alumno.findAll({
+            // include: {
+                // model: Alumno_Asignatura,
+                // include: {
+                //   model: Asignatura
+                // }
+            //   }
+        });
         res.status(200).json({
             success: true,
             menssange: 'usuario creado con exito',

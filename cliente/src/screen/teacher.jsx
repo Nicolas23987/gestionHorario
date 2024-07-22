@@ -4,7 +4,7 @@ import { Docentes_list } from "../Componentes/docente_list.jsx";
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Barra_izq } from "../Componentes/barra_izq.jsx";
-import { BtnOption } from "../Componentes/btn_info.jsx";
+import { BtnOption } from "../Componentes/btn_nav.jsx";
 import { Footer } from "../Componentes/footer.jsx";
 
 export function Docentes() {
@@ -24,7 +24,6 @@ export function Docentes() {
       <NavBar></NavBar>
       <div className="mb-32">
         <Barra_izq></Barra_izq>
-        {/* <BtnOption materia={id}></BtnOption> */}
           <div className="dv-center full-width alum-week-div" >
           <Docentes_list/>
         </div>

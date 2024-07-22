@@ -1,15 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import { is } from "date-fns/locale";
 import { LoadingScreen } from '../Componentes/loanding'
 import { Horario } from "./horario";
 import DocenteSelector from "./selec_docente";
-import { setWeek } from "date-fns";
 export function DocenteInfo(materia) {
     const id = materia.id
-    console.log(materia)
+    console.log(id)
     const [docente, setDocente] = useState([]);
     const [materias, setMateria] = useState([]);
     const [especialidad, setEspecialidad] = useState([])
@@ -19,7 +16,7 @@ export function DocenteInfo(materia) {
         const getMaterias = async () => {
             setLoading(true)
             try {
-                const response = await Axios.get(`http://localhost:3000/api/get/docente/materia/${id}`);
+                const response = await Axios.get(`http://localhost:3000/api/get/docente/materia/${id}`, {withCredentials: true});
                 const { docentes } = response.data.data
                 // const { especialidad } = docentes
                 setEspecialidad(especialidad);
@@ -36,11 +33,9 @@ export function DocenteInfo(materia) {
         const getMateria = async () => {
             setLoading(true)
             try {
-                const response = await Axios.get(`http://localhost:3000/api/get/asignatura/${id}`);
+                const response = await Axios.get(`http://localhost:3000/api/get/asignatura/${id}`, {withCredentials: true});
                 const  docentes  = response
-                // const { especialidad } = docentes
-                // setEspecialidad(especialidad);
-                setMateria(docentes);
+                setMateria(response);
                 setLoading(false);
             } catch (error) {
                 setLoading(false);
@@ -65,7 +60,7 @@ export function DocenteInfo(materia) {
     const onsubmit = () => {
         try {
             console.log(`${selectedDocente.id_docente}/${id}`)
-            const response = Axios.put(`http://localhost:3000/api/update/asignatura/${selectedDocente.id_docente}/${id}/`)
+            const response = Axios.put(`http://localhost:3000/api/update/asignatura/${selectedDocente.id_docente}/${id}/`, {withCredentials: true})
             window.location.reload();
 
         } catch (error) {
@@ -75,7 +70,9 @@ export function DocenteInfo(materia) {
 
     if (docente == null) {
         return (
-            <DocenteSelector onSelect={handleSelectDocente} onsubmit={onsubmit} />
+            <div className="w-full items-center justify-center flex">
+                <DocenteSelector onSelect={handleSelectDocente} onsubmit={onsubmit} />
+            </div>
         )
     }
 

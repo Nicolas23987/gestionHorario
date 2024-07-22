@@ -18,10 +18,8 @@ export function Horario({consulta}) {
   console.log(consulta)
   const [horario, setAlumnoData] = useState([]);
   const {id} = useParams()
-  // const 
-
     useEffect(() =>{
-      Axios.get(consulta)
+      Axios.get(consulta,{withCredentials:true})
         .then(response => {
           console.log(response)
           const {horarios} = response.data.data[0];
@@ -87,7 +85,6 @@ export function Horario({consulta}) {
 
   return (
     <React.Fragment>
-      {/* <div className="w-full items-center justify-center"> */}
       <table key='1' className=" text-black w-full border-gray-300 rounded-3xl" cellSpacing="0">
         <thead className="custom-thead ">
           <tr className="border border-gray-300">
@@ -133,7 +130,6 @@ export function Horario({consulta}) {
           </thead>
         ))}
       </table>
-      {/* </div> */}
     </React.Fragment>
   );
 }

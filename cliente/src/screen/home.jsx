@@ -87,7 +87,7 @@ export function Home() {
   return (
     <React.Fragment>
       {loading && < LoadingScreen></LoadingScreen>}
-      {/* <NavBar data={use} /> */}
+      <NavBar  />
       <Barra_izq />
       <div className="mb-16">
 
@@ -104,14 +104,14 @@ export function Home() {
 
         </section>
 
-        {/* <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
+        <section class="p-8 bg-white shadow-md mt-4 mx-4 rounded-lg">
           <h2 className="text-black font-bold text-xl ">Materias</h2>
           {asignaturas_virt.map((asignatura, index) =>(
             // console.log(asignatura)
             <AddDocenteAsignatura key={asignatura.id_materia} data={asignatura.nombre} id={asignatura.id_materia} />
          
          ))}
-        </section> */}
+        </section>
       </div>
       <Footer />
 

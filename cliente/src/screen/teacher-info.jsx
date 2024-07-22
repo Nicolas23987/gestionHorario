@@ -3,7 +3,7 @@ import { NavBar } from '../Componentes/Nav.jsx'
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Barra_izq } from "../Componentes/barra_izq.jsx";
-import { BtnOption } from "../Componentes/btn_info.jsx";
+import { BtnOption } from "../Componentes/btn_nav.jsx";
 import { DocenteInfo } from "../Componentes/docente_info.jsx";
 import { Footer } from "../Componentes/footer.jsx";
 import { Horario } from "../Componentes/horario.jsx";

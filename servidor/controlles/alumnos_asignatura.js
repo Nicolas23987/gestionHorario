@@ -1,4 +1,4 @@
-const {Alumno_Asignatura} = require('../relaciones/relaciones.js');
+const {Alumno_Asignatura, Asignatura} = require('../relaciones/relaciones.js');
 const {Alumno} = require('../relaciones/relaciones.js');
 
 
@@ -11,6 +11,9 @@ const getAlumnoAsignatura = async(req, res) => {
             where: {
                 IDMateria: id_materia,
             },
+            include:{
+                model: Asignatura
+            }
         });
         console.log(asignaturaAlumnos.alumnoIdAlumno)
 

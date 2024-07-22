@@ -4,22 +4,12 @@ import { Estudiante_list } from "../Componentes/estudiantes_list.jsx";
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Barra_izq } from "../Componentes/barra_izq.jsx";
-import { BtnOption } from "../Componentes/btn_info.jsx";
+import { BtnOption } from "../Componentes/btn_nav.jsx";
 import { Footer } from "../Componentes/footer.jsx";
 
 export function StudeInfo() {
 
-  const [mostrarHorario, setMostrarHorario] = useState(true);
-  const [mostrarList, setMostrarList] = useState(true);
-
   const {id} = useParams()
-
-  const [isVisible, setIsVisible] = useState(false);
-  const [isColor, setColor] = useState(false);
-
-
-
-
 
   return (
     <React.Fragment>

@@ -11,10 +11,6 @@ export function BtnOption(data){
     console.log(data)
 
     const {id} = useParams()
-    // console.log(id)
-    // const location = useLocation()
-    // const materia = location.state
-    // console.log(location)
     const h = '>'
 
     return(

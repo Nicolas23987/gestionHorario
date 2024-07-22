@@ -121,6 +121,7 @@ Docente.hasMany(Horario);
 
 module.exports = {
     Admin,
+    Carrera,
     Alumno,
     Asignatura,
     Horario,
